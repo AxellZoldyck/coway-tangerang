@@ -87,9 +87,6 @@ export default function Home() {
             <div className="proof-icon">✳</div><div><strong>Lebih dari sekadar unit</strong><span>Kenali pilihan produk dan dukungan perawatannya.</span></div>
           </div>
         </div>
-        <div className="hero-art hero-image" aria-label="Produk Coway">
-          <Image src="/herocoway.jpeg" alt="Water purifier Coway untuk kebutuhan rumah dan bisnis" fill priority sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 48vw" />
-        </div>
         <div className="hero-bottom"><span>01 — 05</span><span>DESIGNED FOR EVERYDAY WELLBEING</span><span>SCROLL TO EXPLORE ↓</span></div>
       </section>
 
