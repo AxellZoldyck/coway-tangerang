@@ -87,15 +87,8 @@ export default function Home() {
             <div className="proof-icon">✳</div><div><strong>Lebih dari sekadar unit</strong><span>Kenali pilihan produk dan dukungan perawatannya.</span></div>
           </div>
         </div>
-        <div className="hero-art" aria-label="Ilustrasi water purifier di ruang keluarga">
-          <div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" />
-          <div className="art-sun" />
-          <div className="art-room"><div className="art-window"><i /><i /><i /><i /></div><div className="art-shelf" /><div className="art-plant"><b /><b /><b /><span /></div></div>
-          <div className="purifier">
-            <div className="purifier-top"><span /></div><div className="purifier-body"><div className="purifier-display"><i /><i /></div><div className="purifier-tap" /><div className="purifier-drop" /></div><div className="purifier-base" />
-          </div>
-          <div className="art-caption"><span>01 / EVERYDAY LIVING</span><strong>Small upgrade,<br />better routine.</strong></div>
-          <div className="art-stamp">COWAY<br /><b>WATER</b></div>
+        <div className="hero-art hero-image" aria-label="Produk Coway">
+          <Image src="/herocoway.jpeg" alt="Water purifier Coway untuk kebutuhan rumah dan bisnis" fill priority sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 48vw" />
         </div>
         <div className="hero-bottom"><span>01 — 05</span><span>DESIGNED FOR EVERYDAY WELLBEING</span><span>SCROLL TO EXPLORE ↓</span></div>
       </section>
