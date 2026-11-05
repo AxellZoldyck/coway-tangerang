@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 
 const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, "") ?? "";
 const waLink = (message: string) =>
@@ -47,6 +47,14 @@ export default function Home() {
   const [form, setForm] = useState({ name: "", phone: "", need: "Rumah", users: "4 orang", city: "Tangerang", product: "" });
   const [notice, setNotice] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const monthlyGallons = useMemo(() => Math.ceil((people * litres * 30) / 19), [people, litres]);
   const monthlyCost = monthlyGallons * gallonPrice;
@@ -64,8 +72,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="topline"><span className="pulse" /> Konsultasi Coway untuk area Jabodetabek</div>
-      <header className="header">
+      <header className={scrolled ? "header header-scrolled" : "header"}>
         <a className="brand" href="#" aria-label="Coway Jabodetabek beranda" onClick={() => setMenuOpen(false)}>
           <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority />
         </a>
