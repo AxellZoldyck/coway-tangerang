@@ -110,6 +110,31 @@ export default function Home() {
         <div><span className="strip-icon">♡</span><strong>Konsultasi personal</strong><small>Bantu pilih unit yang tepat</small></div>
       </section>
 
+            <section className="category-section" id="produk">
+        <div className="category-heading">
+          <div><div className="section-kicker">02 / EXPLORE COWAY</div><h2>Temukan solusi<br /><em>untuk setiap ruang.</em></h2></div>
+          <p>Dari air yang Anda minum hingga udara yang Anda hirup. Jelajahi kategori produk Coway dan temukan solusi yang sesuai dengan kebutuhan sehari-hari.</p>
+        </div>
+        <div className="category-grid">
+          <a className="category-card category-water" href="/produk/water-purifier">
+            <div className="category-image"><Image src="/waterpurifier.jpg" alt="Kategori Water Purifier Coway" fill sizes="(max-width: 640px) 100vw, 50vw" /></div>
+            <div className="category-shade" /><span className="category-number">01 / WATER</span><div className="category-card-copy"><span>PURE DRINKING WATER</span><h3>Water<br /><em>Purifier.</em></h3><p>Solusi air minum untuk rutinitas yang lebih praktis.</p><b className="category-arrow">↗</b></div>
+            <span className="category-orbit" />
+          </a>
+          <a className="category-card category-air" href="/produk/air-purifier">
+            <div className="category-image"><Image src="/airpurifier.jpg" alt="Kategori Air Purifier Coway" fill sizes="(max-width: 640px) 100vw, 50vw" /></div>
+            <div className="category-shade" /><span className="category-number">02 / AIR</span><div className="category-card-copy"><span>FRESHER INDOOR AIR</span><h3>Air<br /><em>Purifier.</em></h3><p>Kenali pilihan pemurni udara untuk ruang Anda.</p><b className="category-arrow">↗</b></div>
+            <span className="category-orbit" />
+          </a>
+          <a className="category-card category-filter" href="/produk/water-filter">
+            <div className="category-image"><Image src="/waterfilter.jpg" alt="Kategori Water Filter Coway" fill sizes="(max-width: 640px) 100vw, 50vw" /></div>
+            <div className="category-shade" /><span className="category-number">03 / FILTRATION</span><div className="category-card-copy"><span>WATER FILTRATION SYSTEM</span><h3>Water<br /><em>Filter.</em></h3><p>Penyaringan air sesuai kondisi dan kebutuhan penggunaan.</p><b className="category-arrow">↗</b></div>
+            <span className="category-orbit" />
+          </a>
+        </div>
+        <div className="category-footnote"><span>THREE CATEGORIES</span><span>ONE BETTER EVERYDAY</span><span>EXPLORE ALL ↗</span></div>
+      </section>
+
       <section className="section intro-section" id="solusi">
         <div className="section-kicker">01 / THE EVERYDAY QUESTION</div>
         <div className="intro-grid">
@@ -128,7 +153,7 @@ export default function Home() {
         <p className="disclaimer dark-disclaimer">Jenis filter, jumlah tahapan, dan kemampuan filtrasi dapat berbeda pada setiap model. Detail teknis mengikuti spesifikasi resmi produk.</p>
       </section>
 
-      <section className="section benefit-section" id="produk">
+      <section className="section benefit-section" id="keunggulan">
         <div className="section-kicker">03 / MADE FOR YOUR ROUTINE</div>
         <div className="benefit-head"><h2>Teknologi yang membuat<br /><em>hidup terasa sederhana.</em></h2><p>Dirancang untuk menjadi bagian dari rutinitas, bukan tambahan pekerjaan di rumah.</p></div>
         <div className="benefit-grid">
