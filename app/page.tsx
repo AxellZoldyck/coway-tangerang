@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useMemo, useState } from "react";
 
 const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, "") ?? "";
@@ -64,8 +65,9 @@ export default function Home() {
     <main>
       <div className="topline"><span className="pulse" /> Konsultasi Coway untuk area Jabodetabek</div>
       <header className="header">
-        <a className="brand" href="#" aria-label="Coway Tangerang beranda">
-          <span className="brand-mark">c</span><span>COWAY<span className="brand-sub">TANGERANG</span></span>
+        <a className="brand" href="#" aria-label="Coway Jabodetabek beranda">
+          <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority />
+          <span className="brand-location">JABODETABEK</span>
         </a>
         <nav className="nav" aria-label="Navigasi utama">
           <a href="#solusi">Solusi</a><a href="#teknologi">Teknologi</a><a href="#layanan">Layanan</a><a href="#faq">FAQ</a>
@@ -172,7 +174,7 @@ export default function Home() {
 
       <section className="contact-section" id="konsultasi"><div className="contact-deco">C</div><div className="contact-copy"><div className="section-kicker light-kicker">10 / YOUR NEXT STEP</div><h2>Air yang Anda pilih,<br /><em>dimulai dari percakapan.</em></h2><p>Ceritakan kebutuhan rumah atau tempat kerja Anda. Kami bantu jelaskan pilihan produk, fitur, serta skema yang relevan—tanpa tekanan untuk membeli.</p><div className="contact-location"><span>⌖</span> Melayani konsultasi Jabodetabek</div></div><form className="lead-form" onSubmit={submitLead}><div className="form-heading"><span>LET’S TALK</span><h3>Konsultasi gratis</h3><p>Isi detail singkat berikut untuk memulai.</p></div><label>Nama lengkap<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Nama Anda" autoComplete="name" /></label><label>Nomor WhatsApp<input required type="tel" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="08xxxxxxxxxx" autoComplete="tel" /></label><div className="form-row"><label>Kebutuhan<select value={form.need} onChange={e=>setForm({...form,need:e.target.value})}><option>Rumah</option><option>Kantor</option><option>Bisnis</option></select></label><label>Jumlah pengguna<input value={form.users} onChange={e=>setForm({...form,users:e.target.value})} placeholder="Contoh: 4 orang" /></label></div><label>Kota / area<input required value={form.city} onChange={e=>setForm({...form,city:e.target.value})} placeholder="Contoh: BSD, Tangerang" /></label><label>Produk yang diminati <small>(opsional)</small><input value={form.product} onChange={e=>setForm({...form,product:e.target.value})} placeholder="Belum tahu juga tidak apa-apa" /></label><button className="button button-dark full-button" type="submit">Lanjutkan via WhatsApp <Arrow /></button>{notice&&<p className="form-notice" role="status">{notice}</p>}<p className="form-privacy">Dengan mengirim formulir, Anda menyetujui data ini digunakan untuk menindaklanjuti permintaan konsultasi Anda.</p></form></section>
 
-      <footer className="footer"><a className="brand footer-brand" href="#"><span className="brand-mark">c</span><span>COWAY<span className="brand-sub">TANGERANG</span></span></a><p>Informasi dan konsultasi produk Coway untuk area Jabodetabek.</p><div className="footer-links"><a href="#solusi">Solusi</a><a href="#teknologi">Teknologi</a><a href="#layanan">Layanan</a><a href="#faq">FAQ</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Coway Tangerang</span><span>Sales consultation · Jabodetabek</span></div><p className="footer-disclaimer">Halaman konsultasi penjualan independen. Bukan situs resmi Coway Indonesia. Merek dan produk Coway merupakan milik pemegang hak masing-masing. Spesifikasi, harga, program, dan layanan mengikuti informasi resmi yang berlaku.</p></footer>
+      <footer className="footer"><a className="brand footer-brand" href="#"><Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} /><span className="brand-location">JABODETABEK</span></a><p>Informasi dan konsultasi produk Coway untuk area Jabodetabek.</p><div className="footer-links"><a href="#solusi">Solusi</a><a href="#teknologi">Teknologi</a><a href="#layanan">Layanan</a><a href="#faq">FAQ</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Coway Tangerang</span><span>Sales consultation · Jabodetabek</span></div><p className="footer-disclaimer">Halaman konsultasi penjualan independen. Bukan situs resmi Coway Indonesia. Merek dan produk Coway merupakan milik pemegang hak masing-masing. Spesifikasi, harga, program, dan layanan mengikuti informasi resmi yang berlaku.</p></footer>
       <a className="floating-wa" href={waLink("Halo, saya ingin konsultasi produk Coway untuk area Jabodetabek.")} aria-label="Konsultasi Coway melalui WhatsApp" onClick={e=>{if(!waNumber){e.preventDefault();document.getElementById("konsultasi")?.scrollIntoView({behavior:"smooth"});}}}><span>↗</span><b>Chat sales</b></a>
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({
         "@context":"https://schema.org",
