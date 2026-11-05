@@ -46,6 +46,7 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [form, setForm] = useState({ name: "", phone: "", need: "Rumah", users: "4 orang", city: "Tangerang", product: "" });
   const [notice, setNotice] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const monthlyGallons = useMemo(() => Math.ceil((people * litres * 30) / 19), [people, litres]);
   const monthlyCost = monthlyGallons * gallonPrice;
@@ -65,13 +66,18 @@ export default function Home() {
     <main>
       <div className="topline"><span className="pulse" /> Konsultasi Coway untuk area Jabodetabek</div>
       <header className="header">
-        <a className="brand" href="#" aria-label="Coway Jabodetabek beranda">
+        <a className="brand" href="#" aria-label="Coway Jabodetabek beranda" onClick={() => setMenuOpen(false)}>
           <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority />
         </a>
-        <nav className="nav" aria-label="Navigasi utama">
-          <a href="#produk">Produk</a><a href="#solusi">Solusi</a><a href="#rumah">Untuk Rumah</a><a href="#bisnis">Untuk Bisnis</a><a href="#teknologi">Teknologi</a><a href="#layanan">Layanan</a><a href="#faq">FAQ</a>
+        <nav id="mobile-navigation" className={menuOpen ? "nav nav-open" : "nav"} aria-label="Navigasi utama">
+          <a href="#produk" onClick={() => setMenuOpen(false)}>Produk</a><a href="#solusi" onClick={() => setMenuOpen(false)}>Solusi</a><a href="#rumah" onClick={() => setMenuOpen(false)}>Untuk Rumah</a><a href="#bisnis" onClick={() => setMenuOpen(false)}>Untuk Bisnis</a><a href="#teknologi" onClick={() => setMenuOpen(false)}>Teknologi</a><a href="#layanan" onClick={() => setMenuOpen(false)}>Layanan</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
         </nav>
-        <a className="button button-small button-dark" href="#konsultasi">Konsultasi <Arrow /></a>
+        <div className="header-actions">
+          <a className="button button-small button-dark" href="#konsultasi">Konsultasi <Arrow /></a>
+          <button className={menuOpen ? "mobile-menu-toggle is-open" : "mobile-menu-toggle"} type="button" aria-label={menuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)}>
+            <span /><span />
+          </button>
+        </div>
       </header>
 
       <section className="hero">
