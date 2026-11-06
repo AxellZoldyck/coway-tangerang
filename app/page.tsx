@@ -137,11 +137,7 @@ export default function Home() {
 
       <section className="awards-section" id="penghargaan">
         <div className="awards-heading">
-          <div>
-            <div className="section-kicker">03 / RECOGNITION & TRUST</div>
-            <h2>Certificates <em>&amp; Awards.</em></h2>
-          </div>
-          <p>Apresiasi dan pengakuan yang menjadi bagian dari perjalanan Coway. Lihat lebih dekat koleksi sertifikat dan penghargaan kami.</p>
+          <h2>Certificates <em>&amp; Awards.</em></h2>
         </div>
         <div className="awards-grid">
           <div className="awards-track">
@@ -150,17 +146,15 @@ export default function Home() {
               const filename = `award${number}.png`;
               const duplicate = i >= 16;
               return (
-                <figure className="award-card" key={`${filename}-${i}`} style={{ "--award-index": i % 16 } as React.CSSProperties} aria-hidden={duplicate}>
+                <figure className="award-card" key={`${filename}-${i}`} aria-hidden={duplicate}>
                   <div className="award-image">
                     <Image src={`/${filename}`} alt={duplicate ? "" : `Coway certificate and award ${number}`} fill sizes="(max-width: 560px) 36vw, 176px" />
                   </div>
-                  <figcaption><span>RECOGNITION</span><b>{String(number).padStart(2, "0")}</b></figcaption>
                 </figure>
               );
             })}
           </div>
         </div>
-        <div className="awards-footnote"><span>16 MOMENTS OF RECOGNITION</span><span>COWAY · CERTIFICATES &amp; AWARDS</span></div>
       </section>
 
       <section className="section intro-section" id="solusi">
