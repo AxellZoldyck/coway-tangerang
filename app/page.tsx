@@ -144,18 +144,21 @@ export default function Home() {
           <p>Apresiasi dan pengakuan yang menjadi bagian dari perjalanan Coway. Lihat lebih dekat koleksi sertifikat dan penghargaan kami.</p>
         </div>
         <div className="awards-grid">
-          {Array.from({ length: 16 }, (_, i) => {
-            const number = i + 1;
-            const filename = `award${number}.png`;
-            return (
-              <figure className="award-card" key={filename} style={{ "--award-index": i } as React.CSSProperties}>
-                <div className="award-image">
-                  <Image src={`/${filename}`} alt={`Coway certificate and award ${number}`} fill sizes="(max-width: 560px) 44vw, (max-width: 900px) 28vw, 18vw" />
-                </div>
-                <figcaption><span>RECOGNITION</span><b>{String(number).padStart(2, "0")}</b></figcaption>
-              </figure>
-            );
-          })}
+          <div className="awards-track">
+            {Array.from({ length: 32 }, (_, i) => {
+              const number = (i % 16) + 1;
+              const filename = `award${number}.png`;
+              const duplicate = i >= 16;
+              return (
+                <figure className="award-card" key={`${filename}-${i}`} style={{ "--award-index": i % 16 } as React.CSSProperties} aria-hidden={duplicate}>
+                  <div className="award-image">
+                    <Image src={`/${filename}`} alt={duplicate ? "" : `Coway certificate and award ${number}`} fill sizes="(max-width: 560px) 36vw, 176px" />
+                  </div>
+                  <figcaption><span>RECOGNITION</span><b>{String(number).padStart(2, "0")}</b></figcaption>
+                </figure>
+              );
+            })}
+          </div>
         </div>
         <div className="awards-footnote"><span>16 MOMENTS OF RECOGNITION</span><span>COWAY · CERTIFICATES &amp; AWARDS</span></div>
       </section>
