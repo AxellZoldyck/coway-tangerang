@@ -135,6 +135,31 @@ export default function Home() {
         <div className="category-footnote"><span>THREE CATEGORIES</span><span>ONE BETTER EVERYDAY</span><span>EXPLORE ALL ↗</span></div>
       </section>
 
+      <section className="awards-section" id="penghargaan">
+        <div className="awards-heading">
+          <div>
+            <div className="section-kicker">03 / RECOGNITION & TRUST</div>
+            <h2>Certificates <em>&amp; Awards.</em></h2>
+          </div>
+          <p>Apresiasi dan pengakuan yang menjadi bagian dari perjalanan Coway. Lihat lebih dekat koleksi sertifikat dan penghargaan kami.</p>
+        </div>
+        <div className="awards-grid">
+          {Array.from({ length: 16 }, (_, i) => {
+            const number = i + 1;
+            const filename = `award${number}.png`;
+            return (
+              <figure className="award-card" key={filename} style={{ "--award-index": i } as React.CSSProperties}>
+                <div className="award-image">
+                  <Image src={`/${filename}`} alt={`Coway certificate and award ${number}`} fill sizes="(max-width: 560px) 44vw, (max-width: 900px) 28vw, 18vw" />
+                </div>
+                <figcaption><span>RECOGNITION</span><b>{String(number).padStart(2, "0")}</b></figcaption>
+              </figure>
+            );
+          })}
+        </div>
+        <div className="awards-footnote"><span>16 MOMENTS OF RECOGNITION</span><span>COWAY · CERTIFICATES &amp; AWARDS</span></div>
+      </section>
+
       <section className="section intro-section" id="solusi">
         <div className="section-kicker">01 / THE EVERYDAY QUESTION</div>
         <div className="intro-grid">
