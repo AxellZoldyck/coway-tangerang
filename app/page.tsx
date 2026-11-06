@@ -134,7 +134,7 @@ export default function Home() {
 
             <section className="category-section" id="produk">
         <div className="category-heading">
-          <div><div className="section-kicker">02 / COWAY PRODUCT COLLECTION</div><h2>Solusi untuk Kualitas<br /><em>Hidup yang Lebih Baik.</em></h2></div>
+          <div><div className="section-kicker">COWAY PRODUCT COLLECTION</div><h2>Solusi untuk Kualitas<br /><em>Hidup yang Lebih Baik.</em></h2></div>
           <p>Setiap ruang memiliki kebutuhan yang berbeda. Kenali tiga kategori produk Coway—pemurni air minum, pemurni udara, dan sistem penyaringan air—lalu temukan pilihan yang paling sesuai untuk rumah maupun tempat kerja Anda.</p>
         </div>
         <div className="category-grid">
