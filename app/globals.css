@@ -244,25 +244,20 @@ main { padding-top: 78px !important; }
 .catalog-page { padding-top: 0 !important; }
 
 
-/* Certificates & Awards — seamless slow auto-scrolling strip */
-.awards-section{max-width:1240px;margin:0 auto;padding:82px 34px 70px;position:relative;overflow:hidden}
-.awards-heading{display:grid;grid-template-columns:1fr .58fr;gap:10%;align-items:end;margin-bottom:27px}
-.awards-heading h2{font:500 clamp(36px,4.2vw,52px)/1.08 var(--serif);letter-spacing:-.045em;margin:15px 0 0;color:#29483d}
+/* Certificates & Awards — centered title and image-only marquee */
+.awards-section{max-width:1240px;margin:0 auto;padding:66px 34px 62px;position:relative;overflow:hidden}
+.awards-heading{display:flex;justify-content:center;align-items:center;text-align:center;margin:0 0 24px}
+.awards-heading h2{font:500 clamp(23px,2.5vw,30px)/1.15 var(--serif);letter-spacing:-.035em;margin:0;color:#29483d}
 .awards-heading h2 em{font-style:italic;color:#789784}
-.awards-heading>p{font-size:12px;line-height:1.8;color:#7d8c82;max-width:350px;margin:0 0 5px}
 .awards-grid{width:100%;overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,#000 2.5%,#000 97.5%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 2.5%,#000 97.5%,transparent)}
-.awards-track{display:flex;align-items:stretch;gap:14px;width:max-content;animation:awards-marquee 100s linear infinite;will-change:transform}
+.awards-track{display:flex;align-items:center;gap:14px;width:max-content;animation:awards-marquee 100s linear infinite;will-change:transform}
 .awards-grid:hover .awards-track{animation-play-state:paused}
 .award-card{flex:0 0 176px;min-width:0;margin:0;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;transition:transform .35s;animation:none}
-.award-card:hover{transform:translateY(-4px);border:0;box-shadow:none}
-.award-image{height:124px;position:relative;overflow:hidden;display:grid;place-items:center;background:transparent;border-radius:0}
+.award-card:hover{transform:translateY(-3px);border:0;box-shadow:none}
+.award-image{height:124px;position:relative;overflow:hidden;display:grid;place-items:center;background:transparent;border:0;border-radius:0}
 .award-image img{object-fit:contain;padding:0;transition:transform .5s}
 .award-card:hover .award-image img{transform:scale(1.045)}
-.award-card figcaption{display:flex;justify-content:space-between;align-items:center;padding:8px 1px 0;color:#93a197}
-.award-card figcaption span{font-size:7px;letter-spacing:.13em}
-.award-card figcaption b{font:500 11px Manrope;color:#688574}
-.awards-footnote{display:flex;justify-content:space-between;gap:15px;border-top:1px solid #dce4dc;margin-top:20px;padding-top:12px;color:#9aa99e;font-size:8px;letter-spacing:.14em}
 @keyframes awards-marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
-@media(max-width:760px){.awards-section{padding:66px 20px 58px}.awards-heading{grid-template-columns:1fr;gap:9px;margin-bottom:20px}.awards-heading h2{font-size:40px}.awards-heading>p{font-size:11px}.awards-track{gap:11px;animation-duration:85s}.award-card{flex-basis:148px}.award-image{height:108px}.award-card figcaption{padding-top:7px}.award-card figcaption span{font-size:6px}.award-card figcaption b{font-size:10px}.awards-footnote{font-size:7px;letter-spacing:.08em}}
-@media(max-width:430px){.awards-section{padding:58px 18px 50px}.awards-heading h2{font-size:36px}.awards-track{gap:10px;animation-duration:78s}.award-card{flex-basis:136px}.award-image{height:100px}.awards-footnote span:last-child{display:none}}
+@media(max-width:760px){.awards-section{padding:54px 20px 48px}.awards-heading{margin-bottom:19px}.awards-heading h2{font-size:24px}.awards-track{gap:11px;animation-duration:85s}.award-card{flex-basis:148px}.award-image{height:108px}}
+@media(max-width:430px){.awards-section{padding:48px 18px 42px}.awards-heading h2{font-size:22px}.awards-track{gap:10px;animation-duration:78s}.award-card{flex-basis:136px}.award-image{height:100px}}
 @media(prefers-reduced-motion:reduce){.awards-track{animation:none;transform:none}.awards-grid{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}
