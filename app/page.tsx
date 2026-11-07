@@ -48,6 +48,40 @@ export default function Home() {
   const [notice, setNotice] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [solutionAnswers, setSolutionAnswers] = useState({ focus: "", place: "", scale: "" });
+  const solutionComplete = Boolean(solutionAnswers.focus && solutionAnswers.place && solutionAnswers.scale);
+  const solutionCatalog = {
+    drink: {
+      title: "Water Purifier",
+      description: "Pilihan pemurni air minum untuk kebutuhan air minum sehari-hari.",
+      href: "/produk/water-purifier",
+      products: [
+        { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png" },
+        { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png" },
+        { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png" },
+      ],
+    },
+    indoor: {
+      title: "Air Purifier",
+      description: "Pilihan pemurni udara untuk membantu menjaga kualitas udara di dalam ruangan.",
+      href: "/produk/air-purifier",
+      products: [
+        { name: "Storm", model: "AP-1516D", image: "/airpurifier/storm.png" },
+        { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png" },
+        { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png" },
+      ],
+    },
+    source: {
+      title: "Water Filter",
+      description: "Pilihan sistem penyaringan air rumah tangga berdasarkan kondisi sumber air.",
+      href: "/produk/water-filter",
+      products: [
+        { name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png" },
+        { name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png" },
+      ],
+    },
+  } as const;
+  const solutionRecommendation = solutionComplete ? solutionCatalog[solutionAnswers.focus as keyof typeof solutionCatalog] : null;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -77,7 +111,7 @@ export default function Home() {
           <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority />
         </a>
         <nav id="mobile-navigation" className={menuOpen ? "nav nav-open" : "nav"} aria-label="Navigasi utama">
-          <a href="#produk" onClick={() => setMenuOpen(false)}>Produk</a><a href="#solusi" onClick={() => setMenuOpen(false)}>Solusi</a><a href="#rumah" onClick={() => setMenuOpen(false)}>Untuk Rumah</a><a href="#bisnis" onClick={() => setMenuOpen(false)}>Untuk Bisnis</a><a href="#teknologi" onClick={() => setMenuOpen(false)}>Teknologi</a><a href="#layanan" onClick={() => setMenuOpen(false)}>Layanan</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#produk" onClick={() => setMenuOpen(false)}>Produk</a><a href="#solusi" onClick={() => setMenuOpen(false)}>Solusi</a>undefined<a href="#teknologi" onClick={() => setMenuOpen(false)}>Teknologi</a><a href="#layanan" onClick={() => setMenuOpen(false)}>Layanan</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
         </nav>
         <div className="header-actions">
           <a className="button button-small button-dark" href="#konsultasi">Konsultasi <Arrow /></a>
@@ -100,7 +134,7 @@ export default function Home() {
             <div className="proof-icon">✳</div><div><strong>Lebih dari sekadar unit</strong><span>Kenali pilihan produk dan dukungan perawatannya.</span></div>
           </div>
         </div>
-        <div className="hero-bottom"><span>01 — 05</span><span>DESIGNED FOR EVERYDAY WELLBEING</span><span>SCROLL TO EXPLORE ↓</span></div>
+        <div className="hero-bottom"><span>01 — 09</span><span>DESIGNED FOR EVERYDAY WELLBEING</span><span>SCROLL TO EXPLORE ↓</span></div>
       </section>
 
       <section className="trust-strip">
@@ -157,14 +191,39 @@ export default function Home() {
         <div className="category-footnote"><span>WATER PURIFICATION</span><span>INDOOR AIR</span><span>WATER FILTRATION</span></div>
       </section>
 
-      <section className="section intro-section" id="solusi">
-        <div className="section-kicker">01 / THE EVERYDAY QUESTION</div>
-        <div className="intro-grid">
-          <h2>Masih mengandalkan galon untuk <em>setiap tegukan?</em></h2>
-          <div><p className="body-large">Pesan, tunggu, angkat, simpan, pasang, lalu ulangi lagi saat galon habis. Kebutuhan air minum yang sederhana kadang menyita lebih banyak waktu dan tenaga dari yang kita sadari.</p><p>Bagaimana jika akses air minum di rumah bisa terasa lebih praktis? Mulai dengan memahami kebutuhan Anda dan pilihan water purifier yang tersedia.</p><a className="under-link" href="#konsultasi">Temukan solusi yang sesuai <Arrow /></a></div>
+      <section className="section solution-section" id="solusi">
+        <div className="section-kicker">01 / FIND YOUR SOLUTION</div>
+        <div className="solution-heading">
+          <div><h2>Temukan pilihan yang<br /><em>sesuai kebutuhan Anda.</em></h2></div>
+          <p>Jawab tiga pertanyaan singkat. Kami akan menampilkan kategori dan beberapa produk Coway yang bisa Anda pertimbangkan.</p>
         </div>
-        <div className="routine">
-          {["Pesan galon","Menunggu","Angkat & simpan","Pasang","Habis lagi"].map((item, i) => <div className="routine-step" key={item}><span>0{i + 1}</span><b>{item}</b>{i < 4 && <i>→</i>}</div>)}
+        <div className="solution-quiz">
+          <div className="solution-progress"><span>PERSONAL PRODUCT MATCH</span><b>{[solutionAnswers.focus, solutionAnswers.place, solutionAnswers.scale].filter(Boolean).length} / 3 terjawab</b></div>
+          <div className="solution-question">
+            <span>01</span><div><h3>Apa kebutuhan utama Anda?</h3><p>Pilih fokus yang ingin diprioritaskan.</p></div>
+            <div className="solution-options">
+              {[{value:"drink",label:"Air minum",detail:"Pemurni air untuk diminum"},{value:"indoor",label:"Udara dalam ruangan",detail:"Pemurni udara untuk ruang aktivitas"},{value:"source",label:"Penyaringan air",detail:"Filter untuk sumber air rumah"}].map(option=><button type="button" key={option.value} className={solutionAnswers.focus===option.value?"solution-option selected":"solution-option"} aria-pressed={solutionAnswers.focus===option.value} onClick={()=>setSolutionAnswers({...solutionAnswers,focus:option.value})}><span>{option.label}</span><small>{option.detail}</small><i>{solutionAnswers.focus===option.value?"✓":"+"}</i></button>)}
+            </div>
+          </div>
+          <div className="solution-question">
+            <span>02</span><div><h3>Di mana produk akan digunakan?</h3><p>Sesuaikan dengan lingkungan penggunaan.</p></div>
+            <div className="solution-options solution-options-inline">
+              {[{value:"Rumah",label:"Rumah"},{value:"Kantor",label:"Kantor"},{value:"Bisnis / usaha",label:"Bisnis / usaha"}].map(option=><button type="button" key={option.value} className={solutionAnswers.place===option.value?"solution-option selected":"solution-option"} aria-pressed={solutionAnswers.place===option.value} onClick={()=>setSolutionAnswers({...solutionAnswers,place:option.value})}><span>{option.label}</span><i>{solutionAnswers.place===option.value?"✓":"+"}</i></button>)}
+            </div>
+          </div>
+          <div className="solution-question">
+            <span>03</span><div><h3>Seberapa besar kebutuhan penggunaannya?</h3><p>Ini membantu konsultan memahami skala kebutuhan Anda.</p></div>
+            <div className="solution-options solution-options-inline">
+              {[{value:"1–3 orang / ruang kecil",label:"1–3 orang / ruang kecil"},{value:"4–6 orang / ruang sedang",label:"4–6 orang / ruang sedang"},{value:"7+ orang / area lebih luas",label:"7+ orang / area lebih luas"}].map(option=><button type="button" key={option.value} className={solutionAnswers.scale===option.value?"solution-option selected":"solution-option"} aria-pressed={solutionAnswers.scale===option.value} onClick={()=>setSolutionAnswers({...solutionAnswers,scale:option.value})}><span>{option.label}</span><i>{solutionAnswers.scale===option.value?"✓":"+"}</i></button>)}
+            </div>
+          </div>
+          {solutionComplete && solutionRecommendation && <div className="solution-result" aria-live="polite">
+            <div className="solution-result-heading"><div><span>YOUR MATCH</span><h3>Kami sarankan mulai dari <em>{solutionRecommendation.title}.</em></h3><p>{solutionRecommendation.description}</p></div><button type="button" className="solution-reset" onClick={()=>setSolutionAnswers({focus:"",place:"",scale:""})}>Ulangi <span>↻</span></button></div>
+            <div className="solution-context"><span>Penggunaan: <b>{solutionAnswers.place}</b></span><span>Skala: <b>{solutionAnswers.scale}</b></span></div>
+            <div className="solution-products">{solutionRecommendation.products.map(product=><a className="solution-product" href={solutionRecommendation.href} key={product.model}><div className="solution-product-image"><Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 70vw, 180px" /></div><span>{product.model}</span><b>{product.name}</b><i>Detail produk ↗</i></a>)}</div>
+            <p className="solution-note">Ini rekomendasi awal berdasarkan kategori kebutuhan, bukan penilaian teknis kondisi air atau ukuran ruang. Kecocokan model, kapasitas, fitur, dan ketersediaan perlu dikonfirmasi bersama konsultan.</p>
+            <a className="button button-dark solution-consult" href="#konsultasi" onClick={()=>setForm({...form,need:solutionAnswers.place,users:solutionAnswers.scale,product:solutionRecommendation.title+" — "+solutionRecommendation.products.map(p=>p.name).join(", ")})}>Konsultasikan hasil rekomendasi <Arrow /></a>
+          </div>}
         </div>
       </section>
 
@@ -175,18 +234,8 @@ export default function Home() {
         <p className="disclaimer dark-disclaimer">Jenis filter, jumlah tahapan, dan kemampuan filtrasi dapat berbeda pada setiap model. Detail teknis mengikuti spesifikasi resmi produk.</p>
       </section>
 
-      <section className="section benefit-section" id="keunggulan">
-        <div className="section-kicker">03 / MADE FOR YOUR ROUTINE</div>
-        <div className="benefit-head"><h2>Teknologi yang membuat<br /><em>hidup terasa sederhana.</em></h2><p>Dirancang untuk menjadi bagian dari rutinitas, bukan tambahan pekerjaan di rumah.</p></div>
-        <div className="benefit-grid">
-          <article className="benefit-card benefit-main"><div className="benefit-visual glass-visual"><div className="glass"><span /></div><div className="glass-shadow" /></div><span className="card-index">01 — EVERYDAY</span><h3>Air siap digunakan</h3><p>Akses air minum untuk membantu kebutuhan sehari-hari.</p></article>
-          <article className="benefit-card"><div className="benefit-visual temp-visual"><span>HOT</span><i>·</i><span>COLD</span><b>↕</b></div><span className="card-index">02 — FLEXIBILITY</span><h3>Pilihan suhu</h3><p>Fitur air panas, dingin, atau normal pada model tertentu.</p></article>
-          <article className="benefit-card"><div className="benefit-visual service-visual"><div className="service-ring">↻</div><span className="service-dot" /></div><span className="card-index">03 — CARE</span><h3>Dukungan layanan</h3><p>Program perawatan dan penggantian filter sesuai paket.</p></article>
-        </div>
-      </section>
-
       <section className="section calculator-section">
-        <div className="calc-copy"><div className="section-kicker">04 / LET’S DO THE MATH</div><h2>Hitung kebutuhan galon <em>di rumah Anda.</em></h2><p>Gunakan kalkulator sederhana ini untuk memperkirakan jumlah galon dan pengeluaran bulanan berdasarkan kebiasaan keluarga.</p><div className="calc-note">Simulasi ini hanya estimasi biaya galon, bukan perbandingan harga atau jaminan penghematan produk Coway.</div></div>
+        <div className="calc-copy"><div className="section-kicker">03 / LET’S DO THE MATH</div><h2>Hitung kebutuhan galon <em>di rumah Anda.</em></h2><p>Gunakan kalkulator sederhana ini untuk memperkirakan jumlah galon dan pengeluaran bulanan berdasarkan kebiasaan keluarga.</p><div className="calc-note">Simulasi ini hanya estimasi biaya galon, bukan perbandingan harga atau jaminan penghematan produk Coway.</div></div>
         <div className="calculator">
           <div className="calc-field"><label htmlFor="people">Jumlah anggota keluarga</label><div className="stepper"><button type="button" onClick={()=>setPeople(Math.max(1,people-1))} aria-label="Kurangi anggota">−</button><strong>{people} <small>orang</small></strong><button type="button" onClick={()=>setPeople(Math.min(20,people+1))} aria-label="Tambah anggota">+</button></div></div>
           <div className="calc-field"><label htmlFor="litres">Konsumsi per orang / hari</label><div className="stepper"><button type="button" onClick={()=>setLitres(Math.max(1,litres-.5))} aria-label="Kurangi konsumsi">−</button><strong>{litres.toLocaleString("id-ID")} <small>liter</small></strong><button type="button" onClick={()=>setLitres(Math.min(5,litres+.5))} aria-label="Tambah konsumsi">+</button></div></div>
@@ -197,7 +246,7 @@ export default function Home() {
       </section>
 
       <section className="section service-section" id="layanan">
-        <div className="section-kicker">05 / BEYOND THE PRODUCT</div>
+        <div className="section-kicker">04 / BEYOND THE PRODUCT</div>
         <div className="service-heading"><h2>Bukan hanya memiliki unit.<br /><em>Perawatan juga penting.</em></h2><p>Memilih water purifier juga berarti memahami cara merawatnya. Tanyakan detail dukungan layanan yang menyertai model dan skema pembelian pilihan Anda.</p></div>
         <div className="service-steps">
           <article><span>01</span><div className="service-icon">⌕</div><h3>Konsultasi kebutuhan</h3><p>Diskusikan sumber air, jumlah pengguna, dan ruang pemasangan.</p></article>
@@ -209,19 +258,19 @@ export default function Home() {
 
       <section className="section audience-section">
         <div className="audience-art"><div className="audience-circle"><span>WATER</span><b>for<br />every<br />space.</b><i>✳</i></div></div>
-        <div className="audience-copy"><div className="section-kicker">06 / ONE SOLUTION, DIFFERENT NEEDS</div><h2>Untuk ruang yang<br /><em>berbeda-beda.</em></h2><div className="audience-list"><article id="rumah"><span>01</span><div><h3>Rumah & keluarga</h3><p>Solusi air minum untuk kebutuhan sehari-hari keluarga.</p></div><b>↗</b></article><article><span>02</span><div><h3>Kantor & ruang kerja</h3><p>Pilihan unit untuk mendukung kenyamanan aktivitas kerja.</p></div><b>↗</b></article><article id="bisnis"><span>03</span><div><h3>Bisnis & usaha</h3><p>Konsultasikan kapasitas dan kebutuhan operasional lokasi Anda.</p></div><b>↗</b></article></div></div>
+        <div className="audience-copy"><div className="section-kicker">05 / ONE SOLUTION, DIFFERENT NEEDS</div><h2>Untuk ruang yang<br /><em>berbeda-beda.</em></h2><div className="audience-list"><article id="rumah"><span>01</span><div><h3>Rumah & keluarga</h3><p>Solusi air minum untuk kebutuhan sehari-hari keluarga.</p></div><b>↗</b></article><article><span>02</span><div><h3>Kantor & ruang kerja</h3><p>Pilihan unit untuk mendukung kenyamanan aktivitas kerja.</p></div><b>↗</b></article><article id="bisnis"><span>03</span><div><h3>Bisnis & usaha</h3><p>Konsultasikan kapasitas dan kebutuhan operasional lokasi Anda.</p></div><b>↗</b></article></div></div>
       </section>
 
       <section className="section payment-section">
-        <div className="section-kicker">07 / OWNERSHIP OPTIONS</div><div className="payment-heading"><h2>Pilih skema yang<br /><em>sesuai rencana Anda.</em></h2><p>Pelajari pilihan kepemilikan yang tersedia. Harga, tenor, cakupan layanan, dan ketentuan dapat berubah mengikuti program resmi yang berlaku.</p></div>
+        <div className="section-kicker">06 / OWNERSHIP OPTIONS</div><div className="payment-heading"><h2>Pilih skema yang<br /><em>sesuai rencana Anda.</em></h2><p>Pelajari pilihan kepemilikan yang tersedia. Harga, tenor, cakupan layanan, dan ketentuan dapat berubah mengikuti program resmi yang berlaku.</p></div>
         <div className="payment-grid"><article><span>OPTION 01</span><div className="payment-icon">↗</div><h3>Cicilan</h3><p>Opsi pembayaran bertahap dengan pilihan tenor sesuai program yang tersedia.</p><a href="#konsultasi">Tanya simulasi <Arrow /></a></article><article className="payment-featured"><span>OPTION 02 · FLEXIBLE</span><div className="payment-icon">◈</div><h3>Pembayaran penuh</h3><p>Pembayaran satu kali di awal. Tanyakan detail paket layanan yang menyertai pembelian.</p><a href="#konsultasi">Tanya detail <Arrow /></a></article><article><span>OPTION 03</span><div className="payment-icon">＋</div><h3>Produk saja</h3><p>Pilihan unit tanpa paket layanan tertentu, jika tersedia pada model terkait.</p><a href="#konsultasi">Tanya ketersediaan <Arrow /></a></article></div>
       </section>
 
-      <section className="section area-section"><div><div className="section-kicker">08 / OUR SERVICE AREA</div><h2>Konsultasi Coway<br /><em>di Jabodetabek.</em></h2></div><div className="area-content"><p>Mencari water purifier Coway di Tangerang atau kota sekitarnya? Sampaikan lokasi Anda untuk memeriksa ketersediaan konsultasi, pengantaran, dan instalasi.</p><div className="area-tags">{areas.map(area=><span key={area}>{area}</span>)}</div></div></section>
+      <section className="section area-section"><div><div className="section-kicker">07 / OUR SERVICE AREA</div><h2>Konsultasi Coway<br /><em>di Jabodetabek.</em></h2></div><div className="area-content"><p>Mencari water purifier Coway di Tangerang atau kota sekitarnya? Sampaikan lokasi Anda untuk memeriksa ketersediaan konsultasi, pengantaran, dan instalasi.</p><div className="area-tags">{areas.map(area=><span key={area}>{area}</span>)}</div></div></section>
 
-      <section className="section faq-section" id="faq"><div className="faq-intro"><div className="section-kicker">09 / GOOD TO KNOW</div><h2>Ada yang ingin<br /><em>Anda tanyakan?</em></h2><p>Temukan jawaban awal sebelum berkonsultasi dengan tim kami.</p><a className="under-link" href="#konsultasi">Tanyakan langsung <Arrow /></a></div><div className="faq-list">{faqs.map((faq,i)=><article className={openFaq===i?"faq-item active":"faq-item"} key={faq.q}><button type="button" onClick={()=>setOpenFaq(openFaq===i?null:i)} aria-expanded={openFaq===i}><span>0{i+1}</span><b>{faq.q}</b><i>{openFaq===i?"−":"+"}</i></button>{openFaq===i&&<p>{faq.a}</p>}</article>)}</div></section>
+      <section className="section faq-section" id="faq"><div className="faq-intro"><div className="section-kicker">08 / GOOD TO KNOW</div><h2>Ada yang ingin<br /><em>Anda tanyakan?</em></h2><p>Temukan jawaban awal sebelum berkonsultasi dengan tim kami.</p><a className="under-link" href="#konsultasi">Tanyakan langsung <Arrow /></a></div><div className="faq-list">{faqs.map((faq,i)=><article className={openFaq===i?"faq-item active":"faq-item"} key={faq.q}><button type="button" onClick={()=>setOpenFaq(openFaq===i?null:i)} aria-expanded={openFaq===i}><span>0{i+1}</span><b>{faq.q}</b><i>{openFaq===i?"−":"+"}</i></button>{openFaq===i&&<p>{faq.a}</p>}</article>)}</div></section>
 
-      <section className="contact-section" id="konsultasi"><div className="contact-deco">C</div><div className="contact-copy"><div className="section-kicker light-kicker">10 / YOUR NEXT STEP</div><h2>Air yang Anda pilih,<br /><em>dimulai dari percakapan.</em></h2><p>Ceritakan kebutuhan rumah atau tempat kerja Anda. Kami bantu jelaskan pilihan produk, fitur, serta skema yang relevan—tanpa tekanan untuk membeli.</p><div className="contact-location"><span>⌖</span> Melayani konsultasi Jabodetabek</div></div><form className="lead-form" onSubmit={submitLead}><div className="form-heading"><span>LET’S TALK</span><h3>Konsultasi gratis</h3><p>Isi detail singkat berikut untuk memulai.</p></div><label>Nama lengkap<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Nama Anda" autoComplete="name" /></label><label>Nomor WhatsApp<input required type="tel" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="08xxxxxxxxxx" autoComplete="tel" /></label><div className="form-row"><label>Kebutuhan<select value={form.need} onChange={e=>setForm({...form,need:e.target.value})}><option>Rumah</option><option>Kantor</option><option>Bisnis</option></select></label><label>Jumlah pengguna<input value={form.users} onChange={e=>setForm({...form,users:e.target.value})} placeholder="Contoh: 4 orang" /></label></div><label>Kota / area<input required value={form.city} onChange={e=>setForm({...form,city:e.target.value})} placeholder="Contoh: BSD, Tangerang" /></label><label>Produk yang diminati <small>(opsional)</small><input value={form.product} onChange={e=>setForm({...form,product:e.target.value})} placeholder="Belum tahu juga tidak apa-apa" /></label><button className="button button-dark full-button" type="submit">Lanjutkan via WhatsApp <Arrow /></button>{notice&&<p className="form-notice" role="status">{notice}</p>}<p className="form-privacy">Dengan mengirim formulir, Anda menyetujui data ini digunakan untuk menindaklanjuti permintaan konsultasi Anda.</p></form></section>
+      <section className="contact-section" id="konsultasi"><div className="contact-deco">C</div><div className="contact-copy"><div className="section-kicker light-kicker">09 / YOUR NEXT STEP</div><h2>Air yang Anda pilih,<br /><em>dimulai dari percakapan.</em></h2><p>Ceritakan kebutuhan rumah atau tempat kerja Anda. Kami bantu jelaskan pilihan produk, fitur, serta skema yang relevan—tanpa tekanan untuk membeli.</p><div className="contact-location"><span>⌖</span> Melayani konsultasi Jabodetabek</div></div><form className="lead-form" onSubmit={submitLead}><div className="form-heading"><span>LET’S TALK</span><h3>Konsultasi gratis</h3><p>Isi detail singkat berikut untuk memulai.</p></div><label>Nama lengkap<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Nama Anda" autoComplete="name" /></label><label>Nomor WhatsApp<input required type="tel" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="08xxxxxxxxxx" autoComplete="tel" /></label><div className="form-row"><label>Kebutuhan<select value={form.need} onChange={e=>setForm({...form,need:e.target.value})}><option>Rumah</option><option>Kantor</option><option>Bisnis</option></select></label><label>Jumlah pengguna<input value={form.users} onChange={e=>setForm({...form,users:e.target.value})} placeholder="Contoh: 4 orang" /></label></div><label>Kota / area<input required value={form.city} onChange={e=>setForm({...form,city:e.target.value})} placeholder="Contoh: BSD, Tangerang" /></label><label>Produk yang diminati <small>(opsional)</small><input value={form.product} onChange={e=>setForm({...form,product:e.target.value})} placeholder="Belum tahu juga tidak apa-apa" /></label><button className="button button-dark full-button" type="submit">Lanjutkan via WhatsApp <Arrow /></button>{notice&&<p className="form-notice" role="status">{notice}</p>}<p className="form-privacy">Dengan mengirim formulir, Anda menyetujui data ini digunakan untuk menindaklanjuti permintaan konsultasi Anda.</p></form></section>
 
       <footer className="footer"><a className="brand footer-brand" href="#"><Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} /></a><p>Informasi dan konsultasi produk Coway untuk area Jabodetabek.</p><div className="footer-links"><a href="#solusi">Solusi</a><a href="#teknologi">Teknologi</a><a href="#layanan">Layanan</a><a href="#faq">FAQ</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Coway Tangerang</span><span>Sales consultation · Jabodetabek</span></div><p className="footer-disclaimer">Halaman konsultasi penjualan independen. Bukan situs resmi Coway Indonesia. Merek dan produk Coway merupakan milik pemegang hak masing-masing. Spesifikasi, harga, program, dan layanan mengikuti informasi resmi yang berlaku.</p></footer>
       <a className="floating-wa" href={waLink("Halo, saya ingin konsultasi produk Coway untuk area Jabodetabek.")} aria-label="Konsultasi Coway melalui WhatsApp" onClick={e=>{if(!waNumber){e.preventDefault();document.getElementById("konsultasi")?.scrollIntoView({behavior:"smooth"});}}}><span>↗</span><b>Chat sales</b></a>
