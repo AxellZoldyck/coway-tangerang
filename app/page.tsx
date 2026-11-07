@@ -346,10 +346,10 @@ export default function Home() {
       <section className="section area-section"><div><div className="section-kicker">06 / OUR SERVICE AREA</div><h2>Konsultasi Coway<br /><em>di Jabodetabek.</em></h2></div><div className="area-content"><p>Mencari water purifier Coway di Tangerang atau kota sekitarnya? Sampaikan lokasi Anda untuk memeriksa ketersediaan konsultasi, pengantaran, dan instalasi.</p><div className="area-tags">{areas.map(area=><span key={area}>{area}</span>)}</div></div></section>
 
       <section className="section testimonials-section">
-        <div className="testimonials-topline"><div className="section-kicker">07 / ULASAN PELANGGAN</div><span>WHAT PEOPLE SAY</span></div>
+        <div className="testimonials-topline"><div className="section-kicker">07 / ULASAN PELANGGAN</div></div>
         <div className="testimonials-heading"><h2>Senang punya Coway,<br /><em>nyaman tiap hari.</em></h2></div>
         <div className="testimonial-carousel-shell">
-          <div className="testimonial-carousel-controls"><span>01 — 10</span><div><button type="button" aria-label="Geser ulasan ke kiri" onClick={()=>document.getElementById("testimonial-track")?.scrollBy({left:-340,behavior:"smooth"})}>←</button><button type="button" aria-label="Geser ulasan ke kanan" onClick={()=>document.getElementById("testimonial-track")?.scrollBy({left:340,behavior:"smooth"})}>→</button></div></div>
+          <div className="testimonial-carousel-controls"><div><button type="button" aria-label="Geser ulasan ke kiri" onClick={()=>document.getElementById("testimonial-track")?.scrollBy({left:-340,behavior:"smooth"})}>←</button><button type="button" aria-label="Geser ulasan ke kanan" onClick={()=>document.getElementById("testimonial-track")?.scrollBy({left:340,behavior:"smooth"})}>→</button></div></div>
           <div className="testimonial-carousel" id="testimonial-track">
             {[
               {name:"Nadia P.",city:"Tangerang Selatan",product:"OMBAK",initial:"N",tone:"sage",quote:"Sejak pakai Coway Ombak, urusan air minum di rumah jadi jauh lebih praktis. Anak-anak juga gampang ambil air sendiri."},
