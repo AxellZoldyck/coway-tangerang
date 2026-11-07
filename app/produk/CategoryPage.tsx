@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type Product = { name: string; model: string; note: string };
+type Product = { name: string; model: string; note: string; image?: string };
 type CategoryPageProps = {
   number: string; eyebrow: string; title: string; accent: string;
   intro: string; detailTitle: string; detail: string;
@@ -25,10 +25,14 @@ export default function CategoryPage({ number, eyebrow, title, accent, intro, de
       <section className="catalog-products">
         <div className="catalog-products-heading"><div><span className="section-kicker">PRODUCT LINEUP / {number}</span><h2>Jelajahi <em>produknya.</em></h2></div><span>{products.length.toString().padStart(2,"0")} PRODUCTS</span></div>
         <div className="catalog-product-grid">
-          {products.map((product, index) => <article className="catalog-product" key={product.model}>
+          {products.map((product, index) => <article className={`catalog-product${product.image ? " has-image" : ""}`} key={product.model}>
             <div className="catalog-product-index">{String(index + 1).padStart(2,"0")} <span> / COWAY</span></div>
-            <div className="catalog-product-mark">C<span>·</span></div>
-            <div className="catalog-product-copy"><span>{product.model}</span><h3>{product.name}</h3><p>{product.note}</p><a href={`/#konsultasi`} aria-label={`Konsultasi produk ${product.name}`}>Tanya produk <b>↗</b></a></div>
+            {product.image ? (
+              <div className="catalog-product-image">
+                <Image src={product.image} alt={`${product.name} Coway water purifier`} fill sizes="(max-width: 480px) 90vw, (max-width: 800px) 44vw, 30vw" />
+              </div>
+            ) : <div className="catalog-product-mark">C<span>·</span></div>}
+            <div className="catalog-product-copy"><span>{product.model}</span><h3>{product.name}</h3><p>{product.note}</p><a href="/#konsultasi" aria-label={`Konsultasi produk ${product.name}`}>Tanya produk <b>↗</b></a></div>
           </article>)}
         </div>
         <p className="catalog-disclaimer">Nama model dan ketersediaan produk mengikuti katalog Coway Indonesia dan dapat berubah. Hubungi konsultan untuk memastikan varian, spesifikasi, harga, serta program layanan terbaru.</p>
