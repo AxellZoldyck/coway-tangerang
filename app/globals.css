@@ -494,3 +494,47 @@ main { padding-top: 78px !important; }
   .register-modal h2 { font-size:42px; }
 }
 @media(prefers-reduced-motion:reduce) { .register-modal-backdrop,.register-modal { animation:none; } }
+
+
+/* Smooth horizontal customer-story carousel */
+.testimonials-section { overflow:hidden; }
+.testimonials-heading { margin-bottom:25px; }
+.testimonial-carousel-shell { position:relative; }
+.testimonial-carousel-controls { display:flex; justify-content:space-between; align-items:center; margin-bottom:13px; color:#819287; font-size:9px; letter-spacing:.12em; }
+.testimonial-carousel-controls>span { display:flex; align-items:center; gap:10px; }
+.testimonial-carousel-controls small { color:#a2ada5; font-size:7px; }
+.testimonial-carousel-controls>div { display:flex; gap:7px; }
+.testimonial-carousel-controls button { width:36px; height:36px; border:1px solid #dce5da; border-radius:50%; background:#f8faf6; color:#486454; cursor:pointer; font-size:16px; transition:background .2s ease,color .2s ease,transform .2s ease; }
+.testimonial-carousel-controls button:hover { background:#29483d; color:#fff; transform:translateY(-1px); }
+.testimonial-carousel { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(280px, calc((100% - 24px) / 3)); gap:12px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; padding:2px 1px 13px; -webkit-overflow-scrolling:touch; }
+.testimonial-carousel::-webkit-scrollbar { display:none; }
+.testimonial-carousel .testimonial-card { min-height:280px; scroll-snap-align:start; padding:21px 20px 18px; background:#f1f4ee; border:1px solid #e3e9e1; }
+.testimonial-carousel .testimonial-card:nth-child(3n+2) { background:#f7f5ef; }
+.testimonial-carousel .testimonial-card:nth-child(3n) { background:#edf2f1; }
+.testimonial-card-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.testimonial-index { color:#a2b0a5; font-size:9px; letter-spacing:.1em; }
+.testimonial-card .testimonial-type { color:#819688; font-size:7px; letter-spacing:.13em; }
+.testimonial-quote { color:#365545; font:italic 18px/1.55 var(--serif); letter-spacing:-.01em; margin:32px 0 26px; }
+.testimonial-person { display:flex; align-items:center; gap:10px; margin-top:auto; padding-top:14px; border-top:1px solid #d7e1d6; }
+.testimonial-avatar { flex:0 0 42px; width:42px; height:42px; display:grid; place-items:center; border-radius:50%; color:#45604f; font:500 18px var(--serif); }
+.avatar-sage{background:#d8e4d8}.avatar-sand{background:#e9dfcd}.avatar-rose{background:#eadbd9}.avatar-blue{background:#d8e2e9}.avatar-lavender{background:#e2deeb}.avatar-olive{background:#e1e4d0}.avatar-peach{background:#f0dfd1}.avatar-slate{background:#dce2e2}.avatar-mint{background:#d7e9df}.avatar-clay{background:#eadbd0}
+.testimonial-person-info { display:flex; flex-direction:column; gap:4px; min-width:0; }
+.testimonial-person-info b { color:#486454; font-size:10px; font-weight:600; }
+.testimonial-person-info span { color:#8b998f; font-size:8px; }
+.testimonial-profile-label { margin-left:auto; color:#a1aca4; font-size:7px; white-space:nowrap; }
+.testimonial-scroll-hint { display:flex; justify-content:space-between; margin-top:4px; color:#a1ada4; font-size:7px; letter-spacing:.14em; }
+.testimonials-disclaimer { color:#9aa69d; font-size:9px; line-height:1.7; margin:14px 0 0; max-width:850px; }
+.payment-grid article>button { margin-top:16px; padding:0; border:0; background:transparent; color:#52735e; font:inherit; font-size:10px; cursor:pointer; }
+.under-link { border:0; background:transparent; cursor:pointer; font:inherit; text-align:left; }
+@media(max-width:900px){.testimonial-carousel{grid-auto-columns:minmax(260px,calc((100% - 12px)/2))}}
+@media(max-width:640px){
+.testimonials-section{padding-left:20px;padding-right:20px}
+.testimonials-heading{margin:16px 0 20px}
+.testimonials-heading h2{font-size:40px}
+.testimonials-heading>p{font-size:10px}
+.testimonial-carousel{grid-auto-columns:78%;gap:9px;padding-bottom:10px}
+.testimonial-carousel .testimonial-card{min-height:245px;padding:18px 17px 16px}
+.testimonial-quote{font-size:18px;margin:27px 0 22px}
+.testimonial-carousel-controls button{width:33px;height:33px}
+.testimonial-scroll-hint{font-size:6px}
+}
