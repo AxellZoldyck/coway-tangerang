@@ -374,7 +374,7 @@ export default function Home() {
             <label>Nama lengkap<input required value={registerData.name} onChange={event=>setRegisterData({...registerData,name:event.target.value})} placeholder="Nama Anda" autoComplete="name" /></label>
             <label>Nomor WhatsApp<input required type="tel" value={registerData.phone} onChange={event=>setRegisterData({...registerData,phone:event.target.value})} placeholder="08xxxxxxxxxx" autoComplete="tel" /></label>
             <label>Kota / area<input required value={registerData.city} onChange={event=>setRegisterData({...registerData,city:event.target.value})} placeholder="Contoh: BSD, Tangerang" autoComplete="address-level2" /></label>
-            <button className="button button-dark full-button" type="submit">Kirim pendaftaran via WhatsApp <Arrow /></button>
+            <button className="button button-dark full-button" type="submit">Kirim pendaftaran via WhatsApp <Arrow /></button>{notice && <p className="form-notice" role="status">{notice}</p>}
           </form>
           <p className="register-modal-privacy">Dengan melanjutkan, Anda menyetujui data kontak digunakan untuk menindaklanjuti permintaan konsultasi.</p>
         </section>
