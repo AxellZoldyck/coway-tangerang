@@ -451,7 +451,7 @@ main { padding-top: 78px !important; }
 .testimonials-disclaimer { color:#9aa69d; font-size:9px; line-height:1.7; margin:15px 0 0; }
 
 /* Product selection opens a local lead form instead of leaving the site */
-.solution-product-select { display:flex; justify-content:space-between; gap:8px; align-items:center; width:100%; margin-top:auto; padding:10px 0 0; border:0; border-top:1px solid #e1e8df; background:transparent; color:#52735e; font:600 9px inherit; text-align:left; cursor:pointer; }
+.solution-product-select { display:flex; justify-content:space-between; gap:8px; align-items:center; width:100%; margin-top:auto; padding:10px 0 0; border:0; border-top:1px solid #e1e8df; background:transparent; color:#52735e; font-family:inherit; font-size:9px; font-weight:600; text-align:left; cursor:pointer; }
 .solution-product-select:hover { color:#29483d; }
 .solution-product-select span { font-size:13px; }
 
