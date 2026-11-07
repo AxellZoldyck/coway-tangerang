@@ -538,3 +538,12 @@ main { padding-top: 78px !important; }
 .testimonial-carousel-controls button{width:33px;height:33px}
 .testimonial-scroll-hint{font-size:6px}
 }
+
+.catalog-product-ask { display:flex; justify-content:space-between; align-items:center; width:100%; margin-top:auto; padding:10px 0 0; border:0; border-top:1px solid #e1e8df; background:transparent; color:#52735e; font-family:inherit; font-size:10px; font-weight:600; text-align:left; cursor:pointer; }
+.catalog-product-ask:hover { color:#29483d; }
+.catalog-hero-content>.button,.catalog-cta>.button { cursor:pointer; }
+.testimonials-heading { grid-template-columns:1fr; }
+.testimonials-heading h2 { margin:0; }
+.testimonials-topline>span { color:#9aa79e; font-size:8px; letter-spacing:.16em; }
+.testimonial-profile-label { display:none; }
+.testimonials-disclaimer { font-size:8px; opacity:.75; }
