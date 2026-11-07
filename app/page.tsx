@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
-const waNumber = "083193123626".replace(/[^0-9]/g, "");
+const waNumber = "6283193123626";
 const waLink = (message: string) => `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 
 const faqs = [
