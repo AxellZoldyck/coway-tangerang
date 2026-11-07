@@ -49,39 +49,85 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [solutionAnswers, setSolutionAnswers] = useState({ focus: "", place: "", scale: "" });
+  const [solutionStep, setSolutionStep] = useState(0);
   const solutionComplete = Boolean(solutionAnswers.focus && solutionAnswers.place && solutionAnswers.scale);
+
   const solutionCatalog = {
     drink: {
       title: "Water Purifier",
-      description: "Pilihan pemurni air minum untuk kebutuhan air minum sehari-hari.",
+      description: "Pemurni air minum dengan pilihan kapasitas, suhu, dan desain yang berbeda.",
       href: "/produk/water-purifier",
-      products: [
-        { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png" },
-        { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png" },
-        { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png" },
-      ],
+      products: {
+        small: [
+          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter.", official: "https://www.coway.id/products/detail/neo_plus/11" },
+          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis.", official: "https://www.coway.id/products/detail/ombak/1" },
+          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter.", official: "https://www.coway.id/products/detail/villaem_iii/17" }
+        ],
+        medium: [
+          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis.", official: "https://www.coway.id/products/detail/ombak/1" },
+          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter.", official: "https://www.coway.id/products/detail/villaem_iii/17" },
+          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter.", official: "https://www.coway.id/products/detail/neo_plus/11" }
+        ],
+        large: [
+          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Kapasitas tangki total 11,4 liter dengan empat pilihan air termasuk hangat dan panas.", official: "https://www.coway.id/products/detail/villaem_iii/17" },
+          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air untuk menyesuaikan kebutuhan pemakaian.", official: "https://www.coway.id/products/detail/ombak/1" },
+          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Alternatif berukuran ringkas dengan tiga pilihan suhu air.", official: "https://www.coway.id/products/detail/neo_plus/11" }
+        ]
+      }
     },
     indoor: {
       title: "Air Purifier",
-      description: "Pilihan pemurni udara untuk membantu menjaga kualitas udara di dalam ruangan.",
+      description: "Pemurni udara yang dipilih berdasarkan luas ruangan dan fitur setiap model.",
       href: "/produk/air-purifier",
-      products: [
-        { name: "Storm", model: "AP-1516D", image: "/airpurifier/storm.png" },
-        { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png" },
-        { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png" },
-      ],
+      products: {
+        small: [
+          { name: "Cartridge", model: "AP-1019C", image: "/airpurifier/cartridge.png", detail: "HEPA filter system untuk area hingga 34 m², dengan desain ringkas.", official: "https://coway.id/products/detail/cartridge/20" },
+          { name: "Squarefit", model: "AP-1125G", image: "/airpurifier/squarefit.png", detail: "Pemurni udara untuk area hingga 33 m² dengan konsumsi daya 45 W.", official: "https://www.coway.id/products/detail/square_fit/22" }
+        ],
+        medium: [
+          { name: "Storm", model: "AP-1516D", image: "/airpurifier/storm.png", detail: "HEPA filter system dengan CADR 375 m³/jam untuk area hingga 49,5 m².", official: "https://coway.id/products/detail/storm/4" },
+          { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara dan cakupan area hingga 65 m².", official: "https://coway.id/products/detail/storm_ii/19" },
+          { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dengan area aplikasi hingga 67 m² dan pilihan filter sesuai kebutuhan.", official: "https://coway.id/products/detail/noble_2/21" }
+        ],
+        large: [
+          { name: "Squarebig", model: "AP-2425H", image: "/airpurifier/squarebig.png", detail: "Double Air Matching Filter Technology dengan cakupan yang disebutkan Coway hingga 79 m².", official: "https://coway.id/products/detail/square_fit%2B/23" },
+          { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dan area aplikasi hingga 67 m².", official: "https://coway.id/products/detail/noble_2/21" },
+          { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara untuk area hingga 65 m².", official: "https://coway.id/products/detail/storm_ii/19" }
+        ]
+      }
     },
     source: {
       title: "Water Filter",
-      description: "Pilihan sistem penyaringan air rumah tangga berdasarkan kondisi sumber air.",
+      description: "Penyaringan air dari sumber rumah tangga. Kesesuaian instalasi perlu dicek berdasarkan kondisi air dan tekanan di lokasi.",
       href: "/produk/water-filter",
-      products: [
-        { name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png" },
-        { name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png" },
-      ],
+      products: {
+        small: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah.", official: "https://coway.id/products/detail/poe-23a/18" }],
+        medium: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah.", official: "https://coway.id/products/detail/poe-23a/18" }],
+        large: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; kapasitas aliran 3.200–3.300 L/jam.", official: "https://coway.id/products/detail/poe-23a/18" }]
+      }
     },
+    softener: {
+      title: "Water Softener",
+      description: "Untuk kebutuhan air mandi dan perawatan tubuh. Air keluaran Yonsu bukan untuk diminum atau memasak.",
+      href: "/produk/water-filter",
+      products: {
+        small: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi.", official: "https://dev.coway.id/products/detail/yonsu/25" }],
+        medium: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi.", official: "https://dev.coway.id/products/detail/yonsu/25" }],
+        large: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi.", official: "https://dev.coway.id/products/detail/yonsu/25" }]
+      }
+    }
   } as const;
-  const solutionRecommendation = solutionComplete ? solutionCatalog[solutionAnswers.focus as keyof typeof solutionCatalog] : null;
+
+  const solutionRecommendation = solutionComplete
+    ? solutionCatalog[solutionAnswers.focus as keyof typeof solutionCatalog]
+    : null;
+  const recommendedProducts = solutionComplete && solutionRecommendation
+    ? solutionRecommendation.products[solutionAnswers.scale as "small" | "medium" | "large"]
+    : [];
+  function chooseSolutionAnswer(key: "focus" | "place" | "scale", value: string) {
+    setSolutionAnswers(current => ({ ...current, [key]: value, ...(key === "focus" ? { place: "", scale: "" } : key === "place" ? { scale: "" } : {}) }));
+    setSolutionStep(current => Math.min(current + 1, 3));
+  }
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -111,7 +157,7 @@ export default function Home() {
           <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority />
         </a>
         <nav id="mobile-navigation" className={menuOpen ? "nav nav-open" : "nav"} aria-label="Navigasi utama">
-          <a href="#produk" onClick={() => setMenuOpen(false)}>Produk</a><a href="#solusi" onClick={() => setMenuOpen(false)}>Solusi</a>undefined<a href="#teknologi" onClick={() => setMenuOpen(false)}>Teknologi</a><a href="#layanan" onClick={() => setMenuOpen(false)}>Layanan</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#produk" onClick={() => setMenuOpen(false)}>Produk</a><a href="#solusi" onClick={() => setMenuOpen(false)}>Solusi</a><a href="#teknologi" onClick={() => setMenuOpen(false)}>Teknologi</a><a href="#layanan" onClick={() => setMenuOpen(false)}>Layanan</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
         </nav>
         <div className="header-actions">
           <a className="button button-small button-dark" href="#konsultasi">Konsultasi <Arrow /></a>
@@ -195,38 +241,56 @@ export default function Home() {
         <div className="section-kicker">01 / FIND YOUR SOLUTION</div>
         <div className="solution-heading">
           <div><h2>Temukan pilihan yang<br /><em>sesuai kebutuhan Anda.</em></h2></div>
-          <p>Jawab tiga pertanyaan singkat. Kami akan menampilkan kategori dan beberapa produk Coway yang bisa Anda pertimbangkan.</p>
+          <p>Jawab satu pertanyaan setiap langkah. Setelah selesai, Anda akan melihat maksimal tiga produk yang paling relevan untuk dipertimbangkan.</p>
         </div>
         <div className="solution-quiz">
-          <div className="solution-progress"><span>PERSONAL PRODUCT MATCH</span><b>{[solutionAnswers.focus, solutionAnswers.place, solutionAnswers.scale].filter(Boolean).length} / 3 terjawab</b></div>
-          <div className="solution-question">
-            <span>01</span><div><h3>Apa kebutuhan utama Anda?</h3><p>Pilih fokus yang ingin diprioritaskan.</p></div>
-            <div className="solution-options">
-              {[{value:"drink",label:"Air minum",detail:"Pemurni air untuk diminum"},{value:"indoor",label:"Udara dalam ruangan",detail:"Pemurni udara untuk ruang aktivitas"},{value:"source",label:"Penyaringan air",detail:"Filter untuk sumber air rumah"}].map(option=><button type="button" key={option.value} className={solutionAnswers.focus===option.value?"solution-option selected":"solution-option"} aria-pressed={solutionAnswers.focus===option.value} onClick={()=>setSolutionAnswers({...solutionAnswers,focus:option.value})}><span>{option.label}</span><small>{option.detail}</small><i>{solutionAnswers.focus===option.value?"✓":"+"}</i></button>)}
+          <div className="solution-progress"><span>PERSONAL PRODUCT MATCH</span><b>{solutionComplete ? "3 / 3 selesai" : `LANGKAH ${solutionStep + 1} DARI 3`}</b></div>
+          {!solutionComplete && <div className="solution-progress-track"><span style={{ width: `${((solutionStep + 1) / 3) * 100}%` }} /></div>}
+          {!solutionComplete && <div className="solution-single-step" key={solutionStep}>
+            <div className="solution-step-meta"><span>PERTANYAAN 0{solutionStep + 1}</span><span>{solutionStep === 0 ? "MULAI DARI KEBUTUHAN" : solutionStep === 1 ? "KONTEKS PENGGUNAAN" : "SKALA KEBUTUHAN"}</span></div>
+            {solutionStep === 0 && <>
+              <h3>Apa kebutuhan utama yang ingin Anda penuhi?</h3>
+              <p className="solution-step-description">Pilih satu kategori yang paling sesuai dengan kebutuhan Anda.</p>
+              <div className="solution-options">
+                {[{value:"drink",label:"Air minum",detail:"Pemurni air untuk konsumsi sehari-hari"},{value:"indoor",label:"Udara dalam ruangan",detail:"Membantu menyaring udara di rumah atau ruang kerja"},{value:"source",label:"Penyaringan air rumah",detail:"Penyaringan air dari sumber PDAM atau air tanah"},{value:"softener",label:"Air mandi lebih lembut",detail:"Water softener untuk mandi dan perawatan tubuh"}].map(option=><button type="button" key={option.value} className="solution-option" onClick={()=>chooseSolutionAnswer("focus",option.value)}><span>{option.label}</span><small>{option.detail}</small><i>→</i></button>)}
+              </div>
+            </>}
+            {solutionStep === 1 && <>
+              <h3>Di mana produk akan digunakan?</h3>
+              <p className="solution-step-description">Lingkungan penggunaan membantu memperjelas konteks pemilihan.</p>
+              <div className="solution-options solution-options-inline">
+                {[{value:"Rumah",label:"Rumah",detail:"Hunian pribadi atau keluarga"},{value:"Kantor",label:"Kantor",detail:"Ruang kerja dan aktivitas profesional"},{value:"Bisnis / usaha",label:"Bisnis / usaha",detail:"Lokasi usaha atau area komersial"}].map(option=><button type="button" key={option.value} className="solution-option" onClick={()=>chooseSolutionAnswer("place",option.value)}><span>{option.label}</span><small>{option.detail}</small><i>→</i></button>)}
+              </div>
+            </>}
+            {solutionStep === 2 && <>
+              <h3>{solutionAnswers.focus === "indoor" ? "Seberapa luas ruangan yang ingin dijaga kualitas udaranya?" : solutionAnswers.focus === "softener" ? "Seberapa banyak area mandi yang membutuhkan soft water?" : solutionAnswers.focus === "source" ? "Seberapa besar kebutuhan penyaringan air di lokasi Anda?" : "Berapa banyak orang yang akan menggunakan air minum ini?"}</h3>
+              <p className="solution-step-description">{solutionAnswers.focus === "indoor" ? "Pilih perkiraan luas area, bukan luas seluruh bangunan jika hanya satu ruangan." : "Pilih perkiraan skala penggunaan sehari-hari."}</p>
+              <div className="solution-options solution-options-inline">
+                {(solutionAnswers.focus === "indoor"
+                  ? [{value:"small",label:"Ruangan kecil",detail:"Hingga sekitar 33 m²"},{value:"medium",label:"Ruangan sedang",detail:"Sekitar 34–50 m²"},{value:"large",label:"Ruangan luas",detail:"Lebih dari 50 m²"}]
+                  : solutionAnswers.focus === "softener"
+                  ? [{value:"small",label:"1 kamar mandi",detail:"Kebutuhan personal"},{value:"medium",label:"2 kamar mandi",detail:"Kebutuhan keluarga"},{value:"large",label:"3+ kamar mandi",detail:"Area penggunaan lebih luas"}]
+                  : solutionAnswers.focus === "source"
+                  ? [{value:"small",label:"Kebutuhan dasar",detail:"Satu titik penggunaan"},{value:"medium",label:"Kebutuhan keluarga",detail:"Beberapa titik penggunaan"},{value:"large",label:"Kebutuhan lebih luas",detail:"Area rumah lebih besar"}]
+                  : [{value:"small",label:"1–3 orang",detail:"Penggunaan ringan"},{value:"medium",label:"4–6 orang",detail:"Kebutuhan keluarga"},{value:"large",label:"7+ orang",detail:"Penggunaan lebih intensif"}]
+                ).map(option=><button type="button" key={option.value} className="solution-option" onClick={()=>chooseSolutionAnswer("scale",option.value)}><span>{option.label}</span><small>{option.detail}</small><i>→</i></button>)}
+              </div>
+            </>}
+            <div className="solution-step-footer">
+              {solutionStep > 0 ? <button type="button" className="solution-back" onClick={()=>setSolutionStep(current=>Math.max(0,current-1))}>← Kembali</button> : <span>Hanya 3 langkah singkat</span>}
+              <span>{solutionStep + 1} / 3</span>
             </div>
-          </div>
-          <div className="solution-question">
-            <span>02</span><div><h3>Di mana produk akan digunakan?</h3><p>Sesuaikan dengan lingkungan penggunaan.</p></div>
-            <div className="solution-options solution-options-inline">
-              {[{value:"Rumah",label:"Rumah"},{value:"Kantor",label:"Kantor"},{value:"Bisnis / usaha",label:"Bisnis / usaha"}].map(option=><button type="button" key={option.value} className={solutionAnswers.place===option.value?"solution-option selected":"solution-option"} aria-pressed={solutionAnswers.place===option.value} onClick={()=>setSolutionAnswers({...solutionAnswers,place:option.value})}><span>{option.label}</span><i>{solutionAnswers.place===option.value?"✓":"+"}</i></button>)}
-            </div>
-          </div>
-          <div className="solution-question">
-            <span>03</span><div><h3>Seberapa besar kebutuhan penggunaannya?</h3><p>Ini membantu konsultan memahami skala kebutuhan Anda.</p></div>
-            <div className="solution-options solution-options-inline">
-              {[{value:"1–3 orang / ruang kecil",label:"1–3 orang / ruang kecil"},{value:"4–6 orang / ruang sedang",label:"4–6 orang / ruang sedang"},{value:"7+ orang / area lebih luas",label:"7+ orang / area lebih luas"}].map(option=><button type="button" key={option.value} className={solutionAnswers.scale===option.value?"solution-option selected":"solution-option"} aria-pressed={solutionAnswers.scale===option.value} onClick={()=>setSolutionAnswers({...solutionAnswers,scale:option.value})}><span>{option.label}</span><i>{solutionAnswers.scale===option.value?"✓":"+"}</i></button>)}
-            </div>
-          </div>
+          </div>}
           {solutionComplete && solutionRecommendation && <div className="solution-result" aria-live="polite">
-            <div className="solution-result-heading"><div><span>YOUR MATCH</span><h3>Kami sarankan mulai dari <em>{solutionRecommendation.title}.</em></h3><p>{solutionRecommendation.description}</p></div><button type="button" className="solution-reset" onClick={()=>setSolutionAnswers({focus:"",place:"",scale:""})}>Ulangi <span>↻</span></button></div>
-            <div className="solution-context"><span>Penggunaan: <b>{solutionAnswers.place}</b></span><span>Skala: <b>{solutionAnswers.scale}</b></span></div>
-            <div className="solution-products">{solutionRecommendation.products.map(product=><a className="solution-product" href={solutionRecommendation.href} key={product.model}><div className="solution-product-image"><Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 70vw, 180px" /></div><span>{product.model}</span><b>{product.name}</b><i>Detail produk ↗</i></a>)}</div>
-            <p className="solution-note">Ini rekomendasi awal berdasarkan kategori kebutuhan, bukan penilaian teknis kondisi air atau ukuran ruang. Kecocokan model, kapasitas, fitur, dan ketersediaan perlu dikonfirmasi bersama konsultan.</p>
-            <a className="button button-dark solution-consult" href="#konsultasi" onClick={()=>setForm({...form,need:solutionAnswers.place,users:solutionAnswers.scale,product:solutionRecommendation.title+" — "+solutionRecommendation.products.map(p=>p.name).join(", ")})}>Konsultasikan hasil rekomendasi <Arrow /></a>
+            <div className="solution-result-heading"><div><span>YOUR PRODUCT MATCH</span><h3>Pilihan yang layak Anda pertimbangkan: <em>{solutionRecommendation.title}.</em></h3><p>{solutionRecommendation.description}</p></div><button type="button" className="solution-reset" onClick={()=>{setSolutionAnswers({focus:"",place:"",scale:""});setSolutionStep(0);}}>Ulangi <span>↻</span></button></div>
+            <div className="solution-context"><span>Penggunaan: <b>{solutionAnswers.place}</b></span><span>Skala: <b>{solutionAnswers.scale === "small" ? "Kecil" : solutionAnswers.scale === "medium" ? "Sedang" : "Luas"}</b></span></div>
+            <div className="solution-products">{recommendedProducts.slice(0,3).map(product=><article className="solution-product" key={product.model}><div className="solution-product-image"><Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 70vw, 180px" /></div><span>{product.model}</span><b>{product.name}</b><p>{product.detail}</p><a href={product.official} target="_blank" rel="noopener noreferrer">Spesifikasi resmi <span>↗</span></a></article>)}</div>
+            <p className="solution-note">Rekomendasi ini merupakan penyaringan awal berdasarkan jawaban dan spesifikasi yang dipublikasikan Coway. Untuk water purifier, pilihan kapasitas tetap perlu disesuaikan dengan pola konsumsi. Untuk air purifier, cocokkan kembali luas ruangan aktual. Kondisi sumber air dan instalasi POE-23A juga perlu diperiksa. Spesifikasi dapat berubah mengikuti informasi resmi.</p>
+            {solutionAnswers.focus === "softener" && <p className="solution-note solution-warning">Penting: Yonsu adalah water softener untuk kebutuhan mandi/perawatan tubuh. Air keluarannya tidak untuk diminum atau memasak.</p>}
+            <a className="button button-dark solution-consult" href="#konsultasi" onClick={()=>setForm({...form,need:solutionAnswers.place,users:solutionAnswers.scale,product:solutionRecommendation.title+" — "+recommendedProducts.map(p=>p.name+" ("+p.model+")").join(", ")})}>Konsultasikan hasil rekomendasi <Arrow /></a>
           </div>}
         </div>
       </section>
-
       <section className="section technology-section" id="teknologi">
         <div className="section-kicker light-kicker">02 / HOW IT WORKS</div>
         <div className="tech-heading"><div><h2>Jernih di mata.<br /><em>Dirancang lebih jauh.</em></h2></div><p>Kualitas air tidak hanya tentang tampilannya. Sumber air, proses filtrasi, teknologi pemurnian, dan perawatan sistem merupakan hal yang perlu dipertimbangkan.</p></div>
