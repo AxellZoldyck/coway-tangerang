@@ -261,3 +261,42 @@ main { padding-top: 78px !important; }
 @media(max-width:760px){.awards-section{padding:54px 20px 48px}.awards-heading{margin-bottom:19px}.awards-heading h2{font-size:24px}.awards-track{gap:11px;animation-duration:85s}.award-card{flex-basis:148px}.award-image{height:108px}}
 @media(max-width:430px){.awards-section{padding:48px 18px 42px}.awards-heading h2{font-size:22px}.awards-track{gap:10px;animation-duration:78s}.award-card{flex-basis:136px}.award-image{height:100px}}
 @media(prefers-reduced-motion:reduce){.awards-track{animation:none;transform:none}.awards-grid{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}
+
+
+/* Water purifier product photography */
+.catalog-product.has-image {
+  min-height: 390px;
+  padding: 22px 23px 20px;
+}
+.catalog-product-image {
+  position: relative;
+  height: 205px;
+  width: 100%;
+  margin: 12px 0 17px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 48%, #fff 0%, #f5f7f1 62%, #edf1eb 100%);
+  border: 1px solid rgba(205, 218, 207, .55);
+}
+.catalog-product-image img {
+  object-fit: contain;
+  object-position: center;
+  padding: 12px;
+  transition: transform .55s cubic-bezier(.2,.8,.2,1);
+}
+.catalog-product.has-image:hover .catalog-product-image img {
+  transform: scale(1.045);
+}
+.catalog-product.has-image .catalog-product-copy {
+  margin-top: auto;
+}
+.catalog-product.has-image .catalog-product-copy p {
+  min-height: 34px;
+}
+@media(max-width:800px) {
+  .catalog-product.has-image { min-height: 370px; padding: 18px; }
+  .catalog-product-image { height: 185px; }
+}
+@media(max-width:480px) {
+  .catalog-product.has-image { min-height: 390px; padding: 20px; }
+  .catalog-product-image { height: 220px; margin: 12px 0 18px; }
+}
