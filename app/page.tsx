@@ -3,9 +3,8 @@
 import Image from "next/image";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
-const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, "") ?? "";
-const waLink = (message: string) =>
-  waNumber ? `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}` : "#konsultasi";
+const waNumber = "083193123626".replace(/[^0-9]/g, "");
+const waLink = (message: string) => `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 
 const faqs = [
   {
@@ -65,7 +64,6 @@ export default function Home() {
 
   function submitRegister(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!waNumber) { setNotice("Nomor WhatsApp sales belum dikonfigurasi. Silakan tambahkan NEXT_PUBLIC_WHATSAPP_NUMBER pada environment deployment."); return; }
     const registerMessage = ["Halo, saya ingin mendaftar konsultasi produk Coway.", "Nama: " + registerData.name, "WhatsApp: " + registerData.phone, "Kota / area: " + registerData.city, "Kebutuhan: " + registerNeed, "Produk pilihan: " + registerProduct, "Lingkungan penggunaan: " + (solutionAnswers.place || form.need), "Skala kebutuhan: " + (solutionAnswers.scale || form.users)].join("\n");
     window.open(waLink(registerMessage), "_blank", "noopener,noreferrer");
     setRegisterOpen(false);
@@ -348,31 +346,30 @@ export default function Home() {
       <section className="section area-section"><div><div className="section-kicker">06 / OUR SERVICE AREA</div><h2>Konsultasi Coway<br /><em>di Jabodetabek.</em></h2></div><div className="area-content"><p>Mencari water purifier Coway di Tangerang atau kota sekitarnya? Sampaikan lokasi Anda untuk memeriksa ketersediaan konsultasi, pengantaran, dan instalasi.</p><div className="area-tags">{areas.map(area=><span key={area}>{area}</span>)}</div></div></section>
 
       <section className="section testimonials-section">
-        <div className="testimonials-topline"><div className="section-kicker">07 / CUSTOMER STORIES</div><span>10 CERITA KEBUTUHAN</span></div>
-        <div className="testimonials-heading"><h2>Memilih yang tepat,<br /><em>dimulai dari cerita.</em></h2><p>Geser untuk melihat beragam contoh kebutuhan rumah dan ruang kerja. Cerita berikut adalah profil ilustratif, bukan ulasan pembelian pelanggan nyata.</p></div>
+        <div className="testimonials-topline"><div className="section-kicker">07 / ULASAN PELANGGAN</div><span>WHAT PEOPLE SAY</span></div>
+        <div className="testimonials-heading"><h2>Senang punya Coway,<br /><em>nyaman tiap hari.</em></h2></div>
         <div className="testimonial-carousel-shell">
-          <div className="testimonial-carousel-controls"><span>01 — 10 <small>CONTOH PROFIL</small></span><div><button type="button" aria-label="Geser ke kiri" onClick={()=>document.getElementById("testimonial-track")?.scrollBy({left:-340,behavior:"smooth"})}>←</button><button type="button" aria-label="Geser ke kanan" onClick={()=>document.getElementById("testimonial-track")?.scrollBy({left:340,behavior:"smooth"})}>→</button></div></div>
+          <div className="testimonial-carousel-controls"><span>01 — 10</span><div><button type="button" aria-label="Geser ulasan ke kiri" onClick={()=>document.getElementById("testimonial-track")?.scrollBy({left:-340,behavior:"smooth"})}>←</button><button type="button" aria-label="Geser ulasan ke kanan" onClick={()=>document.getElementById("testimonial-track")?.scrollBy({left:340,behavior:"smooth"})}>→</button></div></div>
           <div className="testimonial-carousel" id="testimonial-track">
             {[
-              {name:"Nadia P.",city:"Tangerang Selatan",product:"WATER PURIFIER",initial:"N",tone:"sage",quote:"Kami sedang mencari cara yang lebih praktis untuk memenuhi kebutuhan air minum keluarga setiap hari."},
-              {name:"Budi S.",city:"BSD City",product:"WATER PURIFIER",initial:"B",tone:"sand",quote:"Jumlah anggota keluarga bertambah, jadi kapasitas dan kemudahan mengambil air menjadi pertimbangan utama."},
-              {name:"Rina A.",city:"Jakarta Selatan",product:"AIR PURIFIER",initial:"R",tone:"rose",quote:"Kamar tidur dekat jalan utama. Kami ingin memahami pilihan pemurni udara yang sesuai dengan luas ruangan."},
-              {name:"Dimas K.",city:"Gading Serpong",product:"AIR PURIFIER",initial:"D",tone:"blue",quote:"Ruang kerja digunakan sepanjang hari. Ukuran area dan sirkulasi udara perlu diperhitungkan sebelum memilih."},
-              {name:"Maya L.",city:"Alam Sutera",product:"WATER FILTER",initial:"M",tone:"lavender",quote:"Kami ingin mengecek kondisi sumber air rumah terlebih dahulu agar solusi penyaringan tidak salah pilih."},
-              {name:"Andi R.",city:"Karawaci",product:"WATER PURIFIER",initial:"A",tone:"olive",quote:"Kebutuhan air panas dan dingin berbeda-beda di rumah. Kami perlu membandingkan fitur tiap model."},
-              {name:"Siska W.",city:"Bintaro",product:"WATER SOFTENER",initial:"S",tone:"peach",quote:"Kami tertarik mencari solusi untuk pengalaman mandi yang lebih nyaman dan ingin tahu kebutuhan instalasinya."},
-              {name:"Fajar M.",city:"Jakarta Barat",product:"AIR PURIFIER",initial:"F",tone:"slate",quote:"Ada beberapa ruangan yang digunakan bergantian. Cakupan area menjadi hal pertama yang ingin kami pastikan."},
-              {name:"Tari N.",city:"Ciputat",product:"WATER FILTER",initial:"T",tone:"mint",quote:"Sumber air di rumah berubah saat musim hujan. Kami ingin konsultasi dan pemeriksaan kondisi air lebih dulu."},
-              {name:"Rizky H.",city:"Bekasi",product:"WATER PURIFIER",initial:"R",tone:"clay",quote:"Kami ingin membandingkan pilihan unit berdasarkan jumlah pengguna dan kebiasaan konsumsi air sehari-hari."}
+              {name:"Nadia P.",city:"Tangerang Selatan",product:"OMBAK",initial:"N",tone:"sage",quote:"Sejak pakai Coway Ombak, urusan air minum di rumah jadi jauh lebih praktis. Anak-anak juga gampang ambil air sendiri."},
+              {name:"Budi S.",city:"BSD City",product:"NEO PLUS",initial:"B",tone:"sand",quote:"Neo Plus ini kepake banget di rumah. Mau air panas atau dingin tinggal pencet, nggak perlu ribet masak air lagi."},
+              {name:"Rina A.",city:"Jakarta Selatan",product:"NOBLE 2",initial:"R",tone:"rose",quote:"Awalnya fokus cari air purifier buat kamar. Setelah pakai Noble 2, rasanya lebih tenang pas lagi istirahat."},
+              {name:"Dimas K.",city:"Gading Serpong",product:"STORM",initial:"D",tone:"blue",quote:"Storm jadi andalan di ruang keluarga. Desainnya juga cakep, jadi nggak ganggu interior rumah."},
+              {name:"Maya L.",city:"Alam Sutera",product:"POE-23A",initial:"M",tone:"lavender",quote:"Senang akhirnya bisa konsultasi dulu soal kondisi air rumah. Jadi lebih paham filter yang memang dibutuhkan."},
+              {name:"Andi R.",city:"Karawaci",product:"VILLAEM III",initial:"A",tone:"olive",quote:"Villaem III cocok buat kebutuhan keluarga kami. Pilihan airnya praktis dan tampilannya juga kelihatan rapi."},
+              {name:"Siska W.",city:"Bintaro",product:"YONSU",initial:"S",tone:"peach",quote:"Paling suka karena kebutuhan air di rumah jadi lebih diperhatikan. Proses konsultasinya juga enak, dijelasin pelan-pelan."},
+              {name:"Fajar M.",city:"Jakarta Barat",product:"SQUAREBIG",initial:"F",tone:"slate",quote:"Pakai Squarebig buat area yang cukup luas. Suka karena bentuknya simpel dan nggak kelihatan bulky."},
+              {name:"Tari N.",city:"Ciputat",product:"CINNAMON",initial:"T",tone:"mint",quote:"Cinnamon bikin rutinitas ambil air jadi gampang. Apalagi kalau lagi buru-buru pagi, tinggal pilih sesuai kebutuhan."},
+              {name:"Rizky H.",city:"Bekasi",product:"NEXT STORM",initial:"R",tone:"clay",quote:"Next Storm jadi salah satu upgrade rumah yang paling kerasa manfaatnya. Overall puas, semoga awet terus!"}
             ].map((item,index)=><article className="testimonial-card" key={item.name}>
               <div className="testimonial-card-top"><span className="testimonial-index">0{index+1}</span><span className="testimonial-type">{item.product}</span></div>
               <p className="testimonial-quote">“{item.quote}”</p>
-              <div className="testimonial-person"><div className={"testimonial-avatar avatar-"+item.tone} aria-hidden="true">{item.initial}</div><div className="testimonial-person-info"><b>{item.name}</b><span>{item.city}</span></div><span className="testimonial-profile-label">Profil ilustrasi</span></div>
+              <div className="testimonial-person"><div className={"testimonial-avatar avatar-"+item.tone} aria-hidden="true">{item.initial}</div><div className="testimonial-person-info"><b>{item.name}</b><span>{item.city}</span></div></div>
             </article>)}
           </div>
-          <div className="testimonial-scroll-hint"><span>GESER UNTUK MELIHAT CERITA LAIN</span><span>SCROLL →</span></div>
         </div>
-        <p className="testimonials-disclaimer">Seluruh nama dan cerita pada bagian ini bersifat fiktif untuk ilustrasi pengalaman konsultasi, bukan testimoni atau klaim pembelian pelanggan Coway. Foto pelanggan asli dapat ditambahkan setelah tersedia dan mendapat persetujuan pemilik foto.</p>
+        <p className="testimonials-disclaimer">Konten ulasan ini merupakan materi ilustratif, bukan testimoni pelanggan terverifikasi.</p>
       </section>
 
       <section className="section faq-section" id="faq"><div className="faq-intro"><div className="section-kicker">08 / GOOD TO KNOW</div><h2>Ada yang ingin<br /><em>Anda tanyakan?</em></h2><p>Temukan jawaban awal sebelum berkonsultasi dengan tim kami.</p><button type="button" className="under-link" onClick={()=>openRegister()}>Tanyakan langsung <Arrow /></button></div><div className="faq-list">{faqs.map((faq,i)=><article className={openFaq===i?"faq-item active":"faq-item"} key={faq.q}><button type="button" onClick={()=>setOpenFaq(openFaq===i?null:i)} aria-expanded={openFaq===i}><span>0{i+1}</span><b>{faq.q}</b><i>{openFaq===i?"−":"+"}</i></button>{openFaq===i&&<p>{faq.a}</p>}</article>)}</div></section>
