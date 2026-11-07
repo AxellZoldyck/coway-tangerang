@@ -50,6 +50,26 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [solutionAnswers, setSolutionAnswers] = useState({ focus: "", place: "", scale: "" });
   const [solutionStep, setSolutionStep] = useState(0);
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const [registerData, setRegisterData] = useState({ name: "", phone: "", city: "" });
+  const [registerProduct, setRegisterProduct] = useState("Belum menentukan produk");
+  const [registerNeed, setRegisterNeed] = useState("Konsultasi produk Coway");
+
+  function openRegister(productName?: string) {
+    const product = productName || "Belum menentukan produk";
+    setRegisterProduct(product);
+    setRegisterNeed(solutionRecommendation?.title || "Konsultasi produk Coway");
+    setForm(current => ({ ...current, need: solutionAnswers.place || current.need, users: solutionAnswers.scale || current.users, product }));
+    setRegisterOpen(true);
+  }
+
+  function submitRegister(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!waNumber) { setNotice("Nomor WhatsApp sales belum dikonfigurasi. Silakan tambahkan NEXT_PUBLIC_WHATSAPP_NUMBER pada environment deployment."); return; }
+    const registerMessage = ["Halo, saya ingin mendaftar konsultasi produk Coway.", "Nama: " + registerData.name, "WhatsApp: " + registerData.phone, "Kota / area: " + registerData.city, "Kebutuhan: " + registerNeed, "Produk pilihan: " + registerProduct, "Lingkungan penggunaan: " + (solutionAnswers.place || form.need), "Skala kebutuhan: " + (solutionAnswers.scale || form.users)].join("\n");
+    window.open(waLink(registerMessage), "_blank", "noopener,noreferrer");
+    setRegisterOpen(false);
+  }
   const solutionComplete = Boolean(solutionAnswers.focus && solutionAnswers.place && solutionAnswers.scale);
 
   const solutionCatalog = {
@@ -59,19 +79,19 @@ export default function Home() {
       href: "/produk/water-purifier",
       products: {
         small: [
-          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter.", official: "https://www.coway.id/products/detail/neo_plus/11" },
-          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis.", official: "https://www.coway.id/products/detail/ombak/1" },
-          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter.", official: "https://www.coway.id/products/detail/villaem_iii/17" }
+          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter." },
+          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis." },
+          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter." }
         ],
         medium: [
-          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis.", official: "https://www.coway.id/products/detail/ombak/1" },
-          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter.", official: "https://www.coway.id/products/detail/villaem_iii/17" },
-          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter.", official: "https://www.coway.id/products/detail/neo_plus/11" }
+          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis." },
+          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter." },
+          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter." }
         ],
         large: [
-          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Kapasitas tangki total 11,4 liter dengan empat pilihan air termasuk hangat dan panas.", official: "https://www.coway.id/products/detail/villaem_iii/17" },
-          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air untuk menyesuaikan kebutuhan pemakaian.", official: "https://www.coway.id/products/detail/ombak/1" },
-          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Alternatif berukuran ringkas dengan tiga pilihan suhu air.", official: "https://www.coway.id/products/detail/neo_plus/11" }
+          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Kapasitas tangki total 11,4 liter dengan empat pilihan air termasuk hangat dan panas." },
+          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air untuk menyesuaikan kebutuhan pemakaian." },
+          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Alternatif berukuran ringkas dengan tiga pilihan suhu air." }
         ]
       }
     },
@@ -81,18 +101,18 @@ export default function Home() {
       href: "/produk/air-purifier",
       products: {
         small: [
-          { name: "Cartridge", model: "AP-1019C", image: "/airpurifier/cartridge.png", detail: "HEPA filter system untuk area hingga 34 m², dengan desain ringkas.", official: "https://coway.id/products/detail/cartridge/20" },
-          { name: "Squarefit", model: "AP-1125G", image: "/airpurifier/squarefit.png", detail: "Pemurni udara untuk area hingga 33 m² dengan konsumsi daya 45 W.", official: "https://www.coway.id/products/detail/square_fit/22" }
+          { name: "Cartridge", model: "AP-1019C", image: "/airpurifier/cartridge.png", detail: "HEPA filter system untuk area hingga 34 m², dengan desain ringkas." },
+          { name: "Squarefit", model: "AP-1125G", image: "/airpurifier/squarefit.png", detail: "Pemurni udara untuk area hingga 33 m² dengan konsumsi daya 45 W." }
         ],
         medium: [
-          { name: "Storm", model: "AP-1516D", image: "/airpurifier/storm.png", detail: "HEPA filter system dengan CADR 375 m³/jam untuk area hingga 49,5 m².", official: "https://coway.id/products/detail/storm/4" },
-          { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara dan cakupan area hingga 65 m².", official: "https://coway.id/products/detail/storm_ii/19" },
-          { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dengan area aplikasi hingga 67 m² dan pilihan filter sesuai kebutuhan.", official: "https://coway.id/products/detail/noble_2/21" }
+          { name: "Storm", model: "AP-1516D", image: "/airpurifier/storm.png", detail: "HEPA filter system dengan CADR 375 m³/jam untuk area hingga 49,5 m²." },
+          { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara dan cakupan area hingga 65 m²." },
+          { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dengan area aplikasi hingga 67 m² dan pilihan filter sesuai kebutuhan." }
         ],
         large: [
-          { name: "Squarebig", model: "AP-2425H", image: "/airpurifier/squarebig.png", detail: "Double Air Matching Filter Technology dengan cakupan yang disebutkan Coway hingga 79 m².", official: "https://coway.id/products/detail/square_fit%2B/23" },
-          { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dan area aplikasi hingga 67 m².", official: "https://coway.id/products/detail/noble_2/21" },
-          { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara untuk area hingga 65 m².", official: "https://coway.id/products/detail/storm_ii/19" }
+          { name: "Squarebig", model: "AP-2425H", image: "/airpurifier/squarebig.png", detail: "Double Air Matching Filter Technology dengan cakupan yang disebutkan Coway hingga 79 m²." },
+          { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dan area aplikasi hingga 67 m²." },
+          { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara untuk area hingga 65 m²." }
         ]
       }
     },
@@ -101,9 +121,9 @@ export default function Home() {
       description: "Penyaringan air dari sumber rumah tangga. Kesesuaian instalasi perlu dicek berdasarkan kondisi air dan tekanan di lokasi.",
       href: "/produk/water-filter",
       products: {
-        small: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah.", official: "https://coway.id/products/detail/poe-23a/18" }],
-        medium: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah.", official: "https://coway.id/products/detail/poe-23a/18" }],
-        large: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; kapasitas aliran 3.200–3.300 L/jam.", official: "https://coway.id/products/detail/poe-23a/18" }]
+        small: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah." }],
+        medium: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah." }],
+        large: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; kapasitas aliran 3.200–3.300 L/jam." }]
       }
     },
     softener: {
@@ -111,9 +131,9 @@ export default function Home() {
       description: "Untuk kebutuhan air mandi dan perawatan tubuh. Air keluaran Yonsu bukan untuk diminum atau memasak.",
       href: "/produk/water-filter",
       products: {
-        small: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi.", official: "https://dev.coway.id/products/detail/yonsu/25" }],
-        medium: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi.", official: "https://dev.coway.id/products/detail/yonsu/25" }],
-        large: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi.", official: "https://dev.coway.id/products/detail/yonsu/25" }]
+        small: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }],
+        medium: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }],
+        large: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }]
       }
     }
   } as const;
@@ -284,10 +304,10 @@ export default function Home() {
           {solutionComplete && solutionRecommendation && <div className="solution-result" aria-live="polite">
             <div className="solution-result-heading"><div><span>YOUR PRODUCT MATCH</span><h3>Pilihan yang layak Anda pertimbangkan: <em>{solutionRecommendation.title}.</em></h3><p>{solutionRecommendation.description}</p></div><button type="button" className="solution-reset" onClick={()=>{setSolutionAnswers({focus:"",place:"",scale:""});setSolutionStep(0);}}>Ulangi <span>↻</span></button></div>
             <div className="solution-context"><span>Penggunaan: <b>{solutionAnswers.place}</b></span><span>Skala: <b>{solutionAnswers.scale === "small" ? "Kecil" : solutionAnswers.scale === "medium" ? "Sedang" : "Luas"}</b></span></div>
-            <div className="solution-products">{recommendedProducts.slice(0,3).map(product=><article className="solution-product" key={product.model}><div className="solution-product-image"><Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 70vw, 180px" /></div><span>{product.model}</span><b>{product.name}</b><p>{product.detail}</p><a href={product.official} target="_blank" rel="noopener noreferrer">Spesifikasi resmi <span>↗</span></a></article>)}</div>
+            <div className="solution-products">{recommendedProducts.slice(0,3).map(product=><article className="solution-product" key={product.model}><div className="solution-product-image"><Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 70vw, 180px" /></div><span>{product.model}</span><b>{product.name}</b><p>{product.detail}</p><button type="button" className="solution-product-select" onClick={()=>openRegister(product.name+" ("+product.model+")")}>Pilih produk ini <span>↗</span></button></article>)}</div>
             <p className="solution-note">Rekomendasi ini merupakan penyaringan awal berdasarkan jawaban dan spesifikasi yang dipublikasikan Coway. Untuk water purifier, pilihan kapasitas tetap perlu disesuaikan dengan pola konsumsi. Untuk air purifier, cocokkan kembali luas ruangan aktual. Kondisi sumber air dan instalasi POE-23A juga perlu diperiksa. Spesifikasi dapat berubah mengikuti informasi resmi.</p>
             {solutionAnswers.focus === "softener" && <p className="solution-note solution-warning">Penting: Yonsu adalah water softener untuk kebutuhan mandi/perawatan tubuh. Air keluarannya tidak untuk diminum atau memasak.</p>}
-            <a className="button button-dark solution-consult" href="#konsultasi" onClick={()=>setForm({...form,need:solutionAnswers.place,users:solutionAnswers.scale,product:solutionRecommendation.title+" — "+recommendedProducts.map(p=>p.name+" ("+p.model+")").join(", ")})}>Konsultasikan hasil rekomendasi <Arrow /></a>
+            <button type="button" className="button button-dark solution-consult" onClick={()=>openRegister(recommendedProducts.map(p=>p.name+" ("+p.model+")").join(", "))}>Konsultasikan rekomendasi <Arrow /></button>
           </div>}
         </div>
       </section>
@@ -320,24 +340,47 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section audience-section">
-        <div className="audience-art"><div className="audience-circle"><span>WATER</span><b>for<br />every<br />space.</b><i>✳</i></div></div>
-        <div className="audience-copy"><div className="section-kicker">05 / ONE SOLUTION, DIFFERENT NEEDS</div><h2>Untuk ruang yang<br /><em>berbeda-beda.</em></h2><div className="audience-list"><article id="rumah"><span>01</span><div><h3>Rumah & keluarga</h3><p>Solusi air minum untuk kebutuhan sehari-hari keluarga.</p></div><b>↗</b></article><article><span>02</span><div><h3>Kantor & ruang kerja</h3><p>Pilihan unit untuk mendukung kenyamanan aktivitas kerja.</p></div><b>↗</b></article><article id="bisnis"><span>03</span><div><h3>Bisnis & usaha</h3><p>Konsultasikan kapasitas dan kebutuhan operasional lokasi Anda.</p></div><b>↗</b></article></div></div>
-      </section>
-
       <section className="section payment-section">
-        <div className="section-kicker">06 / OWNERSHIP OPTIONS</div><div className="payment-heading"><h2>Pilih skema yang<br /><em>sesuai rencana Anda.</em></h2><p>Pelajari pilihan kepemilikan yang tersedia. Harga, tenor, cakupan layanan, dan ketentuan dapat berubah mengikuti program resmi yang berlaku.</p></div>
+        <div className="section-kicker">05 / OWNERSHIP OPTIONS</div><div className="payment-heading"><h2>Pilih skema yang<br /><em>sesuai rencana Anda.</em></h2><p>Pelajari pilihan kepemilikan yang tersedia. Harga, tenor, cakupan layanan, dan ketentuan dapat berubah mengikuti program resmi yang berlaku.</p></div>
         <div className="payment-grid"><article><span>OPTION 01</span><div className="payment-icon">↗</div><h3>Cicilan</h3><p>Opsi pembayaran bertahap dengan pilihan tenor sesuai program yang tersedia.</p><a href="#konsultasi">Tanya simulasi <Arrow /></a></article><article className="payment-featured"><span>OPTION 02 · FLEXIBLE</span><div className="payment-icon">◈</div><h3>Pembayaran penuh</h3><p>Pembayaran satu kali di awal. Tanyakan detail paket layanan yang menyertai pembelian.</p><a href="#konsultasi">Tanya detail <Arrow /></a></article><article><span>OPTION 03</span><div className="payment-icon">＋</div><h3>Produk saja</h3><p>Pilihan unit tanpa paket layanan tertentu, jika tersedia pada model terkait.</p><a href="#konsultasi">Tanya ketersediaan <Arrow /></a></article></div>
       </section>
 
-      <section className="section area-section"><div><div className="section-kicker">07 / OUR SERVICE AREA</div><h2>Konsultasi Coway<br /><em>di Jabodetabek.</em></h2></div><div className="area-content"><p>Mencari water purifier Coway di Tangerang atau kota sekitarnya? Sampaikan lokasi Anda untuk memeriksa ketersediaan konsultasi, pengantaran, dan instalasi.</p><div className="area-tags">{areas.map(area=><span key={area}>{area}</span>)}</div></div></section>
+      <section className="section area-section"><div><div className="section-kicker">06 / OUR SERVICE AREA</div><h2>Konsultasi Coway<br /><em>di Jabodetabek.</em></h2></div><div className="area-content"><p>Mencari water purifier Coway di Tangerang atau kota sekitarnya? Sampaikan lokasi Anda untuk memeriksa ketersediaan konsultasi, pengantaran, dan instalasi.</p><div className="area-tags">{areas.map(area=><span key={area}>{area}</span>)}</div></div></section>
+
+      <section className="section testimonials-section">
+        <div className="testimonials-topline"><div className="section-kicker">07 / CUSTOMER STORIES</div><span>KEBUTUHAN YANG SERING DIBAHAS</span></div>
+        <div className="testimonials-heading"><h2>Setiap kebutuhan punya<br /><em>ceritanya sendiri.</em></h2><p>Memilih produk dimulai dengan memahami kebiasaan, ruang, dan kebutuhan sehari-hari. Berikut contoh situasi yang bisa dibahas saat konsultasi.</p></div>
+        <div className="testimonials-grid">
+          <article className="testimonial-card testimonial-featured"><div className="testimonial-quote-mark">“</div><p className="testimonial-quote">Kami ingin pilihan air minum yang lebih praktis untuk rutinitas keluarga, tanpa harus terus menyiapkan galon.</p><div className="testimonial-person"><div className="testimonial-avatar">K</div><div><b>Kebutuhan keluarga</b><span>Contoh skenario konsultasi</span></div><span className="testimonial-type">WATER PURIFIER</span></div></article>
+          <article className="testimonial-card"><div className="testimonial-quote-mark">“</div><p className="testimonial-quote">Ruangan kerja digunakan banyak orang. Kami perlu mempertimbangkan luas area dan sirkulasi udara sebelum memilih unit.</p><div className="testimonial-person"><div className="testimonial-avatar">R</div><div><b>Kebutuhan ruang kerja</b><span>Contoh skenario konsultasi</span></div><span className="testimonial-type">AIR PURIFIER</span></div></article>
+          <article className="testimonial-card"><div className="testimonial-quote-mark">“</div><p className="testimonial-quote">Kondisi air di rumah perlu diperiksa lebih dulu agar jenis filter dan instalasinya sesuai dengan sumber air yang digunakan.</p><div className="testimonial-person"><div className="testimonial-avatar">H</div><div><b>Kebutuhan rumah</b><span>Contoh skenario konsultasi</span></div><span className="testimonial-type">WATER FILTER</span></div></article>
+        </div>
+        <p className="testimonials-disclaimer">Catatan: kartu di atas merupakan ilustrasi kebutuhan konsultasi, bukan kutipan atau ulasan pelanggan nyata. Testimoni pelanggan terverifikasi dapat ditambahkan setelah memperoleh materi dan izin publikasi.</p>
+      </section>
 
       <section className="section faq-section" id="faq"><div className="faq-intro"><div className="section-kicker">08 / GOOD TO KNOW</div><h2>Ada yang ingin<br /><em>Anda tanyakan?</em></h2><p>Temukan jawaban awal sebelum berkonsultasi dengan tim kami.</p><a className="under-link" href="#konsultasi">Tanyakan langsung <Arrow /></a></div><div className="faq-list">{faqs.map((faq,i)=><article className={openFaq===i?"faq-item active":"faq-item"} key={faq.q}><button type="button" onClick={()=>setOpenFaq(openFaq===i?null:i)} aria-expanded={openFaq===i}><span>0{i+1}</span><b>{faq.q}</b><i>{openFaq===i?"−":"+"}</i></button>{openFaq===i&&<p>{faq.a}</p>}</article>)}</div></section>
 
       <section className="contact-section" id="konsultasi"><div className="contact-deco">C</div><div className="contact-copy"><div className="section-kicker light-kicker">09 / YOUR NEXT STEP</div><h2>Air yang Anda pilih,<br /><em>dimulai dari percakapan.</em></h2><p>Ceritakan kebutuhan rumah atau tempat kerja Anda. Kami bantu jelaskan pilihan produk, fitur, serta skema yang relevan—tanpa tekanan untuk membeli.</p><div className="contact-location"><span>⌖</span> Melayani konsultasi Jabodetabek</div></div><form className="lead-form" onSubmit={submitLead}><div className="form-heading"><span>LET’S TALK</span><h3>Konsultasi gratis</h3><p>Isi detail singkat berikut untuk memulai.</p></div><label>Nama lengkap<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Nama Anda" autoComplete="name" /></label><label>Nomor WhatsApp<input required type="tel" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="08xxxxxxxxxx" autoComplete="tel" /></label><div className="form-row"><label>Kebutuhan<select value={form.need} onChange={e=>setForm({...form,need:e.target.value})}><option>Rumah</option><option>Kantor</option><option>Bisnis</option></select></label><label>Jumlah pengguna<input value={form.users} onChange={e=>setForm({...form,users:e.target.value})} placeholder="Contoh: 4 orang" /></label></div><label>Kota / area<input required value={form.city} onChange={e=>setForm({...form,city:e.target.value})} placeholder="Contoh: BSD, Tangerang" /></label><label>Produk yang diminati <small>(opsional)</small><input value={form.product} onChange={e=>setForm({...form,product:e.target.value})} placeholder="Belum tahu juga tidak apa-apa" /></label><button className="button button-dark full-button" type="submit">Lanjutkan via WhatsApp <Arrow /></button>{notice&&<p className="form-notice" role="status">{notice}</p>}<p className="form-privacy">Dengan mengirim formulir, Anda menyetujui data ini digunakan untuk menindaklanjuti permintaan konsultasi Anda.</p></form></section>
 
+
+      {registerOpen && <div className="register-modal-backdrop" role="presentation" onMouseDown={event=>{if(event.target===event.currentTarget)setRegisterOpen(false);}}>
+        <section className="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
+          <button type="button" className="register-modal-close" aria-label="Tutup formulir" onClick={()=>setRegisterOpen(false)}>×</button>
+          <div className="register-modal-kicker">COWAY · PERSONAL CONSULTATION</div>
+          <h2 id="register-modal-title">Mulai dari kebutuhan<br /><em>Anda.</em></h2>
+          <p className="register-modal-intro">Tinggalkan kontak Anda. Detail pilihan produk akan ikut terkirim ke WhatsApp konsultan.</p>
+          <div className="register-selected-product"><span>PRODUK YANG DIPILIH</span><b>{registerProduct}</b></div>
+          <form className="register-modal-form" onSubmit={submitRegister}>
+            <label>Nama lengkap<input required value={registerData.name} onChange={event=>setRegisterData({...registerData,name:event.target.value})} placeholder="Nama Anda" autoComplete="name" /></label>
+            <label>Nomor WhatsApp<input required type="tel" value={registerData.phone} onChange={event=>setRegisterData({...registerData,phone:event.target.value})} placeholder="08xxxxxxxxxx" autoComplete="tel" /></label>
+            <label>Kota / area<input required value={registerData.city} onChange={event=>setRegisterData({...registerData,city:event.target.value})} placeholder="Contoh: BSD, Tangerang" autoComplete="address-level2" /></label>
+            <button className="button button-dark full-button" type="submit">Kirim pendaftaran via WhatsApp <Arrow /></button>
+          </form>
+          <p className="register-modal-privacy">Dengan melanjutkan, Anda menyetujui data kontak digunakan untuk menindaklanjuti permintaan konsultasi.</p>
+        </section>
+      </div>}
       <footer className="footer"><a className="brand footer-brand" href="#"><Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} /></a><p>Informasi dan konsultasi produk Coway untuk area Jabodetabek.</p><div className="footer-links"><a href="#solusi">Solusi</a><a href="#teknologi">Teknologi</a><a href="#layanan">Layanan</a><a href="#faq">FAQ</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Coway Tangerang</span><span>Sales consultation · Jabodetabek</span></div><p className="footer-disclaimer">Halaman konsultasi penjualan independen. Bukan situs resmi Coway Indonesia. Merek dan produk Coway merupakan milik pemegang hak masing-masing. Spesifikasi, harga, program, dan layanan mengikuti informasi resmi yang berlaku.</p></footer>
-      <a className="floating-wa" href={waLink("Halo, saya ingin konsultasi produk Coway untuk area Jabodetabek.")} aria-label="Konsultasi Coway melalui WhatsApp" onClick={e=>{if(!waNumber){e.preventDefault();document.getElementById("konsultasi")?.scrollIntoView({behavior:"smooth"});}}}><span>↗</span><b>Chat sales</b></a>
+      <button className="floating-wa" type="button" aria-label="Buka formulir konsultasi Coway" onClick={()=>openRegister()}><span>↗</span><b>Konsultasi</b></button>
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({
         "@context":"https://schema.org",
         "@type":"WebSite",
