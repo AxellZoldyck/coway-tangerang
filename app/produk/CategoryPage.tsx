@@ -29,7 +29,7 @@ export default function CategoryPage({ number, eyebrow, title, accent, intro, de
             <div className="catalog-product-index">{String(index + 1).padStart(2,"0")} <span> / COWAY</span></div>
             {product.image ? (
               <div className="catalog-product-image">
-                <Image src={product.image} alt={`${product.name} Coway water purifier`} fill sizes="(max-width: 480px) 90vw, (max-width: 800px) 44vw, 30vw" />
+                <Image src={product.image} alt={`Produk Coway ${product.name}`} fill sizes="(max-width: 480px) 90vw, (max-width: 800px) 44vw, 30vw" />
               </div>
             ) : <div className="catalog-product-mark">C<span>·</span></div>}
             <div className="catalog-product-copy"><span>{product.model}</span><h3>{product.name}</h3><p>{product.note}</p><a href="/#konsultasi" aria-label={`Konsultasi produk ${product.name}`}>Tanya produk <b>↗</b></a></div>
