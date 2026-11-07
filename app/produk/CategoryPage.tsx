@@ -15,7 +15,7 @@ export default function CategoryPage({ number, eyebrow, title, accent, intro, de
   const [registerOpen, setRegisterOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState("Belum menentukan produk");
   const [registerData, setRegisterData] = useState({ name: "", phone: "", city: "" });
-  const whatsappNumber = "083193123626";
+  const whatsappNumber = "6283193123626";
   function openRegister(product = "Konsultasi produk Coway") { setSelectedProduct(product); setRegisterOpen(true); }
   function submitRegister(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
