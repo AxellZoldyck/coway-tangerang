@@ -1165,3 +1165,32 @@ main.product-detail-page > .product-detail-nav {
   .promo-popup-backdrop,.promo-popup { animation:none; }
   .promo-popup-close { transition:none; }
 }
+
+
+/* PERFORMANCE: defer offscreen section rendering work */
+.solution-section,
+.technology-section,
+.calculator-section,
+.service-section,
+.payment-section,
+.area-section,
+.testimonials-section,
+.faq-section,
+.contact-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 850px;
+}
+
+@media (max-width: 640px) {
+  .solution-section,
+  .technology-section,
+  .calculator-section,
+  .service-section,
+  .payment-section,
+  .area-section,
+  .testimonials-section,
+  .faq-section,
+  .contact-section {
+    contain-intrinsic-size: auto 980px;
+  }
+}
