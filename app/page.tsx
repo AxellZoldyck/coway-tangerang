@@ -158,7 +158,7 @@ export default function Home() {
 
   // Tampilkan promo setiap kali halaman Home dimuat, termasuk setelah refresh.
   useEffect(() => {
-    const timer = window.setTimeout(() => setPromoOpen(true), 450);
+    const timer = window.setTimeout(() => setPromoOpen(true), 3200);
     return () => window.clearTimeout(timer);
   }, []);
 
