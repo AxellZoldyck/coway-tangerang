@@ -152,7 +152,7 @@ image:"/airpurifier/cartridge.png",highlights:[
 {title:"HEPA filter system",text:"Sistem filtrasi menggunakan Pre-Filter, HEPA Filter, dan Deodorisation Filter."},
 {title:"Untuk ruang hingga 34 m²",text:"Luas area aplikasi yang tercantum pada spesifikasi resmi."}],
 specs:[{label:"Area aplikasi",value:"34 m²"},{label:"Konsumsi listrik",value:"38 W"},{label:"Dimensi",value:"340 × 165 × 469 mm"},{label:"Berat bersih",value:"5,5 kg"},{label:"Masa pakai filter",value:"HEPA 12 bulan · Deodorisation 24 bulan"}],
-pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp Hubungi konsultan",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp Hubungi konsultan",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp Hubungi konsultan",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp Hubungi konsultan",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 3.000.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
+pricing:{plans:[],productPrice:"Rp 3.000.000",filterPackage:"Hubungi konsultan"},
 officialUrl:"https://www.coway.id/products/detail/cartridge/20"
 },
 {
