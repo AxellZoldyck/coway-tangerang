@@ -156,9 +156,9 @@ export default function Home() {
     setSolutionStep(current => Math.min(current + 1, 3));
   }
 
+  // Tampilkan promo setiap kali halaman Home dimuat, termasuk setelah refresh.
   useEffect(() => {
-    if (sessionStorage.getItem("coway-promo-dismissed") === "1") return;
-    const timer = window.setTimeout(() => setPromoOpen(true), 650);
+    const timer = window.setTimeout(() => setPromoOpen(true), 450);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -187,7 +187,12 @@ export default function Home() {
   return (
     <main>
       <header className={scrolled ? "header header-scrolled" : "header"}>
-        <a className="brand" href="#" aria-label="Coway Jabodetabek beranda" onClick={() => setMenuOpen(false)}>
+        <a className="brand" href="/" aria-label="Coway Jabodetabek beranda" onClick={(event) => {
+          event.preventDefault();
+          setMenuOpen(false);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          setPromoOpen(true);
+        }}>
           <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority />
         </a>
 
@@ -587,7 +592,6 @@ export default function Home() {
       {promoOpen && <div className="promo-popup-backdrop" role="presentation" onMouseDown={event => {
         if (event.target === event.currentTarget) {
           setPromoOpen(false);
-          sessionStorage.setItem("coway-promo-dismissed", "1");
         }
       }}>
         <section className="promo-popup" role="dialog" aria-modal="true" aria-label="Promo spesial Coway">
@@ -597,8 +601,7 @@ export default function Home() {
             aria-label="Tutup promo"
             onClick={() => {
               setPromoOpen(false);
-              sessionStorage.setItem("coway-promo-dismissed", "1");
-            }}
+                }}
           >×</button>
           <div className="promo-popup-image">
             <Image src="/popuppromo.jpeg" alt="Promo spesial Coway" fill priority sizes="(max-width: 640px) 92vw, 520px" />
@@ -607,8 +610,7 @@ export default function Home() {
             <span>Penawaran spesial Coway</span>
             <button type="button" onClick={() => {
               setPromoOpen(false);
-              sessionStorage.setItem("coway-promo-dismissed", "1");
-              openRegister("Promo Coway");
+                  openRegister("Promo Coway");
             }}>Konsultasi promo <Arrow /></button>
           </div>
         </section>
