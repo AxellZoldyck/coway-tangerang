@@ -817,3 +817,43 @@ main { padding-top: 78px !important; }
  .product-detail-footer { flex-direction:column; padding:22px 20px; }
  .product-detail-cta { padding:65px 20px; }
 }
+
+
+/* Official-reference pricing presentation */
+.product-pricing-section { max-width:1200px; margin:auto; padding:88px 6%; }
+.product-plan-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:35px; }
+.product-plan-card { display:flex; flex-direction:column; align-items:flex-start; min-height:205px; padding:21px 17px; border:1px solid #dfe7dc; background:#fbfcf8; }
+.product-plan-card>span { color:#829487; font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.product-plan-card>strong { margin-top:20px; color:#29483d; font:500 27px var(--serif); letter-spacing:-.04em; }
+.product-plan-card>small { color:#89998d; font-size:9px; }
+.product-plan-card>p { flex:1; margin:14px 0; color:#829187; font-size:9px; line-height:1.7; }
+.product-plan-card>button,.product-payment-options>button { width:100%; padding:10px 12px; border:1px solid #cbd8c9; background:transparent; color:#456450; font-size:9px; font-weight:700; cursor:pointer; }
+.product-plan-card>button:hover,.product-payment-options>button:hover { background:#eaf0e8; }
+.product-price-summary { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; }
+.product-price-summary>div { display:flex; flex-direction:column; gap:9px; padding:19px; background:#eaf0e8; }
+.product-price-summary span,.product-payment-options>span { color:#839789; font-size:8px; font-weight:700; letter-spacing:.14em; }
+.product-price-summary strong { color:#29483d; font:500 24px var(--serif); }
+.product-price-summary small { color:#829187; font-size:9px; }
+.product-payment-simulation { display:grid; grid-template-columns:1fr 1fr; gap:8%; margin-top:52px; padding:34px; background:#f0f3ed; }
+.product-payment-simulation h3 { margin:12px 0; color:#29483d; font:500 31px var(--serif); }
+.product-payment-simulation h3 em { color:#819c88; }
+.product-payment-simulation p { max-width:340px; color:#829187; font-size:10px; line-height:1.8; }
+.product-payment-options { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.product-payment-options>span,.product-payment-options>button { grid-column:1/-1; }
+.product-payment-options>div { display:flex; flex-direction:column; gap:6px; padding:12px; background:#fff; }
+.product-payment-options>div b { color:#486454; font-size:10px; }
+.product-payment-options>div small { color:#91a095; font-size:9px; }
+.product-payment-options>button { align-self:end; background:#29483d; color:#fff; border-color:#29483d; }
+@media(max-width:800px) {
+ .product-pricing-section { padding:68px 24px; }
+ .product-plan-grid { grid-template-columns:1fr 1fr; }
+ .product-payment-simulation { grid-template-columns:1fr; gap:22px; padding:24px; }
+}
+@media(max-width:480px) {
+ .product-plan-grid { grid-template-columns:1fr 1fr; gap:7px; }
+ .product-plan-card { min-height:180px; padding:15px 12px; }
+ .product-plan-card>strong { font-size:22px; }
+ .product-price-summary { grid-template-columns:1fr; }
+ .product-price-summary strong { font-size:22px; }
+ .product-payment-simulation { padding:19px; }
+}
