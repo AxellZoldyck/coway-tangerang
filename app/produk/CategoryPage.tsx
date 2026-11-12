@@ -47,7 +47,7 @@ export default function CategoryPage({ number, eyebrow, title, accent, intro, de
                 <Image src={product.image} alt={`Produk Coway ${product.name}`} fill sizes="(max-width: 480px) 90vw, (max-width: 800px) 44vw, 30vw" />
               </div>
             ) : <div className="catalog-product-mark">C<span>·</span></div>}
-            <div className="catalog-product-copy"><span>{product.model}</span><h3>{product.name}</h3><p>{product.note}</p><Link className="catalog-product-detail-link" href={"/produk/" + (productCatalog.find((item) => item.model === product.model)?.slug || "")}>Lihat detail produk <b>↗</b></Link><button type="button" className="catalog-product-ask" onClick={()=>openRegister(product.name+" ("+product.model+")")} aria-label={`Konsultasi produk ${product.name}`}>Tanya produk <b>↗</b></button></div>
+            <div className="catalog-product-copy"><span>{product.model}</span><h3>{product.name}</h3><p>{product.note}</p><Link className="catalog-product-detail-link" href={"/produk/" + (productCatalog.find((item) => item.model === product.model)?.slug || "")}>Lihat detail produk <b>↗</b></Link></div>
           </article>)}
         </div>
         <p className="catalog-disclaimer">Nama model dan ketersediaan produk mengikuti katalog Coway Indonesia dan dapat berubah. Hubungi konsultan untuk memastikan varian, spesifikasi, harga, serta program layanan terbaru.</p>
