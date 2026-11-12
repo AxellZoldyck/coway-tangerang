@@ -163,10 +163,25 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
-    handleScroll();
+    let scrollFrame = 0;
+
+    const updateHeader = () => {
+      scrollFrame = 0;
+      setScrolled(window.scrollY > 24);
+    };
+
+    const handleScroll = () => {
+      if (scrollFrame) return;
+      scrollFrame = window.requestAnimationFrame(updateHeader);
+    };
+
+    setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
+    };
   }, []);
 
   const monthlyGallons = useMemo(() => Math.ceil((people * litres * 30) / 19), [people, litres]);
