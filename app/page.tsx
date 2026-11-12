@@ -6,7 +6,7 @@ import HeroSection from "./components/sections/HeroSection";
 import TrustStrip from "./components/sections/TrustStrip";
 import AwardsSection from "./components/sections/AwardsSection";
 import ProductCategoriesSection from "./components/sections/ProductCategoriesSection";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 const waNumber = "6283193123626";
 const waLink = (message: string) => `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
@@ -51,7 +51,7 @@ export default function Home() {
   const [form, setForm] = useState({ name: "", phone: "", need: "Rumah", users: "4 orang", city: "Tangerang", product: "" });
   const [notice, setNotice] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const [solutionAnswers, setSolutionAnswers] = useState({ focus: "", place: "", scale: "" });
   const [solutionStep, setSolutionStep] = useState(0);
   const [registerOpen, setRegisterOpen] = useState(false);
@@ -163,11 +163,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
     let scrollFrame = 0;
 
     const updateHeader = () => {
       scrollFrame = 0;
-      setScrolled(window.scrollY > 24);
+      header.classList.toggle("header-scrolled", window.scrollY > 24);
     };
 
     const handleScroll = () => {
@@ -175,7 +178,7 @@ export default function Home() {
       scrollFrame = window.requestAnimationFrame(updateHeader);
     };
 
-    setScrolled(window.scrollY > 24);
+    updateHeader();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -201,7 +204,7 @@ export default function Home() {
 
   return (
     <main>
-      <header className={scrolled ? "header header-scrolled" : "header"}>
+      <header ref={headerRef} className="header">
         <a className="brand" href="/" aria-label="Coway Jabodetabek beranda" onClick={(event) => {
           event.preventDefault();
           setMenuOpen(false);
@@ -619,7 +622,7 @@ export default function Home() {
                 }}
           >×</button>
           <div className="promo-popup-image">
-            <Image src="/popuppromo.jpeg" alt="Promo spesial Coway" fill priority quality={60} sizes="(max-width: 640px) 88vw, 480px" />
+            <Image src="/popuppromo.jpeg" alt="Promo spesial Coway" fill quality={60} sizes="(max-width: 640px) 88vw, 480px" />
           </div>
           <div className="promo-popup-actions">
             <span>Penawaran spesial Coway</span>
