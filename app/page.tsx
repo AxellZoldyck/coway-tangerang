@@ -45,7 +45,182 @@ function Arrow() {
 
 
 
-const testimonials = {[
+
+
+const testimonials = [
+              { name: "Nadia P.", city: "Tangerang Selatan", product: "OMBAK", initial: "N", tone: "sage", quote: "Sejak pakai Coway Ombak, urusan air minum di rumah jadi jauh lebih praktis. Anak-anak juga gampang ambil air sendiri." },
+              { name: "Budi S.", city: "BSD City", product: "NEO PLUS", initial: "B", tone: "sand", quote: "Neo Plus ini kepake banget di rumah. Mau air panas atau dingin tinggal pencet, nggak perlu ribet masak air lagi." },
+              { name: "Rina A.", city: "Jakarta Selatan", product: "NOBLE 2", initial: "R", tone: "rose", quote: "Awalnya fokus cari air purifier buat kamar. Setelah pakai Noble 2, rasanya lebih tenang pas lagi istirahat." },
+              { name: "Dimas K.", city: "Gading Serpong", product: "STORM", initial: "D", tone: "blue", quote: "Storm jadi andalan di ruang keluarga. Desainnya juga cakep, jadi nggak ganggu interior rumah." },
+              { name: "Maya L.", city: "Alam Sutera", product: "POE-23A", initial: "M", tone: "lavender", quote: "Senang akhirnya bisa konsultasi dulu soal kondisi air rumah. Jadi lebih paham filter yang memang dibutuhkan." },
+              { name: "Andi R.", city: "Karawaci", product: "VILLAEM III", initial: "A", tone: "olive", quote: "Villaem III cocok buat kebutuhan keluarga kami. Pilihan airnya praktis dan tampilannya juga kelihatan rapi." },
+              { name: "Siska W.", city: "Bintaro", product: "YONSU", initial: "S", tone: "peach", quote: "Paling suka karena kebutuhan air di rumah jadi lebih diperhatikan. Proses konsultasinya juga enak, dijelasin pelan-pelan." },
+              { name: "Fajar M.", city: "Jakarta Barat", product: "SQUAREBIG", initial: "F", tone: "slate", quote: "Pakai Squarebig buat area yang cukup luas. Suka karena bentuknya simpel dan nggak kelihatan bulky." },
+              { name: "Tari N.", city: "Ciputat", product: "CINNAMON", initial: "T", tone: "mint", quote: "Cinnamon bikin rutinitas ambil air jadi gampang. Apalagi kalau lagi buru-buru pagi, tinggal pilih sesuai kebutuhan." },
+              { name: "Rizky H.", city: "Bekasi", product: "NEXT STORM", initial: "R", tone: "clay", quote: "Next Storm jadi salah satu upgrade rumah yang paling kerasa manfaatnya. Overall puas, semoga awet terus!" }
+            ];
+
+export default function Home() {
+  const [people, setPeople] = useState(4);
+  const [litres, setLitres] = useState(2);
+  const [gallonPrice, setGallonPrice] = useState(20000);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [form, setForm] = useState({ name: "", phone: "", need: "Rumah", users: "4 orang", city: "Tangerang", product: "" });
+  const [notice, setNotice] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const [solutionAnswers, setSolutionAnswers] = useState({ focus: "", place: "", scale: "" });
+  const [solutionStep, setSolutionStep] = useState(0);
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const [promoOpen, setPromoOpen] = useState(false);
+  const [registerData, setRegisterData] = useState({ name: "", phone: "", city: "" });
+  const [registerProduct, setRegisterProduct] = useState("Belum menentukan produk");
+  const [registerNeed, setRegisterNeed] = useState("Konsultasi produk Coway");
+
+  function openRegister(productName?: string) {
+    const product = productName || "Belum menentukan produk";
+    setRegisterProduct(product);
+    setRegisterNeed(solutionRecommendation?.title || "Konsultasi produk Coway");
+    setForm(current => ({ ...current, need: solutionAnswers.place || current.need, users: solutionAnswers.scale || current.users, product }));
+    setRegisterOpen(true);
+  }
+
+  function submitRegister(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const registerMessage = ["Halo, saya ingin mendaftar konsultasi produk Coway.", "Nama: " + registerData.name, "WhatsApp: " + registerData.phone, "Kota / area: " + registerData.city, "Kebutuhan: " + registerNeed, "Produk pilihan: " + registerProduct, "Lingkungan penggunaan: " + (solutionAnswers.place || form.need), "Skala kebutuhan: " + (solutionAnswers.scale || form.users)].join("\n");
+    window.open(waLink(registerMessage), "_blank", "noopener,noreferrer");
+    setRegisterOpen(false);
+  }
+
+  const solutionComplete = Boolean(solutionAnswers.focus && solutionAnswers.place && solutionAnswers.scale);
+
+
+"use client";
+
+import Image from "next/image";
+import HeroSection from "./components/sections/HeroSection";
+import TrustStrip from "./components/sections/TrustStrip";
+import AwardsSection from "./components/sections/AwardsSection";
+import ProductCategoriesSection from "./components/sections/ProductCategoriesSection";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+
+const waNumber = "6283193123626";
+const waLink = (message: string) => `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+
+const faqs = [
+  {
+    q: "Apa itu water purifier Coway?",
+    a: "Water purifier Coway adalah perangkat pemurni air minum dengan sistem filtrasi yang disesuaikan pada masing-masing model. Jenis filter, kapasitas, dan fitur dapat berbeda, jadi konsultasikan kebutuhan air dan jumlah pengguna sebelum memilih.",
+  },
+  {
+    q: "Apakah Coway tersedia untuk rumah dan kantor?",
+    a: "Tersedia pilihan untuk kebutuhan rumah tangga maupun penggunaan kantor dan bisnis. Rekomendasi unit sebaiknya mempertimbangkan jumlah pengguna, pola konsumsi, ruang pemasangan, serta kebutuhan air panas atau dingin.",
+  },
+  {
+    q: "Bagaimana layanan perawatan dan penggantian filter?",
+    a: "Program layanan mengikuti model dan skema pembelian yang dipilih. Detail jadwal kunjungan, sanitasi, dan penggantian filter akan dijelaskan saat konsultasi agar sesuai dengan ketentuan produk yang berlaku.",
+  },
+  {
+    q: "Apakah bisa membeli dengan cicilan?",
+    a: "Pilihan pembayaran dan tenor dapat berbeda mengikuti program yang sedang tersedia. Hubungi konsultan untuk mendapatkan simulasi terbaru dan rincian biaya sebelum mengambil keputusan.",
+  },
+  {
+    q: "Apakah melayani area di luar Tangerang?",
+    a: "Kami menerima konsultasi untuk area Jabodetabek, termasuk Jakarta, Bogor, Depok, Tangerang, dan Bekasi. Ketersediaan instalasi dan cakupan layanan perlu dikonfirmasi berdasarkan alamat Anda.",
+  },
+];
+
+const areas = [
+  "Tangerang Kota", "Tangerang Selatan", "Kabupaten Tangerang", "Jakarta",
+  "Bogor", "Depok", "Bekasi",
+];
+
+function Arrow() {
+  return <span aria-hidden="true">↗</span>;
+}
+
+export default function Home() {
+  const [people, setPeople] = useState(4);
+  const [litres, setLitres] = useState(2);
+  const [gallonPrice, setGallonPrice] = useState(20000);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [form, setForm] = useState({ name: "", phone: "", need: "Rumah", users: "4 orang", city: "Tangerang", product: "" });
+  const [notice, setNotice] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const [solutionAnswers, setSolutionAnswers] = useState({ focus: "", place: "", scale: "" });
+  const [solutionStep, setSolutionStep] = useState(0);
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const [promoOpen, setPromoOpen] = useState(false);
+  const [registerData, setRegisterData] = useState({ name: "", phone: "", city: "" });
+  const [registerProduct, setRegisterProduct] = useState("Belum menentukan produk");
+  const [registerNeed, setRegisterNeed] = useState("Konsultasi produk Coway");
+
+  function openRegister(productName?: string) {
+    const product = productName || "Belum menentukan produk";
+    setRegisterProduct(product);
+    setRegisterNeed(solutionRecommendation?.title || "Konsultasi produk Coway");
+    setForm(current => ({ ...current, need: solutionAnswers.place || current.need, users: solutionAnswers.scale || current.users, product }));
+    setRegisterOpen(true);
+  }
+
+  function submitRegister(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const registerMessage = ["Halo, saya ingin mendaftar konsultasi produk Coway.", "Nama: " + registerData.name, "WhatsApp: " + registerData.phone, "Kota / area: " + registerData.city, "Kebutuhan: " + registerNeed, "Produk pilihan: " + registerProduct, "Lingkungan penggunaan: " + (solutionAnswers.place || form.need), "Skala kebutuhan: " + (solutionAnswers.scale || form.users)].join("\n");
+    window.open(waLink(registerMessage), "_blank", "noopener,noreferrer");
+    setRegisterOpen(false);
+  }
+
+  const solutionComplete = Boolean(solutionAnswers.focus && solutionAnswers.place && solutionAnswers.scale);
+
+
+"use client";
+
+import Image from "next/image";
+import HeroSection from "./components/sections/HeroSection";
+import TrustStrip from "./components/sections/TrustStrip";
+import AwardsSection from "./components/sections/AwardsSection";
+import ProductCategoriesSection from "./components/sections/ProductCategoriesSection";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+
+const waNumber = "6283193123626";
+const waLink = (message: string) => `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+
+const faqs = [
+  {
+    q: "Apa itu water purifier Coway?",
+    a: "Water purifier Coway adalah perangkat pemurni air minum dengan sistem filtrasi yang disesuaikan pada masing-masing model. Jenis filter, kapasitas, dan fitur dapat berbeda, jadi konsultasikan kebutuhan air dan jumlah pengguna sebelum memilih.",
+  },
+  {
+    q: "Apakah Coway tersedia untuk rumah dan kantor?",
+    a: "Tersedia pilihan untuk kebutuhan rumah tangga maupun penggunaan kantor dan bisnis. Rekomendasi unit sebaiknya mempertimbangkan jumlah pengguna, pola konsumsi, ruang pemasangan, serta kebutuhan air panas atau dingin.",
+  },
+  {
+    q: "Bagaimana layanan perawatan dan penggantian filter?",
+    a: "Program layanan mengikuti model dan skema pembelian yang dipilih. Detail jadwal kunjungan, sanitasi, dan penggantian filter akan dijelaskan saat konsultasi agar sesuai dengan ketentuan produk yang berlaku.",
+  },
+  {
+    q: "Apakah bisa membeli dengan cicilan?",
+    a: "Pilihan pembayaran dan tenor dapat berbeda mengikuti program yang sedang tersedia. Hubungi konsultan untuk mendapatkan simulasi terbaru dan rincian biaya sebelum mengambil keputusan.",
+  },
+  {
+    q: "Apakah melayani area di luar Tangerang?",
+    a: "Kami menerima konsultasi untuk area Jabodetabek, termasuk Jakarta, Bogor, Depok, Tangerang, dan Bekasi. Ketersediaan instalasi dan cakupan layanan perlu dikonfirmasi berdasarkan alamat Anda.",
+  },
+];
+
+const areas = [
+  "Tangerang Kota", "Tangerang Selatan", "Kabupaten Tangerang", "Jakarta",
+  "Bogor", "Depok", "Bekasi",
+];
+
+function Arrow() {
+  return <span aria-hidden="true">↗</span>;
+}
+
+
+
+const testimonials = [
               { name: "Nadia P.", city: "Tangerang Selatan", product: "OMBAK", initial: "N", tone: "sage", quote: "Sejak pakai Coway Ombak, urusan air minum di rumah jadi jauh lebih praktis. Anak-anak juga gampang ambil air sendiri." },
               { name: "Budi S.", city: "BSD City", product: "NEO PLUS", initial: "B", tone: "sand", quote: "Neo Plus ini kepake banget di rumah. Mau air panas atau dingin tinggal pencet, nggak perlu ribet masak air lagi." },
               { name: "Rina A.", city: "Jakarta Selatan", product: "NOBLE 2", initial: "R", tone: "rose", quote: "Awalnya fokus cari air purifier buat kamar. Setelah pakai Noble 2, rasanya lebih tenang pas lagi istirahat." },
