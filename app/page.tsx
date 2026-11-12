@@ -555,19 +555,25 @@ export default function Home() {
 
       {registerOpen && <div className="register-modal-backdrop" role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) setRegisterOpen(false); }}>
         <section className="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
-          <button type="button" className="register-modal-close" aria-label="Tutup formulir" onClick={() => setRegisterOpen(false)}>×</button>
-          <div className="register-modal-kicker">COWAY · PERSONAL CONSULTATION</div>
-          <h2 id="register-modal-title">Mulai dari kebutuhan<br /><em>Anda.</em></h2>
-          <p className="register-modal-intro">Tinggalkan kontak Anda. Detail pilihan produk akan ikut terkirim ke WhatsApp konsultan.</p>
-          <div className="register-selected-product"><span>PRODUK YANG DIPILIH</span><b>{registerProduct}</b></div>
+          <div className="register-modal-top">
+            <span className="register-modal-brand"><Image src="/coway.png" alt="Coway" width={82} height={27} /></span>
+            <button type="button" className="register-modal-close" aria-label="Tutup formulir" onClick={() => setRegisterOpen(false)}>×</button>
+          </div>
+          <div className="register-modal-kicker">KONSULTASI PERSONAL <span>·</span> JABODETABEK</div>
+          <h2 id="register-modal-title">Temukan yang tepat<br /><em>untuk Anda.</em></h2>
+          <p className="register-modal-intro">Isi detail singkat berikut. Konsultan kami akan membantu Anda memilih solusi Coway yang sesuai.</p>
+          <div className="register-modal-context">
+            <div className="register-selected-product"><span>PILIHAN PRODUK</span><b>{registerProduct}</b></div>
+            <div className="register-selected-product register-selected-need"><span>KEBUTUHAN</span><b>{registerNeed}</b></div>
+          </div>
           <form className="register-modal-form" onSubmit={submitRegister}>
-            <label>Nama lengkap<input required value={registerData.name} onChange={event => setRegisterData({ ...registerData, name: event.target.value })} placeholder="Nama Anda" autoComplete="name" /></label>
+            <label>Nama lengkap<input required value={registerData.name} onChange={event => setRegisterData({ ...registerData, name: event.target.value })} placeholder="Masukkan nama Anda" autoComplete="name" /></label>
             <label>Nomor WhatsApp<input required type="tel" value={registerData.phone} onChange={event => setRegisterData({ ...registerData, phone: event.target.value })} placeholder="08xxxxxxxxxx" autoComplete="tel" /></label>
-            <label>Kota / area<input required value={registerData.city} onChange={event => setRegisterData({ ...registerData, city: event.target.value })} placeholder="Contoh: BSD, Tangerang" autoComplete="address-level2" /></label>
-            <button className="button button-dark full-button" type="submit">Kirim pendaftaran via WhatsApp <Arrow /></button>
+            <label className="register-city-field">Kota / area<input required value={registerData.city} onChange={event => setRegisterData({ ...registerData, city: event.target.value })} placeholder="Contoh: BSD, Tangerang" autoComplete="address-level2" /></label>
+            <button className="button button-dark full-button register-submit" type="submit">Lanjutkan ke WhatsApp <Arrow /></button>
             {notice && <p className="form-notice" role="status">{notice}</p>}
           </form>
-          <p className="register-modal-privacy">Dengan melanjutkan, Anda menyetujui data kontak digunakan untuk menindaklanjuti permintaan konsultasi.</p>
+          <p className="register-modal-privacy"><span aria-hidden="true">◈</span> Data Anda hanya digunakan untuk menindaklanjuti permintaan konsultasi.</p>
         </section>
       </div>}
 
