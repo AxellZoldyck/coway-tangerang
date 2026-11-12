@@ -584,3 +584,46 @@ main { padding-top: 78px !important; }
 @media(max-width:390px){.hero-section{height:520px;padding:46px 17px 48px;background-position:70% center}.hero-copy{width:82%}.hero-copy h1{font-size:35px}.hero-lead{max-width:285px;font-size:10px}.hero-actions{gap:11px}}
 @media(max-height:700px) and (min-width:641px){.hero-section{min-height:500px}.hero-proof{margin-top:25px}}
 @media(prefers-reduced-motion:reduce){.hero-primary-button{transition:none}}
+
+.floating-wa {
+  position: fixed;
+  z-index: 1000;
+  right: 24px;
+  bottom: 24px;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 5px 22px rgba(37, 211, 102, 0.3);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.floating-wa svg {
+  width: 34px;
+  height: 34px;
+}
+
+.floating-wa:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 640px) {
+  .floating-wa {
+    right: 17px;
+    bottom: 18px;
+    width: 53px;
+    height: 53px;
+  }
+
+  .floating-wa svg {
+    width: 31px;
+    height: 31px;
+  }
+}

@@ -13,7 +13,7 @@ export default function ProductCategoriesSection() {
                 <span className="category-orbit" />
               </a>
               <a className="category-card category-air" href="/produk/air-purifier">
-                <div className="category-image"><Image src="/airpurifier.jpg" alt="Kategori Air Purifier Coway" fill sizes="(max-width: 640px) 100vw, 50vw" /></div>
+                <div className="category-image"><Image src="/storm1.png" alt="Kategori Air Purifier Coway" fill sizes="(max-width: 640px) 100vw, 50vw" /></div>
                 <div className="category-shade" /><span className="category-number">02 / AIR</span><div className="category-card-copy"><span>FRESHER INDOOR AIR</span><h3>Air<br /><em>Purifier.</em></h3><p>Kenali pilihan pemurni udara untuk ruang Anda.</p><b className="category-arrow">↗</b></div>
                 <span className="category-orbit" />
               </a>
