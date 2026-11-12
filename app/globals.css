@@ -1194,3 +1194,60 @@ main.product-detail-page > .product-detail-nav {
     contain-intrinsic-size: auto 980px;
   }
 }
+
+
+/* ACCESSIBILITY + INITIAL RENDER OPTIMIZATION */
+/* Keep below-the-fold visual sections out of the initial rendering pass. */
+.awards-section,
+.category-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
+/* Improve readable contrast on the light Coway surfaces. */
+.solution-heading > p,
+.solution-step-description,
+.solution-option small,
+.solution-result-heading p,
+.solution-note,
+.calc-copy > p,
+.calc-note,
+.calc-field label,
+.price-input span,
+.stepper small,
+.service-heading > p,
+.service-steps article > span,
+.service-steps p,
+.payment-grid article > span,
+.payment-grid p,
+.payment-heading > p,
+.area-content > p,
+.testimonials-disclaimer,
+.testimonial-person-info > span,
+.faq-intro > p,
+.faq-item > p,
+.lead-form label small,
+.form-heading p,
+.form-privacy,
+.footer > p:not(.footer-disclaimer),
+.footer-bottom,
+.footer-disclaimer {
+  color: #596b60 !important;
+}
+
+/* Avoid expensive backdrop filtering on low-power mobile devices. */
+@media (max-width: 640px) {
+  .header {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(250, 251, 247, .98);
+  }
+  .header .nav {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .awards-track { animation: none !important; transform: none !important; }
+}
