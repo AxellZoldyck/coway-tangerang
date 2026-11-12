@@ -627,3 +627,107 @@ main { padding-top: 78px !important; }
     height: 31px;
   }
 }
+
+
+/* Refined registration modal — compact, responsive, no internal scrolling */
+.register-modal-backdrop {
+  position:fixed; inset:0; z-index:1200; display:grid; place-items:center;
+  padding:18px; overflow:hidden; background:rgba(24,42,34,.58);
+  -webkit-backdrop-filter:blur(9px); backdrop-filter:blur(9px);
+}
+.register-modal {
+  position:relative; width:min(100%,520px); max-height:calc(100dvh - 36px);
+  overflow:hidden; padding:clamp(22px,3.3vw,32px);
+  border:1px solid rgba(255,255,255,.8); border-radius:20px;
+  background:#f8faf6; color:#29483d;
+  box-shadow:0 28px 90px rgba(17,37,27,.25);
+  animation:register-rise .24s ease both;
+}
+.register-modal-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:13px; }
+.register-modal-brand { display:flex; align-items:center; height:27px; }
+.register-modal-brand img { display:block; width:82px; height:auto; object-fit:contain; }
+.register-modal-close {
+  position:static; display:grid; place-items:center; flex:0 0 34px;
+  width:34px; height:34px; border:1px solid #dfe7dd; border-radius:50%;
+  background:#fff; color:#587363; font-size:21px; line-height:1; cursor:pointer;
+  transition:background .2s ease,transform .2s ease;
+}
+.register-modal-close:hover { background:#edf2eb; transform:rotate(90deg); }
+.register-modal-kicker { color:#829889; font-size:8px; font-weight:700; letter-spacing:.17em; }
+.register-modal-kicker span { padding:0 4px; color:#b2c0b4; }
+.register-modal h2 {
+  margin:11px 0 8px; color:#29483d;
+  font:500 clamp(31px,5vw,41px)/1.04 var(--serif);
+  letter-spacing:-.045em;
+}
+.register-modal h2 em { color:#789784; font-weight:400; }
+.register-modal-intro { max-width:390px; margin:0 0 15px; color:#829187; font-size:10px; line-height:1.65; }
+.register-modal-context { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:15px; }
+.register-selected-product {
+  min-width:0; display:flex; flex-direction:column; justify-content:center; gap:5px;
+  min-height:58px; padding:10px 12px; margin:0;
+  border:1px solid #e1e9df; border-radius:9px; border-left:2px solid #85a18b;
+  background:#eef3ec;
+}
+.register-selected-product span { color:#91a096; font-size:7px; font-weight:700; letter-spacing:.13em; }
+.register-selected-product b { color:#486454; font:500 13px/1.25 var(--serif); overflow-wrap:anywhere; }
+.register-selected-need { background:#f2f4ef; border-left-color:#c0cdbd; }
+.register-modal-form { display:grid; grid-template-columns:1fr 1fr; gap:11px 10px; }
+.register-modal-form label { display:grid; gap:5px; min-width:0; color:#60786a; font-size:9px; font-weight:600; }
+.register-modal-form input {
+  width:100%; min-width:0; height:42px; min-height:42px; padding:0 11px;
+  border:1px solid #dce5da; border-radius:8px; outline:none;
+  background:#fff; color:#29483d; font:inherit; font-size:10px;
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.register-modal-form input::placeholder { color:#a9b4aa; }
+.register-modal-form input:focus { border-color:#85a18b; box-shadow:0 0 0 3px rgba(127,158,133,.12); }
+.register-modal-form .register-city-field { grid-column:1 / -1; }
+.register-modal-form .register-submit {
+  grid-column:1 / -1; width:100%; min-height:45px; margin:1px 0 0;
+  display:flex; justify-content:center; align-items:center; gap:12px;
+  border-radius:8px; font-size:10px;
+}
+.register-modal-privacy {
+  display:flex; align-items:flex-start; gap:7px; margin:11px 0 0;
+  color:#9aa69d; font-size:8px; line-height:1.5;
+}
+.register-modal-privacy span { color:#819b87; }
+.register-modal .form-notice { grid-column:1 / -1; margin:0; font-size:9px; line-height:1.45; }
+@media(max-width:640px) {
+  .register-modal-backdrop { padding:12px; place-items:center; }
+  .register-modal { width:100%; max-height:calc(100dvh - 24px); padding:21px 19px 17px; border-radius:17px; }
+  .register-modal-top { margin-bottom:10px; }
+  .register-modal h2 { font-size:35px; margin:9px 0 7px; }
+  .register-modal-intro { font-size:9px; line-height:1.55; margin-bottom:12px; }
+  .register-modal-context { gap:7px; margin-bottom:12px; }
+  .register-selected-product { min-height:53px; padding:8px 9px; }
+  .register-selected-product b { font-size:12px; }
+  .register-modal-form { gap:9px; }
+  .register-modal-form input { height:40px; min-height:40px; font-size:10px; }
+  .register-modal-form .register-submit { min-height:43px; }
+  .register-modal-privacy { margin-top:9px; font-size:7px; }
+}
+@media(max-height:700px) {
+  .register-modal { padding-top:17px; padding-bottom:15px; }
+  .register-modal-top { margin-bottom:7px; }
+  .register-modal h2 { font-size:clamp(29px,5vh,36px); margin:7px 0 5px; }
+  .register-modal-intro { margin-bottom:9px; line-height:1.45; }
+  .register-modal-context { margin-bottom:9px; }
+  .register-selected-product { min-height:48px; padding:7px 9px; }
+  .register-modal-form { gap:7px 9px; }
+  .register-modal-form input { height:37px; min-height:37px; }
+  .register-modal-form .register-submit { min-height:40px; }
+  .register-modal-privacy { margin-top:7px; }
+}
+@media(max-width:390px) {
+  .register-modal-context { grid-template-columns:1fr; gap:6px; }
+  .register-selected-product { min-height:43px; }
+  .register-selected-need { display:none; }
+  .register-modal { padding:18px 16px 15px; }
+  .register-modal h2 { font-size:32px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .register-modal { animation:none; }
+  .register-modal-close { transition:none; }
+}
