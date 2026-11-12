@@ -45,9 +45,9 @@ export default function ProductDetailPage({ product }: { product: ProductDetail 
       {product.filterInfo && <section className="product-filter-info"><span>FILTRATION TECHNOLOGY</span><h2>Teknologi di balik<br /><em>setiap proses.</em></h2><p>{product.filterInfo}</p></section>}
 
       <section className="product-spec-section" id="spesifikasi">
-        <div className="product-detail-section-head"><span>02 / TECHNICAL INFORMATION</span><h2>Spesifikasi <em>produk.</em></h2><p>Informasi teknis berdasarkan katalog resmi Coway Indonesia.</p></div>
+        <div className="product-detail-section-head"><span>02 / TECHNICAL INFORMATION</span><h2>Spesifikasi <em>produk.</em></h2><p>Informasi teknis produk untuk membantu Anda mengenal fitur dan spesifikasinya.</p></div>
         <div className="product-spec-table">{product.specs.map((spec) => <div className="product-spec-row" key={spec.label}><span>{spec.label}</span><b>{spec.value}</b></div>)}</div>
-        <p className="product-spec-note">Spesifikasi dapat berubah mengikuti pembaruan katalog. Konfirmasi detail model, warna, dan ketersediaan sebelum pemesanan.</p>
+        <p className="product-spec-note">Spesifikasi, pilihan warna, dan ketersediaan dapat berubah. Silakan konfirmasi detail produk sebelum pemesanan.</p>
       </section>
 
       {<section className="product-pricing-section" id="harga">
@@ -68,12 +68,12 @@ export default function ProductDetailPage({ product }: { product: ProductDetail 
             <button type="button" onClick={() => setRegisterOpen(true)}>Minta simulasi pembayaran ↗</button>
           </div>
         </div>
-        <p className="product-spec-note">Harga yang ditampilkan mengikuti data referensi katalog yang tersedia dan dapat berubah sewaktu-waktu. Konfirmasi harga, program, dan ketersediaan terbaru sebelum transaksi.</p>
+        <p className="product-spec-note">Harga dan program dapat berubah sewaktu-waktu. Konfirmasi harga serta ketersediaan terbaru sebelum transaksi.</p>
       </section>}
 
       <section className="product-detail-cta"><span>LET’S FIND YOUR MATCH</span><h2>Ingin tahu apakah produk ini<br /><em>sesuai kebutuhan Anda?</em></h2><p>Konsultasikan kondisi ruang, jumlah pengguna, dan kebutuhan penggunaan bersama konsultan Coway.</p><button type="button" onClick={() => setRegisterOpen(true)}>Tanya produk ini <span>↗</span></button></section>
 
-      <footer className="product-detail-footer"><Link href={product.category === "Water Purifier" ? "/produk/water-purifier" : product.category === "Air Purifier" ? "/produk/air-purifier" : "/produk/water-filter"}>← Kembali ke {product.category}</Link><a href={product.officialUrl} target="_blank" rel="noreferrer">Referensi katalog Coway Indonesia ↗</a></footer>
+      <footer className="product-detail-footer"><Link href={product.category === "Water Purifier" ? "/produk/water-purifier" : product.category === "Air Purifier" ? "/produk/air-purifier" : "/produk/water-filter"}>← Kembali ke {product.category}</Link></footer>
 
       {registerOpen && <div className="register-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setRegisterOpen(false); }}>
         <section className="register-modal product-register-modal" role="dialog" aria-modal="true" aria-labelledby="product-register-title">
