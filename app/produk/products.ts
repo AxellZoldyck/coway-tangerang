@@ -4,6 +4,7 @@ export type ProductDetail = {
   name: string; model: string; tagline: string; description: string; image: string;
   highlights: { title: string; text: string }[]; specs: ProductSpec[];
   officialUrl: string; filterInfo?: string;
+  pricing?: { plans: { label: string; monthly: string; service: string }[]; productPrice: string; filterPackage: string };
 };
 export const products: ProductDetail[] = [
 {
@@ -14,7 +15,28 @@ image:"/waterpurifier/ombak.png",highlights:[
 {title:"UV sterilization",text:"Fitur UV bekerja otomatis untuk air suhu dingin dan normal."},
 {title:"Child safety lock",text:"Pengunci keamanan membantu mencegah keluarnya air panas tanpa sengaja."},
 {title:"Sistem filtrasi multi-tahap",text:"Menggunakan Neo-Sense, RO Membrane, Plus Inno-Sense, dan Antibacterial Filter."}],
-specs:[{label:"Laju aliran",value:"20 GPD"},{label:"Kapasitas filtrasi",value:"3,2 liter/jam"},{label:"Masa pakai filter",value:"Neo-Sense 6 bulan · RO 24 bulan · Plus Inno-Sense 18 bulan · Antibacterial 12 bulan"}],
+specs:[
+{label:"Model",value:"OMBAK (CHP-7310R)"},
+{label:"Cartridge Filter",value:'8" Neo-Sense Filter (Sediment + Pre Carbon) · 8" RO Membrane (Reverse Osmosis) · 8" Plus Inno-Sense (Post Carbon + Fine) · Antibacterial'},
+{label:"Laju Aliran",value:"20 gpd"},
+{label:"Masa Filter / Kapasitas",value:"Neo Sense: 6 bulan · RO Membrane: 24 bulan · Plus Inno-Sense: 18 bulan · Antibacterial: 12 bulan"},
+{label:"Kapasitas Filtrasi",value:"3.2 Liter / Jam"},
+{label:"Kapasitas Tangki",value:"Normal: 7.8 Liter · Dingin: 2.3 Liter · Panas: 3.4 Liter · Total: 13.5 Liter"},
+{label:"Konsumsi Listrik",value:"Pemanas 672W – 800W · Kompresor 0.6A"},
+{label:"Temperatur Feed Air",value:"5°C ~ 90°C"},
+{label:"Dimensi",value:"340 × 523 × 518 mm"},
+{label:"Berat Bersih",value:"21.9 kg"},
+{label:"Sertifikasi WQA",value:"NSF/ANSI 42, 53, 58, 401, NSF P477"}
+],
+pricing:{
+plans:[
+{label:"Paket 7 tahun",monthly:"Rp 350.000",service:"Termasuk perawatan dan penggantian filter 7 tahun"},
+{label:"Paket 6 tahun",monthly:"Rp 390.000",service:"Termasuk perawatan dan penggantian filter 6 tahun"},
+{label:"Paket 5 tahun",monthly:"Rp 430.000",service:"Termasuk perawatan dan penggantian filter 5 tahun"},
+{label:"Paket 3 tahun",monthly:"Rp 550.000",service:"Termasuk perawatan dan penggantian filter 3 tahun"}
+],
+productPrice:"Rp 18.460.000",filterPackage:"Rp 1.500.000"
+},
 filterInfo:"Neo-Sense membantu mengurangi partikel, klorin dan VOC; RO Membrane menyaring kontaminan terlarut; Plus Inno-Sense membantu mengurangi bau dan memperbaiki rasa; Antibacterial membantu mencegah pertumbuhan mikroorganisme di tangki.",
 officialUrl:"https://www.coway.id/products/detail/ombak/1"
 },
