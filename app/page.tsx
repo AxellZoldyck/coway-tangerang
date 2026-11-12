@@ -193,7 +193,7 @@ export default function Home() {
           window.scrollTo({ top: 0, behavior: "smooth" });
           setPromoOpen(true);
         }}>
-          <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority quality={55} />
+          <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority quality={30} sizes="132px" />
         </a>
 
         <nav id="mobile-navigation" className={menuOpen ? "nav nav-open" : "nav"} aria-label="Navigasi utama">
