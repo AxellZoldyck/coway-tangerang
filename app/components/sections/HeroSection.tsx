@@ -9,7 +9,7 @@ export default function HeroSection({ onConsult }: HeroSectionProps) {
     <section className={"hero-section"} aria-labelledby="hero-title">
       <div className={"hero-copy"}>
         <div className={"hero-eyebrow"}>
-          <span className={"hero-eyebrow"Line} />
+          <span className="hero-eyebrow-line" />
           COWAY · SOLUSI KUALITAS HIDUP
         </div>
 
@@ -34,7 +34,7 @@ export default function HeroSection({ onConsult }: HeroSectionProps) {
         </div>
 
         <div className={"hero-proof"}>
-          <span className={"hero-proof"Icon} aria-hidden="true">✳</span>
+          <span className="hero-proof-icon" aria-hidden="true">✳</span>
           <span>
             <strong>Lebih dari sekadar unit</strong>
             <small>Temukan produk dan dukungan perawatan yang sesuai.</small>
