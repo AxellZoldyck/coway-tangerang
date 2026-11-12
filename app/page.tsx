@@ -55,6 +55,7 @@ export default function Home() {
   const [solutionAnswers, setSolutionAnswers] = useState({ focus: "", place: "", scale: "" });
   const [solutionStep, setSolutionStep] = useState(0);
   const [registerOpen, setRegisterOpen] = useState(false);
+  const [promoOpen, setPromoOpen] = useState(false);
   const [registerData, setRegisterData] = useState({ name: "", phone: "", city: "" });
   const [registerProduct, setRegisterProduct] = useState("Belum menentukan produk");
   const [registerNeed, setRegisterNeed] = useState("Konsultasi produk Coway");
@@ -154,6 +155,12 @@ export default function Home() {
     setSolutionAnswers(current => ({ ...current, [key]: value, ...(key === "focus" ? { place: "", scale: "" } : key === "place" ? { scale: "" } : {}) }));
     setSolutionStep(current => Math.min(current + 1, 3));
   }
+
+  useEffect(() => {
+    if (sessionStorage.getItem("coway-promo-dismissed") === "1") return;
+    const timer = window.setTimeout(() => setPromoOpen(true), 650);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -574,6 +581,36 @@ export default function Home() {
             {notice && <p className="form-notice" role="status">{notice}</p>}
           </form>
           <p className="register-modal-privacy"><span aria-hidden="true">◈</span> Data Anda hanya digunakan untuk menindaklanjuti permintaan konsultasi.</p>
+        </section>
+      </div>}
+
+      {promoOpen && <div className="promo-popup-backdrop" role="presentation" onMouseDown={event => {
+        if (event.target === event.currentTarget) {
+          setPromoOpen(false);
+          sessionStorage.setItem("coway-promo-dismissed", "1");
+        }
+      }}>
+        <section className="promo-popup" role="dialog" aria-modal="true" aria-label="Promo spesial Coway">
+          <button
+            type="button"
+            className="promo-popup-close"
+            aria-label="Tutup promo"
+            onClick={() => {
+              setPromoOpen(false);
+              sessionStorage.setItem("coway-promo-dismissed", "1");
+            }}
+          >×</button>
+          <div className="promo-popup-image">
+            <Image src="/popuppromo.jpeg" alt="Promo spesial Coway" fill priority sizes="(max-width: 640px) 92vw, 520px" />
+          </div>
+          <div className="promo-popup-actions">
+            <span>Penawaran spesial Coway</span>
+            <button type="button" onClick={() => {
+              setPromoOpen(false);
+              sessionStorage.setItem("coway-promo-dismissed", "1");
+              openRegister("Promo Coway");
+            }}>Konsultasi promo <Arrow /></button>
+          </div>
         </section>
       </div>}
 
