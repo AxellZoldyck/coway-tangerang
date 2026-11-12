@@ -47,7 +47,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+          media="print"
+          onLoad={(event) => {
+            event.currentTarget.media = "all";
+          }}
         />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+          />
+        </noscript>
         <link rel="preload" as="image" href="/cowayhero.jpg" fetchPriority="high" />
       </head>
       <body>{children}</body>
