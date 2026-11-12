@@ -3,7 +3,7 @@ export type ProductDetail = {
   slug: string; category: "Water Purifier" | "Air Purifier" | "Water Filter";
   name: string; model: string; tagline: string; description: string; image: string;
   highlights: { title: string; text: string }[]; specs: ProductSpec[];
-  officialUrl: string; filterInfo?: string;
+  filterInfo?: string;
   pricing?: { plans: { label: string; monthly: string; service: string }[]; productPrice: string; filterPackage: string };
 };
 export const products: ProductDetail[] = [
@@ -32,7 +32,6 @@ specs:[
 ],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 350.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 390.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 430.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 550.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 18.460.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
 filterInfo:"Neo-Sense membantu mengurangi partikel, klorin dan VOC; RO Membrane menyaring kontaminan terlarut; Plus Inno-Sense membantu mengurangi bau dan memperbaiki rasa; Antibacterial membantu mencegah pertumbuhan mikroorganisme di tangki.",
-officialUrl:"https://www.coway.id/products/detail/ombak/1"
 },
 {
 slug:"villaem-ii",category:"Water Purifier",name:"Villaem II",model:"CHP-18AR",tagline:"Lighten Your Water Life",
@@ -44,7 +43,6 @@ image:"/waterpurifier/villaem2.png",highlights:[
 {title:"Indikator level air",text:"Indikator memberi tanda saat level air di tangki bagian dalam rendah."}],
 specs:[{label:"Sistem filtrasi",value:"Neo-Sense · RO Membrane · Plus Inno-Sense · Antibacterial"},{label:"Masa pakai filter",value:"Neo-Sense 6 bulan · RO 24 bulan · Plus Inno-Sense 18 bulan · Antibacterial 12 bulan"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 310.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 350.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 370.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 450.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 15.730.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/villaem_ii/2"
 },
 {
 slug:"neo-plus",category:"Water Purifier",name:"Neo Plus",model:"CHP-264L",tagline:"Small in Size, Big in Function",
@@ -57,7 +55,6 @@ image:"/waterpurifier/neoplus.png",highlights:[
 specs:[{label:"Kapasitas filtrasi",value:"3,2 liter/jam"},{label:"Kapasitas tangki total",value:"5,8 liter"},{label:"Dimensi",value:"260 × 505 × 500 mm"},{label:"Berat bersih",value:"18 kg"},{label:"Daya",value:"Pemanas 300 W; kompresor 0,7 A"},{label:"Masa pakai filter",value:"Neo-Sense 6 bulan · RO 24 bulan · Plus Inno-Sense 18 bulan · Antibacterial 12 bulan"}],
 filterInfo:"Menggunakan rangkaian Neo-Sense, Reverse Osmosis (RO), Plus Inno-Sense, dan Antibacterial Filter.",
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 270.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 290.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 320.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 380.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 11.760.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/neo_plus/11"
 },
 {
 slug:"cinnamon",category:"Water Purifier",name:"Cinnamon",model:"P-6320R",tagline:"Si mungil untuk air tanpa batas",
@@ -69,7 +66,6 @@ image:"/waterpurifier/cinnamon.png",highlights:[
 {title:"Filtrasi RO",text:"Rangkaian filter mencakup Neo-Sense, RO Membrane, Plus Inno-Sense, dan Antibacterial Filter."}],
 specs:[{label:"Kapasitas filtrasi",value:"3,2 liter/jam"},{label:"Kapasitas tangki",value:"5 liter (normal)"},{label:"Konsumsi listrik",value:"20 W"},{label:"Dimensi",value:"200 × 400 × 405 mm"},{label:"Berat bersih",value:"6,5 kg"},{label:"Masa pakai filter",value:"Neo-Sense 6 bulan · RO 24 bulan · Plus Inno-Sense 18 bulan · Antibacterial 12 bulan"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 180.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 200.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 220.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 253.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 7.200.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/cinnamon/14"
 },
 {
 slug:"coway-kristal-ice",category:"Water Purifier",name:"Coway Kristal Ice",model:"CHPI-7520L",tagline:"A Shape of Elegance in Every Cube",
@@ -81,7 +77,6 @@ image:"/waterpurifier/cowaycrystalice.png",highlights:[
 {title:"Pilihan warna",text:"Tersedia dalam Pebble Grey dan Porcelain White menurut katalog resmi."}],
 specs:[{label:"Kapasitas filtrasi",value:"3,2 liter/jam"},{label:"Kapasitas es",value:"0,7 kg"},{label:"Kapasitas tangki air",value:"Total 5,1 liter"},{label:"Dimensi",value:"270 × 546 × 515 mm"},{label:"Berat bersih",value:"23,9 kg"},{label:"Masa pakai filter",value:"Neo-Sense 6 bulan · RO 24 bulan · Plus Inno-Sense 18 bulan"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 440.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 480.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 550.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 840.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 25.000.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/kristal_ice/16"
 },
 {
 slug:"villaem-iii",category:"Water Purifier",name:"Villaem III",model:"CHP-7320R",tagline:"Smarter Than You Think",
@@ -93,7 +88,6 @@ image:"/waterpurifier/villaem3.png",highlights:[
 {title:"UV Care",text:"UV Care bekerja selama 3 jam setiap 12 jam saat penutup tangki bagian atas tertutup."}],
 specs:[{label:"Kapasitas tangki total",value:"11,4 liter"},{label:"Dimensi",value:"310 × 523 × 520 mm"},{label:"Berat bersih",value:"20 kg"},{label:"Daya",value:"Pemanas 670 W; total tercantum 790 W"},{label:"Masa pakai filter",value:"Neo-Sense 6 bulan · RO 24 bulan · Plus Inno-Sense 18 bulan · Antibacterial 12 bulan"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 330.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 370.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 430.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 550.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 18.460.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/villaem_iii/17"
 },
 {
 slug:"core",category:"Water Purifier",name:"Core",model:"CHP-671R",tagline:"Enhance Your Core Business",
@@ -105,7 +99,6 @@ image:"/waterpurifier/core.png",highlights:[
 {title:"Reverse Osmosis",text:"Sistem filtrasi RO dengan rangkaian beberapa tahap filter."}],
 specs:[{label:"Laju aliran",value:"50 GPD"},{label:"Kapasitas filtrasi",value:"10,3 liter/jam"},{label:"Kapasitas tangki",value:"Normal 11,5 L · Dingin 6,0 L · Panas 3,6 L"},{label:"Dimensi",value:"370 × 490 × 1.257 mm"},{label:"Berat bersih",value:"32,8 kg"},{label:"Masa pakai filter",value:"Plus Sediment 6 bulan · Pre-Carbon 12 bulan · RO 24 bulan · Plus Inno-Sense 18 bulan · Antibacterial 12 bulan"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 370.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 410.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 450.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 570.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 18.850.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/core/3"
 },
 {
 slug:"slim-stand",category:"Water Purifier",name:"Slim Stand",model:"CHP-5730R",tagline:"Designed for Modern Living",
@@ -117,7 +110,6 @@ image:"/waterpurifier/slimstand.png",highlights:[
 {title:"Adjustable tray & child lock",text:"Tray dapat disesuaikan dengan wadah dan tersedia pengunci air panas."}],
 specs:[{label:"Kapasitas tangki total",value:"12 liter"},{label:"Dimensi",value:"260 × 448 × 1.170 mm"},{label:"Berat bersih",value:"29,5 kg"},{label:"Konsumsi listrik",value:"Pemanas 500 W; total tercantum 500 W"},{label:"Masa pakai filter",value:"Neo-Sense 6 bulan · RO 24 bulan · Plus Inno-Sense 18 bulan"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 350.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 390.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 430.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 550.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 18.460.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/slim_stand/24"
 },
 {
 slug:"storm",category:"Air Purifier",name:"Storm",model:"AP-1516D",tagline:"Best Choice for Better Air Circulation",
@@ -130,7 +122,6 @@ image:"/airpurifier/storm.png",highlights:[
 specs:[{label:"Area aplikasi",value:"49,5 m²"},{label:"CADR",value:"375 m³/jam"},{label:"Tingkat kebisingan",value:"Di bawah 50 dB"},{label:"Konsumsi listrik",value:"65 W"},{label:"Dimensi",value:"410 × 240 × 765 mm"},{label:"Berat bersih",value:"12 kg"}],
 filterInfo:"Pre-Filter dapat dibersihkan; Fine Dust Filter sekitar 4 bulan; Deodorisation Filter 12–24 bulan; HEPA Filter 12 bulan sesuai informasi Coway.",
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 210.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 230.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 250.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 300.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 9.600.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/storm/4"
 },
 {
 slug:"next-storm",category:"Air Purifier",name:"Next Storm",model:"AP-2025A",tagline:"Wider and Powerful Clean Air",
@@ -142,7 +133,6 @@ image:"/airpurifier/nextstorm.png",highlights:[
 {title:"Mode beragam",text:"Tersedia Smart, Turbo, Haze, dan Sleep."}],
 specs:[{label:"Area aplikasi",value:"65 m²"},{label:"Tingkat kebisingan",value:"51 dB (spesifikasi produk)"},{label:"Konsumsi listrik",value:"65 W"},{label:"Dimensi",value:"412 × 232 × 752,5 mm"},{label:"Berat bersih",value:"12 kg"},{label:"Masa pakai filter",value:"Fine Dust 4 bulan · Deodorisation 24 bulan · Copper HEPA 12 bulan"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 270.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 290.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 320.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 390.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 11.280.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/storm_ii/19"
 },
 {
 slug:"cartridge",category:"Air Purifier",name:"Cartridge",model:"AP-1019C",tagline:"Fit in Your Bedroom",
@@ -153,7 +143,6 @@ image:"/airpurifier/cartridge.png",highlights:[
 {title:"Untuk ruang hingga 34 m²",text:"Luas area aplikasi yang tercantum pada spesifikasi resmi."}],
 specs:[{label:"Area aplikasi",value:"34 m²"},{label:"Konsumsi listrik",value:"38 W"},{label:"Dimensi",value:"340 × 165 × 469 mm"},{label:"Berat bersih",value:"5,5 kg"},{label:"Masa pakai filter",value:"HEPA 12 bulan · Deodorisation 24 bulan"}],
 pricing:{plans:[],productPrice:"Rp 3.000.000",filterPackage:"Hubungi konsultan"},
-officialUrl:"https://www.coway.id/products/detail/cartridge/20"
 },
 {
 slug:"noble-2",category:"Air Purifier",name:"Noble 2",model:"AP-2023K",tagline:"A Premium Design to Perfect Every Room",
@@ -165,7 +154,6 @@ image:"/airpurifier/noble2.png",highlights:[
 {title:"Area aplikasi 67 m²",text:"Dirancang untuk menjangkau ruangan yang lebih luas."}],
 specs:[{label:"Area aplikasi",value:"67 m²"},{label:"Konsumsi listrik",value:"55 W"},{label:"Sistem filtrasi",value:"4D Pre-Filter · Double Air Matching Filter · 4D Copper HEPA · Double Deodorisation Filter"},{label:"Siklus filter",value:"Pre-Filter dapat dicuci · Air Matching 4 bulan · Copper HEPA 12 bulan · Deodorisation 24 bulan"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 410.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 440.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 470.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 550.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 17.582.400",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/noble_2/21"
 },
 {
 slug:"squarefit",category:"Air Purifier",name:"Squarefit",model:"AP-1125G",tagline:"Where Silence Meets Style",
@@ -176,7 +164,6 @@ image:"/airpurifier/squarefit.png",highlights:[
 {title:"Area aplikasi 33 m²",text:"Luas area aplikasi berdasarkan spesifikasi resmi."}],
 specs:[{label:"Area aplikasi",value:"33 m²"},{label:"Konsumsi listrik",value:"45 W"},{label:"Dimensi",value:"366 × 183 × 500 mm (tercantum di halaman resmi)"},{label:"Berat bersih",value:"7 kg"},{label:"Sistem filter",value:"Pre-Filter · Air Matching Filter · Deodorisation Filter · High Efficiency Filter"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 190.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 210.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 230.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 270.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 8.400.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/square_fit/22"
 },
 {
 slug:"squarebig",category:"Air Purifier",name:"Squarebig",model:"AP-2425H",tagline:"Where Power Meets Space",
@@ -187,7 +174,6 @@ image:"/airpurifier/squarebig.png",highlights:[
 {title:"Jangkauan hingga 79 m²",text:"Coway mencantumkan area aplikasi hingga 79 m²."}],
 specs:[{label:"Area aplikasi",value:"Hingga 79 m²"},{label:"Sistem filtrasi",value:"Pre-Filter · Air Matching Filter · Deodorisation Filter · High Efficiency Filter"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 270.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 290.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 310.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 390.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 11.280.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://dev.coway.id/products/detail/square_fit%2B/23"
 },
 {
 slug:"poe-23a",category:"Water Filter",name:"POE-23A",model:"POE-23A",tagline:"Solusi Air Bersih Rumah Tangga",
@@ -199,7 +185,6 @@ image:"/waterfilter/poe23a.png",highlights:[
 {title:"Katup multiport 4 arah",text:"Mendukung mode filter, bypass, pencucian cepat, dan backwash."}],
 specs:[{label:"Material housing",value:"Stainless steel 304"},{label:"Suhu kerja",value:"5–45°C"},{label:"Tekanan sumber air",value:"15–80 psi"},{label:"Laju aliran",value:"3.200–3.300 liter/jam"},{label:"Dimensi",value:"127 mm × 1.090 mm"},{label:"Berat bersih",value:"10 kg"},{label:"Sumber air",value:"PDAM dan air tanah"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 290.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"}],productPrice:"Rp 15.000.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://www.coway.id/products/detail/poe-23a/18"
 },
 {
 slug:"yonsu",category:"Water Filter",name:"Yonsu",model:"BB14-AID",tagline:"Soft Water. Softer Skin",
@@ -211,7 +196,6 @@ image:"/waterfilter/yonsu.png",highlights:[
 {title:"Regenerasi satu tombol",text:"Proses regenerasi praktis sekitar 15–30 menit menurut informasi Coway."}],
 specs:[{label:"Tekanan penggunaan",value:"0,07–0,98 MPa"},{label:"Suhu penggunaan",value:"2–80°C"},{label:"Kapasitas resin",value:"1,5 liter"},{label:"Soft water per regenerasi",value:"900 liter (standar kesadahan sumber 100 ppm)"},{label:"Dimensi",value:"285 × 190 × 500 mm"},{label:"Berat produk",value:"9 kg termasuk bahan regenerasi"},{label:"Instalasi",value:"Berdiri · area kamar mandi"}],
 pricing:{plans:[{label:"Paket 7 tahun",monthly:"Rp 260.000",service:"Termasuk perawatan dan penggantian filter selama 7 tahun"},{label:"Paket 6 tahun",monthly:"Rp 280.000",service:"Termasuk perawatan dan penggantian filter selama 6 tahun"},{label:"Paket 5 tahun",monthly:"Rp 310.000",service:"Termasuk perawatan dan penggantian filter selama 5 tahun"},{label:"Paket 3 tahun",monthly:"Rp 370.000",service:"Termasuk perawatan dan penggantian filter selama 3 tahun"}],productPrice:"Rp 9.000.000",filterPackage:"Termasuk perawatan dan penggantian filter sesuai paket"},
-officialUrl:"https://dev.coway.id/products/detail/yonsu/25"
 }
 ];
 export const getProduct = (slug: string) => products.find((product) => product.slug === slug);
