@@ -11,9 +11,11 @@ export const products: ProductDetail[] = [
 slug:"ombak",category:"Water Purifier",name:"Ombak",model:"CHP-7310R",tagline:"Smart Choice, Smart Beginning for Your Renewed Life",
 description:"Water purifier dengan 50 kombinasi pengaturan suhu dan volume air. Dirancang untuk memberi keleluasaan saat menyiapkan air minum, mulai dari suhu dingin hingga panas.",
 image:"/waterpurifier/ombak.png",highlights:[
-{title:"50 kombinasi suhu & volume",text:"Atur kombinasi suhu dan takaran air sesuai kebutuhan harian."},
-{title:"UV sterilization",text:"Fitur UV bekerja otomatis untuk air suhu dingin dan normal."},
-{title:"Child safety lock",text:"Pengunci keamanan membantu mencegah keluarnya air panas tanpa sengaja."},
+{title:"50 kombinasi suhu & volume",text:"Tersedia 50 kombinasi pengaturan suhu dan volume sesuai keinginan."},
+{title:"Teknologi andal dari Coway R&D Center",text:"Produk dirancang, diuji secara ketat, dan disertifikasi oleh Water Quality Association (WQA) dan NSF."},
+{title:"UV Sterilization",text:"Fitur ekstra Ombak menyala otomatis untuk air suhu dingin dan normal."},
+{title:"Child Safety Lock",text:"Menjaga anak agar terhindar dari luka akibat air panas."},
+{title:"Kapasitas air panas besar",text:"Tangki air panas berkapasitas besar untuk kebutuhan menyeduh dan penggunaan harian."},
 {title:"Sistem filtrasi multi-tahap",text:"Menggunakan Neo-Sense, RO Membrane, Plus Inno-Sense, dan Antibacterial Filter."}],
 specs:[
 {label:"Model",value:"OMBAK (CHP-7310R)"},
@@ -30,12 +32,12 @@ specs:[
 ],
 pricing:{
 plans:[
-{label:"Paket 7 tahun",monthly:"Rp 350.000",service:"Termasuk perawatan dan penggantian filter 7 tahun"},
-{label:"Paket 6 tahun",monthly:"Rp 390.000",service:"Termasuk perawatan dan penggantian filter 6 tahun"},
-{label:"Paket 5 tahun",monthly:"Rp 430.000",service:"Termasuk perawatan dan penggantian filter 5 tahun"},
-{label:"Paket 3 tahun",monthly:"Rp 550.000",service:"Termasuk perawatan dan penggantian filter 3 tahun"}
+{label:"Paket 7 tahun",monthly:"Hubungi konsultan",service:"Termasuk perawatan dan penggantian filter 7 tahun"},
+{label:"Paket 6 tahun",monthly:"Hubungi konsultan",service:"Termasuk perawatan dan penggantian filter 6 tahun"},
+{label:"Paket 5 tahun",monthly:"Hubungi konsultan",service:"Termasuk perawatan dan penggantian filter 5 tahun"},
+{label:"Paket 3 tahun",monthly:"Hubungi konsultan",service:"Termasuk perawatan dan penggantian filter 3 tahun"}
 ],
-productPrice:"Rp 18.460.000",filterPackage:"Rp 1.500.000"
+productPrice:"Hubungi konsultan",filterPackage:"Hubungi konsultan"
 },
 filterInfo:"Neo-Sense membantu mengurangi partikel, klorin dan VOC; RO Membrane menyaring kontaminan terlarut; Plus Inno-Sense membantu mengurangi bau dan memperbaiki rasa; Antibacterial membantu mencegah pertumbuhan mikroorganisme di tangki.",
 officialUrl:"https://www.coway.id/products/detail/ombak/1"
