@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import HeroSection from "./components/sections/HeroSection";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
 const waNumber = "6283193123626";
@@ -185,21 +186,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="hero">
-        <div className="hero-copy">
-          <div className="eyebrow"><span className="eyebrow-line" /> WATER PURIFIER · JABODETABEK</div>
-          <h1>Air yang lebih baik.<br /><em>Hari yang lebih praktis.</em></h1>
-          <p className="hero-lead">Nikmati kemudahan air minum di rumah dan tempat kerja dengan pilihan water purifier Coway yang dapat disesuaikan dengan kebutuhan Anda.</p>
-          <div className="hero-actions">
-            <button type="button" className="button button-dark" onClick={()=>openRegister()}>Konsultasi gratis <Arrow /></button>
-            <a className="text-link" href="#solusi">Kenali solusinya <span>↓</span></a>
-          </div>
-          <div className="hero-proof">
-            <div className="proof-icon">✳</div><div><strong>Lebih dari sekadar unit</strong><span>Kenali pilihan produk dan dukungan perawatannya.</span></div>
-          </div>
-        </div>
-        <div className="hero-bottom"><span>01 — 09</span><span>DESIGNED FOR EVERYDAY WELLBEING</span><span>SCROLL TO EXPLORE ↓</span></div>
-      </section>
+      <HeroSection onConsult={() => openRegister()} />
 
       <section className="trust-strip">
         <div><span className="strip-icon">⌁</span><strong>Teknologi filtrasi</strong><small>Disesuaikan per model</small></div>
