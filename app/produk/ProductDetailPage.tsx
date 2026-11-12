@@ -8,6 +8,8 @@ import type { ProductDetail } from "./products";
 export default function ProductDetailPage({ product }: { product: ProductDetail }) {
   const [registerOpen, setRegisterOpen] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", city: "" });
+  const [paymentPlan, setPaymentPlan] = useState("60");
+  const [downPayment, setDownPayment] = useState("");
   const whatsapp = "6283193123626";
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -51,7 +53,20 @@ export default function ProductDetailPage({ product }: { product: ProductDetail 
         <div className="product-detail-section-head"><span>03 / PRODUCT & SERVICE PACKAGE</span><h2>Pilihan paket<br /><em>dan harga.</em></h2><p>Paket sudah termasuk perawatan dan penggantian filter selama periode layanan.</p></div>
         <div className="product-plan-grid">{product.pricing.plans.map((plan) => <article className="product-plan-card" key={plan.label}><span>{plan.label}</span><strong>{plan.monthly}</strong><small>/bulan</small><p>{plan.service}</p><button type="button" onClick={() => setRegisterOpen(true)}>Tanya paket ini ↗</button></article>)}</div>
         <div className="product-price-summary"><div><span>HARGA PRODUK</span><strong>{product.pricing.productPrice}</strong></div><div><span>FILTER PACKAGE</span><strong>{product.pricing.filterPackage}</strong><small>Termasuk perawatan dan penggantian filter 1 tahun</small></div></div>
-        <div className="product-payment-simulation"><div><span>PAYMENT INFORMATION</span><h3>Simulasi <em>pembayaran.</em></h3><p>Pilih paket dan konsultasikan besaran uang muka serta tagihan bulanan dengan konsultan.</p></div><div className="product-payment-options"><span>PAKET TERSEDIA</span><div><b>PAKET 60</b><small>60 Bulan</small></div><div><b>PAKET 36</b><small>36 Bulan</small></div><div><b>PAKET 6</b><small>6 Bulan</small></div><div><b>FILTER 12</b><small>12 Bulan</small></div><button type="button" onClick={() => setRegisterOpen(true)}>Minta simulasi pembayaran ↗</button></div></div>
+        <div className="product-payment-simulation">
+          <div><span>PAYMENT INFORMATION</span><h3>Simulasi <em>pembayaran.</em></h3><p>Pilih periode pembayaran dan masukkan uang muka. Tim Coway akan mengonfirmasi nominal tagihan sesuai harga dan program yang sedang berlaku.</p></div>
+          <div className="product-payment-options"><span>PILIH PAKET</span>
+            <div className="payment-plan-choices">
+              <button type="button" className={paymentPlan==="60"?"active":""} onClick={()=>setPaymentPlan("60")}><b>PAKET 60</b><small>60 Bulan</small></button>
+              <button type="button" className={paymentPlan==="36"?"active":""} onClick={()=>setPaymentPlan("36")}><b>PAKET 36</b><small>36 Bulan</small></button>
+              <button type="button" className={paymentPlan==="6"?"active":""} onClick={()=>setPaymentPlan("6")}><b>PAKET 6</b><small>6 Bulan</small></button>
+              <button type="button" className={paymentPlan==="12"?"active":""} onClick={()=>setPaymentPlan("12")}><b>FILTER 12</b><small>12 Bulan</small></button>
+            </div>
+            <label className="payment-downpayment">JUMLAH DOWN PAYMENT<input inputMode="numeric" value={downPayment} onChange={(event)=>setDownPayment(event.target.value)} placeholder="Masukkan nominal DP" /></label>
+            <div className="payment-estimate"><span>PAKET / PERIODE</span><b>{paymentPlan==="12"?"Filter 12 Bulan":paymentPlan+" Bulan"}</b><span>BIAYA TAGIHAN BULANAN</span><b>Konfirmasi dengan konsultan</b></div>
+            <button type="button" onClick={() => setRegisterOpen(true)}>Minta simulasi pembayaran ↗</button>
+          </div>
+        </div>
         <p className="product-spec-note">Harga yang ditampilkan mengikuti data referensi katalog yang tersedia dan dapat berubah sewaktu-waktu. Konfirmasi harga, program, dan ketersediaan terbaru sebelum transaksi.</p>
       </section>}
 
