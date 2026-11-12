@@ -428,16 +428,16 @@ export default function Home() {
         </div>
         <div className="calculator">
           <div className="calc-field">
-            <label htmlFor="people">Jumlah anggota keluarga</label>
-            <div className="stepper">
+            <span id="people-label" className="calc-field-label">Jumlah anggota keluarga</span>
+            <div className="stepper" role="group" aria-labelledby="people-label">
               <button type="button" onClick={() => setPeople(Math.max(1, people - 1))} aria-label="Kurangi anggota">−</button>
               <strong>{people} <small>orang</small></strong>
               <button type="button" onClick={() => setPeople(Math.min(20, people + 1))} aria-label="Tambah anggota">+</button>
             </div>
           </div>
           <div className="calc-field">
-            <label htmlFor="litres">Konsumsi per orang / hari</label>
-            <div className="stepper">
+            <span id="litres-label" className="calc-field-label">Konsumsi per orang / hari</span>
+            <div className="stepper" role="group" aria-labelledby="litres-label">
               <button type="button" onClick={() => setLitres(Math.max(1, litres - .5))} aria-label="Kurangi konsumsi">−</button>
               <strong>{litres.toLocaleString("id-ID")} <small>liter</small></strong>
               <button type="button" onClick={() => setLitres(Math.min(5, litres + .5))} aria-label="Tambah konsumsi">+</button>
