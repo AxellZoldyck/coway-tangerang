@@ -28,7 +28,7 @@ export default function ProductDetailPage({ product }: { product: ProductDetail 
           <span className="product-detail-kicker">{product.category.toUpperCase()} <i>·</i> {product.model}</span>
           <h1>{product.name}<em>{product.tagline}</em></h1>
           <p>{product.description}</p>
-          <div className="product-detail-actions"><button type="button" onClick={() => setRegisterOpen(true)}>Konsultasikan produk <span>↗</span></button><a href="#spesifikasi">Lihat spesifikasi ↓</a></div>
+          <div className="product-detail-actions"><button type="button" onClick={() => setRegisterOpen(true)}>Tanya produk <span>↗</span></button><a href="#spesifikasi">Lihat spesifikasi ↓</a></div>
         </div>
         <div className="product-detail-visual"><div className="product-detail-orbit" /><Image src={product.image} alt={product.name + " " + product.model} fill priority sizes="(max-width: 800px) 90vw, 52vw" /></div>
         <span className="product-detail-index">COWAY · PRODUCT DETAIL</span>
@@ -46,6 +46,14 @@ export default function ProductDetailPage({ product }: { product: ProductDetail 
         <div className="product-spec-table">{product.specs.map((spec) => <div className="product-spec-row" key={spec.label}><span>{spec.label}</span><b>{spec.value}</b></div>)}</div>
         <p className="product-spec-note">Spesifikasi dapat berubah mengikuti pembaruan katalog. Konfirmasi detail model, warna, dan ketersediaan sebelum pemesanan.</p>
       </section>
+
+      {product.pricing && <section className="product-pricing-section" id="harga">
+        <div className="product-detail-section-head"><span>03 / PRODUCT & SERVICE PACKAGE</span><h2>Pilihan paket<br /><em>dan harga.</em></h2><p>Paket sudah termasuk perawatan dan penggantian filter selama periode layanan.</p></div>
+        <div className="product-plan-grid">{product.pricing.plans.map((plan) => <article className="product-plan-card" key={plan.label}><span>{plan.label}</span><strong>{plan.monthly}</strong><small>/bulan</small><p>{plan.service}</p><button type="button" onClick={() => setRegisterOpen(true)}>Tanya paket ini ↗</button></article>)}</div>
+        <div className="product-price-summary"><div><span>HARGA PRODUK</span><strong>{product.pricing.productPrice}</strong></div><div><span>FILTER PACKAGE</span><strong>{product.pricing.filterPackage}</strong><small>Termasuk perawatan dan penggantian filter 1 tahun</small></div></div>
+        <div className="product-payment-simulation"><div><span>PAYMENT INFORMATION</span><h3>Simulasi <em>pembayaran.</em></h3><p>Pilih paket dan konsultasikan besaran uang muka serta tagihan bulanan dengan konsultan.</p></div><div className="product-payment-options"><span>PAKET TERSEDIA</span><div><b>PAKET 60</b><small>60 Bulan</small></div><div><b>PAKET 36</b><small>36 Bulan</small></div><div><b>PAKET 6</b><small>6 Bulan</small></div><div><b>FILTER 12</b><small>12 Bulan</small></div><button type="button" onClick={() => setRegisterOpen(true)}>Minta simulasi pembayaran ↗</button></div></div>
+        <p className="product-spec-note">Harga yang ditampilkan mengikuti data referensi katalog yang tersedia dan dapat berubah sewaktu-waktu. Konfirmasi harga, program, dan ketersediaan terbaru sebelum transaksi.</p>
+      </section>}
 
       <section className="product-detail-cta"><span>LET’S FIND YOUR MATCH</span><h2>Ingin tahu apakah produk ini<br /><em>sesuai kebutuhan Anda?</em></h2><p>Konsultasikan kondisi ruang, jumlah pengguna, dan kebutuhan penggunaan bersama konsultan Coway.</p><button type="button" onClick={() => setRegisterOpen(true)}>Tanya produk ini <span>↗</span></button></section>
 
