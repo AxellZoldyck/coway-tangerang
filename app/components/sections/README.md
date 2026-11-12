@@ -1,17 +1,14 @@
-# Struktur komponen
-
-Homepage dirapikan bertahap agar bagian yang sering direvisi tidak menumpuk di satu file.
-
-## Struktur saat ini
+# Struktur aplikasi
 
 ```
 app/
   components/
     sections/
       HeroSection.tsx
-      HeroSection.module.css
+      TrustStrip.tsx
+      AwardsSection.tsx
+      ProductCategoriesSection.tsx
   produk/
-    CategoryPage.tsx
     air-purifier/page.tsx
     water-filter/page.tsx
     water-purifier/page.tsx
@@ -26,14 +23,10 @@ public/
   waterfilter/
 ```
 
-## Aturan pemisahan
+## Aturan
 
-- `components/sections/`: satu komponen untuk setiap section homepage (Hero, Awards, Produk, Solusi, dan seterusnya).
-- CSS khusus section ditempatkan dalam CSS Module di samping komponen agar styling tidak saling menimpa.
-- `globals.css`: hanya reset, token warna/font, header/footer, dan style lintas halaman. Pindahkan style section ke CSS Module ketika section tersebut diekstrak.
-- `produk/`: halaman katalog per kategori.
-- `public/`: aset gambar dan file statis; pertahankan nama/path aset yang sudah dipakai.
-
-## Revisi berikutnya
-
-Saat memisahkan section lain dari `app/page.tsx`, pindahkan JSX beserta state/handler yang memang dimiliki section tersebut. Jangan memindahkan state global (misalnya modal konsultasi) tanpa meneruskan callback/props agar alur formulir tetap bekerja.
+- Setiap section homepage memiliki satu file komponen sendiri di `app/components/sections/`.
+- CSS tetap terpusat di `app/globals.css`; gunakan prefix class per section agar selector tidak bertabrakan.
+- `app/page.tsx` mengatur state, data, dan menyusun urutan section. Jika section membutuhkan state atau aksi, teruskan melalui props.
+- Halaman katalog kategori tetap berada di `app/produk/`.
+- Aset statis tetap berada di `public/`.
