@@ -43,6 +43,72 @@ function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
+const solutionCatalog = {
+  drink: {
+    title: "Water Purifier",
+    description: "Pemurni air minum dengan pilihan kapasitas, suhu, dan desain yang berbeda.",
+    href: "/produk/water-purifier",
+    products: {
+      small: [
+        { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter." },
+        { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis." },
+        { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter." }
+      ],
+      medium: [
+        { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis." },
+        { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter." },
+        { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter." }
+      ],
+      large: [
+        { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Kapasitas tangki total 11,4 liter dengan empat pilihan air termasuk hangat dan panas." },
+        { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air untuk menyesuaikan kebutuhan pemakaian." },
+        { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Alternatif berukuran ringkas dengan tiga pilihan suhu air." }
+      ]
+    }
+  },
+  indoor: {
+    title: "Air Purifier",
+    description: "Pemurni udara yang dipilih berdasarkan luas ruangan dan fitur setiap model.",
+    href: "/produk/air-purifier",
+    products: {
+      small: [
+        { name: "Cartridge", model: "AP-1019C", image: "/airpurifier/cartridge.png", detail: "HEPA filter system untuk area hingga 34 m², dengan desain ringkas." },
+        { name: "Squarefit", model: "AP-1125G", image: "/airpurifier/squarefit.png", detail: "Pemurni udara untuk area hingga 33 m² dengan konsumsi daya 45 W." }
+      ],
+      medium: [
+        { name: "Storm", model: "AP-1516D", image: "/airpurifier/storm.png", detail: "HEPA filter system dengan CADR 375 m³/jam untuk area hingga 49,5 m²." },
+        { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara dan cakupan area hingga 65 m²." },
+        { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dengan area aplikasi hingga 67 m² dan pilihan filter sesuai kebutuhan." }
+      ],
+      large: [
+        { name: "Squarebig", model: "AP-2425H", image: "/airpurifier/squarebig.png", detail: "Double Air Matching Filter Technology dengan cakupan yang disebutkan Coway hingga 79 m²." },
+        { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dan area aplikasi hingga 67 m²." },
+        { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara untuk area hingga 65 m²." }
+      ]
+    }
+  },
+  source: {
+    title: "Water Filter",
+    description: "Penyaringan air dari sumber rumah tangga. Kesesuaian instalasi perlu dicek berdasarkan kondisi air dan tekanan di lokasi.",
+    href: "/produk/water-filter",
+    products: {
+      small: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah." }],
+      medium: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah." }],
+      large: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; kapasitas aliran 3.200–3.300 L/jam." }]
+    }
+  },
+  softener: {
+    title: "Water Softener",
+    description: "Untuk kebutuhan air mandi dan perawatan tubuh. Air keluaran Yonsu bukan untuk diminum atau memasak.",
+    href: "/produk/water-filter",
+    products: {
+      small: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }],
+      medium: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }],
+      large: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }]
+    }
+  }
+} as const;
+
 export default function Home() {
   const [people, setPeople] = useState(4);
   const [litres, setLitres] = useState(2);
@@ -77,71 +143,7 @@ export default function Home() {
 
   const solutionComplete = Boolean(solutionAnswers.focus && solutionAnswers.place && solutionAnswers.scale);
 
-  const solutionCatalog = {
-    drink: {
-      title: "Water Purifier",
-      description: "Pemurni air minum dengan pilihan kapasitas, suhu, dan desain yang berbeda.",
-      href: "/produk/water-purifier",
-      products: {
-        small: [
-          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter." },
-          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis." },
-          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter." }
-        ],
-        medium: [
-          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air, dengan sistem filtrasi Reverse Osmosis." },
-          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Empat pilihan air: normal, dingin, hangat, dan panas. Kapasitas tangki total 11,4 liter." },
-          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Desain ringkas dengan pilihan air panas, dingin, dan normal. Kapasitas tangki total 5,8 liter." }
-        ],
-        large: [
-          { name: "Villaem III", model: "CHP-7320R", image: "/waterpurifier/villaem3.png", detail: "Kapasitas tangki total 11,4 liter dengan empat pilihan air termasuk hangat dan panas." },
-          { name: "Ombak", model: "CHP-7310R", image: "/waterpurifier/ombak.png", detail: "50 kombinasi pengaturan suhu dan volume air untuk menyesuaikan kebutuhan pemakaian." },
-          { name: "Neo Plus", model: "CHP-264L", image: "/waterpurifier/neoplus.png", detail: "Alternatif berukuran ringkas dengan tiga pilihan suhu air." }
-        ]
-      }
-    },
-    indoor: {
-      title: "Air Purifier",
-      description: "Pemurni udara yang dipilih berdasarkan luas ruangan dan fitur setiap model.",
-      href: "/produk/air-purifier",
-      products: {
-        small: [
-          { name: "Cartridge", model: "AP-1019C", image: "/airpurifier/cartridge.png", detail: "HEPA filter system untuk area hingga 34 m², dengan desain ringkas." },
-          { name: "Squarefit", model: "AP-1125G", image: "/airpurifier/squarefit.png", detail: "Pemurni udara untuk area hingga 33 m² dengan konsumsi daya 45 W." }
-        ],
-        medium: [
-          { name: "Storm", model: "AP-1516D", image: "/airpurifier/storm.png", detail: "HEPA filter system dengan CADR 375 m³/jam untuk area hingga 49,5 m²." },
-          { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara dan cakupan area hingga 65 m²." },
-          { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dengan area aplikasi hingga 67 m² dan pilihan filter sesuai kebutuhan." }
-        ],
-        large: [
-          { name: "Squarebig", model: "AP-2425H", image: "/airpurifier/squarebig.png", detail: "Double Air Matching Filter Technology dengan cakupan yang disebutkan Coway hingga 79 m²." },
-          { name: "Noble 2", model: "AP-2023K", image: "/airpurifier/noble2.png", detail: "4D 360° filter dan area aplikasi hingga 67 m²." },
-          { name: "Next Storm", model: "AP-2025A", image: "/airpurifier/nextstorm.png", detail: "Tiga arah sirkulasi udara untuk area hingga 65 m²." }
-        ]
-      }
-    },
-    source: {
-      title: "Water Filter",
-      description: "Penyaringan air dari sumber rumah tangga. Kesesuaian instalasi perlu dicek berdasarkan kondisi air dan tekanan di lokasi.",
-      href: "/produk/water-filter",
-      products: {
-        small: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah." }],
-        medium: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; untuk sumber air PDAM maupun air tanah." }],
-        large: [{ name: "POE-23A", model: "POE-23A", image: "/waterfilter/poe23a.png", detail: "PVDF ultrafiltration membrane hingga 0,01 mikron; kapasitas aliran 3.200–3.300 L/jam." }]
-      }
-    },
-    softener: {
-      title: "Water Softener",
-      description: "Untuk kebutuhan air mandi dan perawatan tubuh. Air keluaran Yonsu bukan untuk diminum atau memasak.",
-      href: "/produk/water-filter",
-      products: {
-        small: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }],
-        medium: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }],
-        large: [{ name: "Yonsu", model: "BB14-AID", image: "/waterfilter/yonsu.png", detail: "Water softener dengan Composite Filter Technology dan Vitamin C untuk membantu mengurangi residu klorin serta menghasilkan soft water untuk mandi." }]
-      }
-    }
-  } as const;
+
 
   const solutionRecommendation = solutionComplete
     ? solutionCatalog[solutionAnswers.focus as keyof typeof solutionCatalog]
