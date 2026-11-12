@@ -978,3 +978,24 @@ main { padding-top: 78px !important; }
     padding:6px 10px;
   }
 }
+
+
+/* Product detail pages own their header; remove landing-page main offsets. */
+main.product-detail-page {
+  padding-top:0 !important;
+  margin-top:0 !important;
+  position:relative;
+}
+main.product-detail-page > .product-detail-nav {
+  position:relative;
+  inset:auto;
+  top:auto;
+  margin:0;
+  transform:none;
+}
+@media (max-width:640px) {
+  main.product-detail-page {
+    padding-top:0 !important;
+    margin-top:0 !important;
+  }
+}
