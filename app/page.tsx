@@ -193,7 +193,7 @@ export default function Home() {
           window.scrollTo({ top: 0, behavior: "smooth" });
           setPromoOpen(true);
         }}>
-          <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority />
+          <Image className="brand-logo" src="/coway.png" alt="Coway" width={132} height={42} priority quality={55} />
         </a>
 
         <nav id="mobile-navigation" className={menuOpen ? "nav nav-open" : "nav"} aria-label="Navigasi utama">
@@ -604,7 +604,7 @@ export default function Home() {
                 }}
           >×</button>
           <div className="promo-popup-image">
-            <Image src="/popuppromo.jpeg" alt="Promo spesial Coway" fill priority sizes="(max-width: 640px) 92vw, 520px" />
+            <Image src="/popuppromo.jpeg" alt="Promo spesial Coway" fill priority quality={60} sizes="(max-width: 640px) 88vw, 480px" />
           </div>
           <div className="promo-popup-actions">
             <span>Penawaran spesial Coway</span>
