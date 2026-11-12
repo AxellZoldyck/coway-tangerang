@@ -10,6 +10,7 @@ export default function ProductDetailPage({ product }: { product: ProductDetail 
   const [form, setForm] = useState({ name: "", phone: "", city: "" });
   const [paymentPlan, setPaymentPlan] = useState("60");
   const [downPayment, setDownPayment] = useState("");
+  const pricing = product.pricing ?? { plans: [{label:"Paket 7 tahun",monthly:"Hubungi konsultan",service:"Perawatan dan penggantian filter 7 tahun"},{label:"Paket 6 tahun",monthly:"Hubungi konsultan",service:"Perawatan dan penggantian filter 6 tahun"},{label:"Paket 5 tahun",monthly:"Hubungi konsultan",service:"Perawatan dan penggantian filter 5 tahun"},{label:"Paket 3 tahun",monthly:"Hubungi konsultan",service:"Perawatan dan penggantian filter 3 tahun"}], productPrice:"Hubungi konsultan", filterPackage:"Hubungi konsultan" };
   const whatsapp = "6283193123626";
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -49,10 +50,10 @@ export default function ProductDetailPage({ product }: { product: ProductDetail 
         <p className="product-spec-note">Spesifikasi dapat berubah mengikuti pembaruan katalog. Konfirmasi detail model, warna, dan ketersediaan sebelum pemesanan.</p>
       </section>
 
-      {product.pricing && <section className="product-pricing-section" id="harga">
+      {<section className="product-pricing-section" id="harga">
         <div className="product-detail-section-head"><span>03 / PRODUCT & SERVICE PACKAGE</span><h2>Pilihan paket<br /><em>dan harga.</em></h2><p>Paket sudah termasuk perawatan dan penggantian filter selama periode layanan.</p></div>
-        <div className="product-plan-grid">{product.pricing.plans.map((plan) => <article className="product-plan-card" key={plan.label}><span>{plan.label}</span><strong>{plan.monthly}</strong><small>/bulan</small><p>{plan.service}</p><button type="button" onClick={() => setRegisterOpen(true)}>Tanya paket ini ↗</button></article>)}</div>
-        <div className="product-price-summary"><div><span>HARGA PRODUK</span><strong>{product.pricing.productPrice}</strong></div><div><span>FILTER PACKAGE</span><strong>{product.pricing.filterPackage}</strong><small>Termasuk perawatan dan penggantian filter 1 tahun</small></div></div>
+        <div className="product-plan-grid">{pricing.plans.map((plan) => <article className="product-plan-card" key={plan.label}><span>{plan.label}</span><strong>{plan.monthly}</strong><small>/bulan</small><p>{plan.service}</p><button type="button" onClick={() => setRegisterOpen(true)}>Tanya paket ini ↗</button></article>)}</div>
+        <div className="product-price-summary"><div><span>HARGA PRODUK</span><strong>{pricing.productPrice}</strong></div><div><span>FILTER PACKAGE</span><strong>{pricing.filterPackage}</strong><small>Termasuk perawatan dan penggantian filter 1 tahun</small></div></div>
         <div className="product-payment-simulation">
           <div><span>PAYMENT INFORMATION</span><h3>Simulasi <em>pembayaran.</em></h3><p>Pilih periode pembayaran dan masukkan uang muka. Tim Coway akan mengonfirmasi nominal tagihan sesuai harga dan program yang sedang berlaku.</p></div>
           <div className="product-payment-options"><span>PILIH PAKET</span>
