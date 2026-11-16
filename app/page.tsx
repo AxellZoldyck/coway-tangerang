@@ -10,7 +10,7 @@ import TestimonialsSection from "./components/sections/TestimonialsSection";
 import { TechnologySection, ServiceSection, AreaSection, SiteFooter } from "./components/sections/StaticSections";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
-const waNumber = "6283193123626";
+const waNumber = "62881012522051";
 const waLink = (message: string) => `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 
 const faqs = [
