@@ -11,7 +11,7 @@ export default function ProductDetailPage({ product }: { product: ProductDetail 
   const [paymentPlan, setPaymentPlan] = useState("60");
   const [downPayment, setDownPayment] = useState("");
   const pricing = product.pricing ?? { plans: [{label:"Paket 7 tahun",monthly:"Hubungi konsultan",service:"Perawatan dan penggantian filter 7 tahun"},{label:"Paket 6 tahun",monthly:"Hubungi konsultan",service:"Perawatan dan penggantian filter 6 tahun"},{label:"Paket 5 tahun",monthly:"Hubungi konsultan",service:"Perawatan dan penggantian filter 5 tahun"},{label:"Paket 3 tahun",monthly:"Hubungi konsultan",service:"Perawatan dan penggantian filter 3 tahun"}], productPrice:"Hubungi konsultan", filterPackage:"Hubungi konsultan" };
-  const whatsapp = "6283193123626";
+  const whatsapp = "62881012522051";
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const message = ["Halo, saya ingin konsultasi produk Coway.", "Produk: " + product.name + " (" + product.model + ")", "Nama: " + form.name, "WhatsApp: " + form.phone, "Kota / area: " + form.city].join("\n");
